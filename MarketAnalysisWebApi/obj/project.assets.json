@@ -89,11 +89,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj",
       "projectName": "MarketAnalysisWebApi",
-      "projectPath": "C:\\Users\\User\\source\\repos\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj",
+      "projectPath": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\obj\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\MarketAnalysisWebApi\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\Program.cs",
+              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\Program.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\Program.cs",
+              "RelativeToolTip": "MarketAnalysisWebApi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T09:52:24.188Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
