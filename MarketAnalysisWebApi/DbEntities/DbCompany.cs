@@ -1,6 +1,7 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities
 {
@@ -16,7 +17,11 @@ namespace MarketAnalysisWebApi.DbEntities
         [MaxLength(50)]
         public string? KPP { get; set; }
         public string? JurAdress { get; set; }
-        //fdfdfdf
+
+        public byte[]? CompanyLogoFile { get; set; }
+        public Guid CompanyTypeId { get; set; }
+        [ForeignKey(nameof(CompanyTypeId))]
+        public DbCompanyType? CompanyType { get; set; }
 
         public ICollection<DbSupplierUserCompany>? CompanyUsersLinks { get; set; }
     }

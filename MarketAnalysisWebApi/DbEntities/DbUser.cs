@@ -12,13 +12,14 @@ namespace MarketAnalysisWebApi.DbEntities
         [Required]
         public string? Email { get; set; }
         [Required]
-        [MaxLength(20)]
-        public string PhoneNumber { get; set; }
+        [MaxLength(25)]
+        public string? PhoneNumber { get; set; }
         public string?  Password { get; set; }
         public Guid RoleId { get; set; }
         [ForeignKey(nameof(RoleId))]
         public DbUserRole? UserRole { get; set; }
 
         public ICollection<DbSupplierUserCompany>? CompanyUsersLinks { get; set; }
+        public ICollection<DbProjectRequest>? UsersRequests { get; set; }
     }
 }
