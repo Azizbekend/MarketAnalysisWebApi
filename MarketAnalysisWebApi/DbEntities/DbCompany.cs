@@ -16,7 +16,7 @@ namespace MarketAnalysisWebApi.DbEntities
         [MaxLength(50)]
         public string? KPP { get; set; }
         public string? JurAdress { get; set; }
-
+        //fdfdfdf
 
         public ICollection<DbSupplierUserCompany>? CompanyUsersLinks { get; set; }
     }
