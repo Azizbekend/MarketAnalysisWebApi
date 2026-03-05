@@ -1,7 +1,7 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MarketAnalysisWebApi.DbEntities
+namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
     public class DbSupplierUserCompany : DbBase
     {

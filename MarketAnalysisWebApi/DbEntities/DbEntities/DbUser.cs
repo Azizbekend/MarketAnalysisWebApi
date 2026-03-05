@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace MarketAnalysisWebApi.DbEntities
+namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
     public class DbUser : DbBase
     {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MarketAnalysisWebApi.DbEntities
+namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
     public class DbCompany : DbBase
     {
@@ -18,11 +18,11 @@ namespace MarketAnalysisWebApi.DbEntities
         public string? KPP { get; set; }
         public string? JurAdress { get; set; }
 
-        public byte[]? CompanyLogoFile { get; set; }
         public Guid CompanyTypeId { get; set; }
         [ForeignKey(nameof(CompanyTypeId))]
         public DbCompanyType? CompanyType { get; set; }
 
         public ICollection<DbSupplierUserCompany>? CompanyUsersLinks { get; set; }
+        public ICollection<DbBusinessOffer>? CompanyOffers { get; set; }
     }
 }

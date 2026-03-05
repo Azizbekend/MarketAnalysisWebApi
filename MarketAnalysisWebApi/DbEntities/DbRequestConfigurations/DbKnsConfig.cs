@@ -1,4 +1,5 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
+using MarketAnalysisWebApi.DbEntities.DbEntities;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations

@@ -1,6 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
 
-namespace MarketAnalysisWebApi.DbEntities
+namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
     public class DbUserRole : DbBase
     {

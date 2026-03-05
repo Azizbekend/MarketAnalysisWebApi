@@ -3,12 +3,17 @@ using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MarketAnalysisWebApi.DbEntities
+namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
     public class DbProjectRequest : DbBase
     {
         [Required]
+        public string? NameByProjectDocs { get; set; }
+        [Required]
         public string? ObjectName { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string? LocationRegion { get; set; }
         [Required]
         public string? CustomerName { get; set; }
         [Required]
@@ -16,6 +21,8 @@ namespace MarketAnalysisWebApi.DbEntities
         [Required]
         [MaxLength(25)]
         public string? PhoneNumber { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.Now.ToLocalTime(); 
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]
         public DbUser? User { get; set; }
@@ -26,6 +33,7 @@ namespace MarketAnalysisWebApi.DbEntities
 
 
         public ICollection<DbKnsConfig>? KnsConfigs { get; set; }
+        public ICollection<DbEquipRequest>? EquipRequest { get; set; }
 
     }
 }
