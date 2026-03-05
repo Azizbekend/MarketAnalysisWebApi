@@ -3,6 +3,42 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\Migrations\\20260305134238_FileStorages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MarketAnalysisWebApi\\Migrations\\20260305134238_FileStorages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\filestorages\\dbplanfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\filestorages\\dbplanfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\filestorages\\dbimagefilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\filestorages\\dbimagefilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\filestorages\\dbequipmentpassportfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\filestorages\\dbequipmentpassportfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\filestorages\\dbequipmentcertificatefilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\filestorages\\dbequipmentcertificatefilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\filestorages\\dbbusinessofferfilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\filestorages\\dbbusinessofferfilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\dbentities\\dbuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\dbentities\\dbuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\dbentities\\dbbusinessoffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\dbentities\\dbbusinessoffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\Migrations\\20260305122242_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MarketAnalysisWebApi\\Migrations\\20260305122242_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,24 +51,8 @@
       "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\filestorages\\dbimagefilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\filestorages\\dbimagefilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\dbentities\\dbcompany.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\dbentities\\dbcompany.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\filestorages\\dbequipmentpassportfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\filestorages\\dbequipmentpassportfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\filestorages\\dbbusinessofferfilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\filestorages\\dbbusinessofferfilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\dbentities\\dbequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,14 +67,6 @@
       "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\dbentities\\dbfavoriterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\dbentities\\dbuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\dbentities\\dbuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\filestorages\\dbequipmentcertificatefilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\filestorages\\dbequipmentcertificatefilemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\dbentities\\dbsupplierusercompany.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\dbentities\\dbsupplierusercompany.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -65,10 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\dbrequestconfigurations\\dbknsconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\dbrequestconfigurations\\dbknsconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\dbentities\\dbbusinessoffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|solutionrelative:marketanalysiswebapi\\dbentities\\dbentities\\dbbusinessoffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{28919250-1BAA-AC34-62F5-F74D8CF19E08}|MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj|c:\\users\\user\\source\\repos\\researcherapigit\\marketanalysiswebapi\\marketanalysiswebapi\\dbentities\\dbentities\\dbequiprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -99,84 +107,84 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "20260305134238_FileStorages.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\Migrations\\20260305134238_FileStorages.cs",
+              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\Migrations\\20260305134238_FileStorages.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\Migrations\\20260305134238_FileStorages.cs",
+              "RelativeToolTip": "MarketAnalysisWebApi\\Migrations\\20260305134238_FileStorages.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T13:42:38.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DbPlanFile.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbPlanFile.cs",
+              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbPlanFile.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbPlanFile.cs",
+              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbPlanFile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T13:29:36.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "20260305122242_InitialCreate.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\Migrations\\20260305122242_InitialCreate.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\Migrations\\20260305122242_InitialCreate.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\Migrations\\20260305122242_InitialCreate.cs",
               "RelativeToolTip": "MarketAnalysisWebApi\\Migrations\\20260305122242_InitialCreate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-05T12:22:42.158Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\AppDbContext.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\AppDbContext.cs",
               "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABPAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAABkAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-05T10:48:01.463Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "DbEquipmentPassportFile.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentPassportFile.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentPassportFile.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentPassportFile.cs",
               "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentPassportFile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-05T10:36:12.347Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DbFavoriteRequest.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbFavoriteRequest.cs",
-              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbFavoriteRequest.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbFavoriteRequest.cs",
-              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbFavoriteRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T10:32:17.281Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "DbBusinessOfferFileModel.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbBusinessOfferFileModel.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbBusinessOfferFileModel.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbBusinessOfferFileModel.cs",
               "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbBusinessOfferFileModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-05T09:55:42.179Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DbEquipmentCertificateFileModel.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentCertificateFileModel.cs",
-              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentCertificateFileModel.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentCertificateFileModel.cs",
-              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentCertificateFileModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T09:53:27.455Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "DbImageFileModel.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbImageFileModel.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbImageFileModel.cs",
@@ -189,7 +197,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "DbEquipment.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbEquipment.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbEquipment.cs",
@@ -202,33 +210,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DbProjectRequest.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbProjectRequest.cs",
-              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbProjectRequest.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbProjectRequest.cs",
-              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbProjectRequest.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T12:22:35.618Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DbSupplierUserCompany.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbSupplierUserCompany.cs",
-              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbSupplierUserCompany.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbSupplierUserCompany.cs",
-              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbSupplierUserCompany.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T10:34:21.886Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\Program.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\Program.cs",
@@ -241,7 +223,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
+              "Title": "DbUser.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbUser.cs",
+              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbUser.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbUser.cs",
+              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T10:07:37.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DbBusinessOffer.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbBusinessOffer.cs",
+              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbBusinessOffer.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbBusinessOffer.cs",
+              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbBusinessOffer.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAA8AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:12:08.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DbEquipmentCertificateFileModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentCertificateFileModel.cs",
+              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentCertificateFileModel.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentCertificateFileModel.cs",
+              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\FileStorages\\DbEquipmentCertificateFileModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T09:53:27.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DbProjectRequest.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbProjectRequest.cs",
+              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbProjectRequest.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbProjectRequest.cs",
+              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbProjectRequest.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T12:22:35.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DbFavoriteRequest.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbFavoriteRequest.cs",
+              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbFavoriteRequest.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbFavoriteRequest.cs",
+              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbFavoriteRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T10:32:17.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DbSupplierUserCompany.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbSupplierUserCompany.cs",
+              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbSupplierUserCompany.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbSupplierUserCompany.cs",
+              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbSupplierUserCompany.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T10:34:21.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\appsettings.json",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\appsettings.json",
@@ -254,7 +314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "DbKnsConfig.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbRequestConfigurations\\DbKnsConfig.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbRequestConfigurations\\DbKnsConfig.cs",
@@ -267,20 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "DbBusinessOffer.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbBusinessOffer.cs",
-              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbBusinessOffer.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbBusinessOffer.cs",
-              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbBusinessOffer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T07:12:08.338Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
               "Title": "DbCompany.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbCompany.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbCompany.cs",
@@ -293,7 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "DbEquipRequest.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbEquipRequest.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbEquipRequest.cs",
@@ -306,20 +353,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DbUser.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbUser.cs",
-              "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbUser.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbUser.cs",
-              "RelativeToolTip": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T10:07:37.031Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "DbRequestConfigType.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbRequestConfigType.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbRequestConfigType.cs",
@@ -332,7 +366,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "DbBase.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\Base\\DbBase.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\Base\\DbBase.cs",
@@ -344,7 +378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "DbUserRole.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbUserRole.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbUserRole.cs",
@@ -357,7 +391,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "DbCompanyType.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbCompanyType.cs",
               "RelativeDocumentMoniker": "MarketAnalysisWebApi\\DbEntities\\DbEntities\\DbCompanyType.cs",

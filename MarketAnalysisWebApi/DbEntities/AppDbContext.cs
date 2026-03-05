@@ -1,4 +1,5 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
+using MarketAnalysisWebApi.DbEntities.FileStorages;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketAnalysisWebApi.DbEntities
@@ -17,6 +18,11 @@ namespace MarketAnalysisWebApi.DbEntities
         public DbSet<DbProjectRequest> ProjectRequestsTable { get; set; }
         public DbSet<DbRequestConfigType> ConfigurationTypesTable { get; set; }
         public DbSet<DbSupplierUserCompany> SupplierUsersCompaniesTable { get; set; }
+        public DbSet<DbBusinessOfferFileModel> OfferFilesTable { get; set; }
+        public DbSet<DbEquipmentCertificateFileModel> CertificatesFilesTable { get; set; }
+        public DbSet<DbEquipmentPassportFile> PassportsFilesTable { get; set; }
+        public DbSet<DbPlanFile> PlanFilesTable { get; set; }
+        public DbSet<DbImageFileModel> ImageFilesTable { get; set; }
         public DbSet<DbUserRole> UsersRolesTable { get; set; }
 
 

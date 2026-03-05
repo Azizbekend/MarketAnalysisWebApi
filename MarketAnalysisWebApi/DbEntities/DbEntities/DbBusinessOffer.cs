@@ -1,4 +1,5 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
+using MarketAnalysisWebApi.DbEntities.FileStorages;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
@@ -13,6 +14,21 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public Guid CompanyId { get; set; }
         [ForeignKey(nameof(CompanyId))]
         public DbCompany? Company { get; set; }
+
+        public Guid OfferFileId { get; set; }
+        [ForeignKey(nameof(OfferFileId))]
+        public DbBusinessOfferFileModel? BusinesOfferFile { get; set; }
+
+        public Guid? PassportFileId { get; set; }
+        [ForeignKey(nameof(PassportFileId))]
+        public DbEquipmentPassportFile? PassportFile  { get; set; }
+        public Guid? CertificateFileId { get; set; }
+        [ForeignKey(nameof(CertificateFileId))]
+        public DbEquipmentCertificateFileModel? CertificateFile { get; set; }
+        public Guid? PlanFileId { get; set; }
+        [ForeignKey(nameof(PlanFileId))]
+        public DbPlanFile? PlanFile { get; set; }
+
 
     }
 }

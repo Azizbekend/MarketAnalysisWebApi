@@ -3,7 +3,7 @@ using MarketAnalysisWebApi.DbEntities.DbEntities;
 
 namespace MarketAnalysisWebApi.DbEntities.FileStorages
 {
-    public class DbEquipmentPassportFile : DbBase
+    public class DbPlanFile : DbBase
     {
         public string? FileName { get; set; }
         public string? ContentType { get; set; }

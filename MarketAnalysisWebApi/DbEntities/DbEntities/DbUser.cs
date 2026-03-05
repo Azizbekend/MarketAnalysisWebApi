@@ -24,3 +24,4 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public ICollection<DbFavoriteRequest>? FavoriteRequests { get; set; }
     }
 }
+ 
