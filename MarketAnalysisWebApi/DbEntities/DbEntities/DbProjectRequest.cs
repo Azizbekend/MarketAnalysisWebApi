@@ -35,5 +35,6 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public ICollection<DbKnsConfig>? KnsConfigs { get; set; }
         public ICollection<DbEquipRequest>? EquipRequest { get; set; }
 
+        public ICollection<DbFavoriteRequest>? FavoriteRequests { get; set; }
     }
 }

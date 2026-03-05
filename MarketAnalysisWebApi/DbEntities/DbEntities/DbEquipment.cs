@@ -11,4 +11,5 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public DbRequestConfigType? Type { get; set; }
 
         public ICollection<DbEquipRequest>? EquipRequests { get; set; }
+    }
 }
