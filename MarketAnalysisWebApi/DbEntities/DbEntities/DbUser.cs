@@ -18,10 +18,12 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public Guid RoleId { get; set; }
         [ForeignKey(nameof(RoleId))]
         public DbUserRole? UserRole { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now.ToUniversalTime().AddHours(3);
 
         public ICollection<DbSupplierUserCompany>? CompanyUsersLinks { get; set; }
         public ICollection<DbProjectRequest>? UsersRequests { get; set; }
         public ICollection<DbFavoriteRequest>? FavoriteRequests { get; set; }
+        public ICollection<DbRefreshToken>? RefreshTokens { get; set; }
     }
 }
  

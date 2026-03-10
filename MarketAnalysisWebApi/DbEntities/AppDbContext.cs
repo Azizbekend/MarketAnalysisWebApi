@@ -24,6 +24,7 @@ namespace MarketAnalysisWebApi.DbEntities
         public DbSet<DbPlanFile> PlanFilesTable { get; set; }
         public DbSet<DbImageFileModel> ImageFilesTable { get; set; }
         public DbSet<DbUserRole> UsersRolesTable { get; set; }
+        public DbSet<DbRefreshToken> RefreshTokens { get; set; }
 
 
 

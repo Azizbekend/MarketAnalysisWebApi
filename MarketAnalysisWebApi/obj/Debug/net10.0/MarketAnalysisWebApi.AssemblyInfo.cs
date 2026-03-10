@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MarketAnalysisWebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f3e38f20a188940463b63813ee4e5d4e16f4ece8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a329e4ea18cc4c09dac8404a171ef0d0b120ef4b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MarketAnalysisWebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MarketAnalysisWebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
