@@ -36,11 +36,7 @@ builder.Services.AddCors(options =>
         });
 });
 //builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer(options =>
 {
     options.RequireHttpsMetadata = false;
@@ -67,10 +63,10 @@ builder.Services.AddAuthentication(options =>
         }
     };
 });
-builder.Services.AddAuthorizationBuilder()
-    .AddPolicy("AdminOnly", policy => policy.RequireRole("SuperAdmin"))
-    .AddPolicy("Moderator", policy => policy.RequireRole("Moderator"))
-    .AddPolicy("Guest", policy => policy.RequireRole("Guest"));
+//builder.Services.AddAuthorizationBuilder()
+//    .AddPolicy("AdminOnly", policy => policy.RequireRole("SuperAdmin"))
+//    .AddPolicy("Moderator", policy => policy.RequireRole("Moderator"))
+//    .AddPolicy("Guest", policy => policy.RequireRole("Guest"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {

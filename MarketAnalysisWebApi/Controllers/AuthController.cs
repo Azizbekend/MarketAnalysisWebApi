@@ -40,19 +40,21 @@ namespace MarketAnalysisWebApi.Controllers
         public async Task<ActionResult<AuthResponseDTO>> Register(RegisterRequestDTO request)
         {
             // Проверяем, существует ли пользователь
-            if (await _context.UsersTable.AnyAsync(u => u.Email == request.Email))
+            try
+            {
+                if (await _context.UsersTable.AnyAsync(u => u.Email == request.Email))
             {
                 return BadRequest("User with this email already exists");
             }
 
-            // Создаем нового пользователя
+            var role = await _context.UsersRolesTable.FirstOrDefaultAsync(x => x.RoleName == request.RoleName);
             var user = new DbUser
             {
                 Id = Guid.NewGuid(),
                 Email = request.Email,
                 FullName = request.FullName,
                 PhoneNumber = request.PhoneNumber,
-                RoleId = Guid.Parse("019cd7b3-1ae6-78c7-8e35-fd7e941484d9"), // Получите реальный ID роли
+                RoleId = Guid.Parse(role.Id.ToString()), // Получите реальный ID роли
             };
 
             user.Password = _passwordHasher.HashPassword(user, request.Password);
@@ -69,7 +71,12 @@ namespace MarketAnalysisWebApi.Controllers
 
             SetRefreshTokenCookie(response.RefreshToken, response.ExpiresAt);
 
-            return Ok(response);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
         }
 
         [HttpPost("login")]
@@ -145,10 +152,11 @@ namespace MarketAnalysisWebApi.Controllers
             return Ok();
         }
 
-
+        [Authorize]
         [HttpGet("me")]
-        public async Task<ActionResult<UserInfoDTO>> GetCurrentUser()
+        public async Task<ActionResult<UserInfoDTO>> GetCurrentUser(string token)
         {
+            var claims =  _jwtRepo.ValidateToken(token);
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
 
             if (!Guid.TryParse(userId, out var userGuid))
