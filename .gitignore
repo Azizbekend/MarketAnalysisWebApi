@@ -403,3 +403,13 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
+.vs/MarketAnalysisWebApi.slnx/v18/DocumentLayout.backup.json
+.vs/MarketAnalysisWebApi.slnx/v18/DocumentLayout.json
+MarketAnalysisWebApi/Dockerfile
+MarketAnalysisWebApi/obj/Debug/net10.0/MarketAnalysisWebApi.AssemblyInfo.cs
+MarketAnalysisWebApi/obj/Debug/net10.0/MarketAnalysisWebApi.assets.cache
+MarketAnalysisWebApi/obj/Debug/net10.0/MarketAnalysisWebApi.GeneratedMSBuildEditorConfig.editorconfig
+MarketAnalysisWebApi/obj/Debug/net10.0/rpswa.dswa.cache.json
+MarketAnalysisWebApi/obj/MarketAnalysisWebApi.csproj.nuget.dgspec.json
+MarketAnalysisWebApi/obj/project.assets.json
+MarketAnalysisWebApi/obj/project.nuget.cache
