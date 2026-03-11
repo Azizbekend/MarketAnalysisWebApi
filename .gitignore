@@ -413,3 +413,6 @@ MarketAnalysisWebApi/obj/Debug/net10.0/rpswa.dswa.cache.json
 MarketAnalysisWebApi/obj/MarketAnalysisWebApi.csproj.nuget.dgspec.json
 MarketAnalysisWebApi/obj/project.assets.json
 MarketAnalysisWebApi/obj/project.nuget.cache
+.vs/MarketAnalysisWebApi.slnx/v18/DocumentLayout.json
+/.vs/MarketAnalysisWebApi.slnx/v18
+*.json
