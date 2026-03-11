@@ -1,14 +1,17 @@
 using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.Repos.JwtRepo;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.AspNetCore.Authorization;
+using MarketAnalysisWebApi.Repos.UserRepo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;               
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Http;               
 using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi;
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,17 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("MarketAnalysisDb")));
 builder.Services.AddTransient<IJwtRepo, JwtRepo>();
+builder.Services.AddTransient<IUserRepo, UserRepo>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
 //builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
 builder.Services.AddAuthentication(options =>
 {
@@ -54,11 +68,25 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.AddAuthorizationBuilder()
-    .AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"))
+    .AddPolicy("AdminOnly", policy => policy.RequireRole("SuperAdmin"))
     .AddPolicy("Moderator", policy => policy.RequireRole("Moderator"))
     .AddPolicy("Guest", policy => policy.RequireRole("Guest"));
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(option =>
+{
+    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description =
+            "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\"",
+    });
+    option.AddSecurityRequirement(x => new OpenApiSecurityRequirement());
+  
+});
 //builder.Services.AddAuthorization(options =>
 //{
 //    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
@@ -76,9 +104,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.MapOpenApi();
 }
-
+app.UseCors("AllowAllOrigins");
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

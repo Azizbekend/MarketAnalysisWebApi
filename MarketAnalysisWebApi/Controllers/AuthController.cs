@@ -2,6 +2,7 @@
 using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs;
 using MarketAnalysisWebApi.Repos.JwtRepo;
+using MarketAnalysisWebApi.Repos.UserRepo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -19,6 +20,7 @@ namespace MarketAnalysisWebApi.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IJwtRepo _jwtRepo;
+        private readonly IUserRepo _userRepo;
         private readonly IPasswordHasher<DbUser> _passwordHasher = new PasswordHasher<DbUser>();
 
         //public AuthController(AppDbContext context, IJwtRepo jwtService, IPasswordHasher<DbUser> passwordHasher)
@@ -27,10 +29,11 @@ namespace MarketAnalysisWebApi.Controllers
         //    _jwtRepo = jwtService;
         //    _passwordHasher = passwordHasher;
         //}
-        public AuthController(AppDbContext context, IJwtRepo jwtService)
+        public AuthController(AppDbContext context, IJwtRepo jwtService, IUserRepo userRepo)
         {
             _context = context;
             _jwtRepo = jwtService;
+            _userRepo = userRepo;
         }
 
         [HttpPost("register")]
@@ -54,8 +57,7 @@ namespace MarketAnalysisWebApi.Controllers
 
             user.Password = _passwordHasher.HashPassword(user, request.Password);
 
-            await _context.UsersTable.AddAsync(user);
-            await _context.SaveChangesAsync();
+            await _userRepo.Create(user);
 
             // Получаем роль пользователя для токена
             await _context.Entry(user).Reference(u => u.UserRole).LoadAsync();
@@ -143,7 +145,7 @@ namespace MarketAnalysisWebApi.Controllers
             return Ok();
         }
 
-        [Authorize]
+
         [HttpGet("me")]
         public async Task<ActionResult<UserInfoDTO>> GetCurrentUser()
         {
