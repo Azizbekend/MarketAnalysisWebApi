@@ -17,8 +17,8 @@ WORKDIR /app
 COPY --from=build /app/publish .
 
 # Устанавливаем URL, на котором будет слушать ваше API
-ENV ASPNETCORE_URLS=http://0.0.0.0:8087
+ENV ASPNETCORE_URLS=http://0.0.0.0:8090
 
-EXPOSE 8087
+EXPOSE 8090
 
-ENTRYPOINT ["dotnet", "ResearcherApiPrototype_1.dll"]
+ENTRYPOINT ["dotnet", "MarketAnalysisWebApi.dll"]
