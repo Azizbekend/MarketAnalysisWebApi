@@ -73,7 +73,7 @@ namespace MarketAnalysisWebApi.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<AuthResponseDTO>> Login(LoginRequest request)
+        public async Task<ActionResult<AuthResponseDTO>> Login(LoginRequestDTO request)
         {
             var user = await _context.UsersTable
                 .Include(u => u.UserRole)
