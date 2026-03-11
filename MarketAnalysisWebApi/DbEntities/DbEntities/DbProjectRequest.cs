@@ -5,6 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
+    public enum RequestStatus
+    {
+        New,
+        Moderation,
+        Rejected,
+        Published
+    }
     public class DbProjectRequest : DbBase
     {
         [Required]
@@ -22,6 +29,8 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         [MaxLength(25)]
         public string? PhoneNumber { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now.ToUniversalTime().AddHours(3);
+        public RequestStatus Status { get; set; } = RequestStatus.New;
+        public bool IsArchived { get; set; } = false;
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]
         public DbUser? User { get; set; }

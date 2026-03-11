@@ -4,5 +4,6 @@
     {
         Task CreateNewRequestConfig(string name);
         Task CreateKnsEquipment(string name);
+        Task InnerCreateCompanyType(string name);
     }
 }

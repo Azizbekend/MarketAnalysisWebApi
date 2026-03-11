@@ -9,5 +9,15 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
         public UserRepo(AppDbContext appDbContext) : base(appDbContext)
         {
         }
+
+        public Task<Guid> CreateManufacturerUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Guid> CreateSupplierUser()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

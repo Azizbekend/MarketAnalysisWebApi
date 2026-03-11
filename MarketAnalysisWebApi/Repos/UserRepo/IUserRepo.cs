@@ -5,5 +5,7 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
 {
     public interface IUserRepo : IBaseRepo<DbUser>
     {
+        Task<Guid> CreateSupplierUser();
+        Task<Guid> CreateManufacturerUser();
     }
 }

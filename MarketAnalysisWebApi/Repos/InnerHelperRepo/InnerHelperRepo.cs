@@ -29,5 +29,16 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
             _appDbContext.ConfigurationTypesTable.Add(config);
             await _appDbContext.SaveChangesAsync();
         }
+
+        public async Task InnerCreateCompanyType(string name)
+        {
+            var type = new DbCompanyType
+            {
+                TypeName = name
+            };
+            await _appDbContext.CompanyTypesTable.AddAsync(type);
+            await _appDbContext.SaveChangesAsync();
+
+        }
     }
 }

@@ -42,6 +42,11 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        [HttpPost]
+        public async Task<IActionResult> CreateCompanyType(string name)
+        {
+            await _innerHelperRepo.InnerCreateCompanyType(name);  
+            return Ok();
+        }
     }
 }
