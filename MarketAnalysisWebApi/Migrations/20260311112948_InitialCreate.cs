@@ -12,6 +12,21 @@ namespace MarketAnalysisWebApi.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "CertificatesFilesTable",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FileName = table.Column<string>(type: "text", nullable: true),
+                    ContentType = table.Column<string>(type: "text", nullable: true),
+                    FileSize = table.Column<long>(type: "bigint", nullable: false),
+                    FileData = table.Column<byte[]>(type: "bytea", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CertificatesFilesTable", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CompanyTypesTable",
                 columns: table => new
                 {
@@ -36,7 +51,7 @@ namespace MarketAnalysisWebApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DbImageFileModel",
+                name: "ImageFilesTable",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -47,7 +62,52 @@ namespace MarketAnalysisWebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DbImageFileModel", x => x.Id);
+                    table.PrimaryKey("PK_ImageFilesTable", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OfferFilesTable",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FileName = table.Column<string>(type: "text", nullable: true),
+                    ContentType = table.Column<string>(type: "text", nullable: true),
+                    FileSize = table.Column<long>(type: "bigint", nullable: false),
+                    FileData = table.Column<byte[]>(type: "bytea", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OfferFilesTable", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PassportsFilesTable",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FileName = table.Column<string>(type: "text", nullable: true),
+                    ContentType = table.Column<string>(type: "text", nullable: true),
+                    FileSize = table.Column<long>(type: "bigint", nullable: false),
+                    FileData = table.Column<byte[]>(type: "bytea", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PassportsFilesTable", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PlanFilesTable",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FileName = table.Column<string>(type: "text", nullable: true),
+                    ContentType = table.Column<string>(type: "text", nullable: true),
+                    FileSize = table.Column<long>(type: "bigint", nullable: false),
+                    FileData = table.Column<byte[]>(type: "bytea", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlanFilesTable", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -104,9 +164,9 @@ namespace MarketAnalysisWebApi.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CompaniesTable_DbImageFileModel_LogoFileId",
+                        name: "FK_CompaniesTable_ImageFilesTable_LogoFileId",
                         column: x => x.LogoFileId,
-                        principalTable: "DbImageFileModel",
+                        principalTable: "ImageFilesTable",
                         principalColumn: "Id");
                 });
 
@@ -119,7 +179,8 @@ namespace MarketAnalysisWebApi.Migrations
                     Email = table.Column<string>(type: "text", nullable: false),
                     PhoneNumber = table.Column<string>(type: "character varying(25)", maxLength: 25, nullable: false),
                     Password = table.Column<string>(type: "text", nullable: true),
-                    RoleId = table.Column<Guid>(type: "uuid", nullable: false)
+                    RoleId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,17 +203,42 @@ namespace MarketAnalysisWebApi.Migrations
                     CurrentPriceNDS = table.Column<double>(type: "double precision", nullable: false),
                     WarehouseLocation = table.Column<string>(type: "text", nullable: true),
                     SupplierSiteURL = table.Column<string>(type: "text", nullable: true),
-                    CompanyId = table.Column<Guid>(type: "uuid", nullable: false)
+                    CompanyId = table.Column<Guid>(type: "uuid", nullable: false),
+                    OfferFileId = table.Column<Guid>(type: "uuid", nullable: false),
+                    PassportFileId = table.Column<Guid>(type: "uuid", nullable: true),
+                    CertificateFileId = table.Column<Guid>(type: "uuid", nullable: true),
+                    PlanFileId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OffersTable", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OffersTable_CertificatesFilesTable_CertificateFileId",
+                        column: x => x.CertificateFileId,
+                        principalTable: "CertificatesFilesTable",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_OffersTable_CompaniesTable_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "CompaniesTable",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OffersTable_OfferFilesTable_OfferFileId",
+                        column: x => x.OfferFileId,
+                        principalTable: "OfferFilesTable",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OffersTable_PassportsFilesTable_PassportFileId",
+                        column: x => x.PassportFileId,
+                        principalTable: "PassportsFilesTable",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_OffersTable_PlanFilesTable_PlanFileId",
+                        column: x => x.PlanFileId,
+                        principalTable: "PlanFilesTable",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -188,6 +274,30 @@ namespace MarketAnalysisWebApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RefreshTokens",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Token = table.Column<string>(type: "text", nullable: false),
+                    ExpiryDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    IsRevoked = table.Column<bool>(type: "boolean", nullable: false),
+                    IpAddress = table.Column<string>(type: "character varying(65)", maxLength: 65, nullable: true),
+                    UserAgent = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RefreshTokens", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RefreshTokens_UsersTable_UserId",
+                        column: x => x.UserId,
+                        principalTable: "UsersTable",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SupplierUsersCompaniesTable",
                 columns: table => new
                 {
@@ -208,47 +318,6 @@ namespace MarketAnalysisWebApi.Migrations
                         name: "FK_SupplierUsersCompaniesTable_UsersTable_SupplierUserId",
                         column: x => x.SupplierUserId,
                         principalTable: "UsersTable",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DbKnsConfig",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Perfomance = table.Column<double>(type: "double precision", nullable: false),
-                    Units = table.Column<int>(type: "integer", nullable: false),
-                    RequiredPumpPressure = table.Column<double>(type: "double precision", nullable: false),
-                    ActivePumpsCount = table.Column<int>(type: "integer", nullable: false),
-                    ReservePumpsCount = table.Column<int>(type: "integer", nullable: false),
-                    PumpsToWarehouseCount = table.Column<int>(type: "integer", nullable: false),
-                    PType = table.Column<int>(type: "integer", nullable: false),
-                    EnvironmentTemperature = table.Column<int>(type: "integer", nullable: false),
-                    ExplosionProtection = table.Column<bool>(type: "boolean", nullable: false),
-                    SupplyPipelineDepth = table.Column<int>(type: "integer", nullable: false),
-                    SupplyPipelineDiameter = table.Column<int>(type: "integer", nullable: false),
-                    SupplyPipelineMaterial = table.Column<int>(type: "integer", nullable: false),
-                    SupplyPipelineDirectionInHours = table.Column<int>(type: "integer", nullable: false),
-                    PressurePipelineDepth = table.Column<int>(type: "integer", nullable: false),
-                    PressurePipelineDiameter = table.Column<int>(type: "integer", nullable: false),
-                    PressurePipelineMaterial = table.Column<int>(type: "integer", nullable: false),
-                    PressurePipelineDirectionInHours = table.Column<int>(type: "integer", nullable: false),
-                    HasManyExitPressurePipelines = table.Column<bool>(type: "boolean", nullable: false),
-                    ExpectedDiameterOfPumpStation = table.Column<int>(type: "integer", nullable: false),
-                    ExpectedHeightOfPumpStation = table.Column<int>(type: "integer", nullable: false),
-                    InsulatedHousingDepth = table.Column<int>(type: "integer", nullable: false),
-                    PowerContactsToController = table.Column<int>(type: "integer", nullable: false),
-                    Place = table.Column<int>(type: "integer", nullable: false),
-                    RequestId = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DbKnsConfig", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_DbKnsConfig_ProjectRequestsTable_RequestId",
-                        column: x => x.RequestId,
-                        principalTable: "ProjectRequestsTable",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -303,6 +372,48 @@ namespace MarketAnalysisWebApi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "KnsConfigurations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Perfomance = table.Column<double>(type: "double precision", nullable: false),
+                    Units = table.Column<int>(type: "integer", nullable: false),
+                    RequiredPumpPressure = table.Column<double>(type: "double precision", nullable: false),
+                    ActivePumpsCount = table.Column<int>(type: "integer", nullable: false),
+                    ReservePumpsCount = table.Column<int>(type: "integer", nullable: false),
+                    PumpsToWarehouseCount = table.Column<int>(type: "integer", nullable: false),
+                    startupMethod = table.Column<int>(type: "integer", nullable: false),
+                    PType = table.Column<int>(type: "integer", nullable: false),
+                    EnvironmentTemperature = table.Column<int>(type: "integer", nullable: false),
+                    ExplosionProtection = table.Column<bool>(type: "boolean", nullable: false),
+                    SupplyPipelineDepth = table.Column<int>(type: "integer", nullable: false),
+                    SupplyPipelineDiameter = table.Column<int>(type: "integer", nullable: false),
+                    SupplyPipelineMaterial = table.Column<int>(type: "integer", nullable: false),
+                    SupplyPipelineDirectionInHours = table.Column<int>(type: "integer", nullable: false),
+                    PressurePipelineDepth = table.Column<int>(type: "integer", nullable: false),
+                    PressurePipelineDiameter = table.Column<int>(type: "integer", nullable: false),
+                    PressurePipelineMaterial = table.Column<int>(type: "integer", nullable: false),
+                    PressurePipelineDirectionInHours = table.Column<int>(type: "integer", nullable: false),
+                    HasManyExitPressurePipelines = table.Column<bool>(type: "boolean", nullable: false),
+                    ExpectedDiameterOfPumpStation = table.Column<int>(type: "integer", nullable: false),
+                    ExpectedHeightOfPumpStation = table.Column<int>(type: "integer", nullable: false),
+                    InsulatedHousingDepth = table.Column<int>(type: "integer", nullable: false),
+                    PowerContactsToController = table.Column<int>(type: "integer", nullable: false),
+                    Place = table.Column<int>(type: "integer", nullable: false),
+                    RequestId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_KnsConfigurations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_KnsConfigurations_ProjectRequestsTable_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "ProjectRequestsTable",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CompaniesTable_CompanyTypeId",
                 table: "CompaniesTable",
@@ -312,11 +423,6 @@ namespace MarketAnalysisWebApi.Migrations
                 name: "IX_CompaniesTable_LogoFileId",
                 table: "CompaniesTable",
                 column: "LogoFileId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DbKnsConfig_RequestId",
-                table: "DbKnsConfig",
-                column: "RequestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EquipmentTable_ConfigTypeId",
@@ -344,9 +450,34 @@ namespace MarketAnalysisWebApi.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_KnsConfigurations_RequestId",
+                table: "KnsConfigurations",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OffersTable_CertificateFileId",
+                table: "OffersTable",
+                column: "CertificateFileId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OffersTable_CompanyId",
                 table: "OffersTable",
                 column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OffersTable_OfferFileId",
+                table: "OffersTable",
+                column: "OfferFileId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OffersTable_PassportFileId",
+                table: "OffersTable",
+                column: "PassportFileId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OffersTable_PlanFileId",
+                table: "OffersTable",
+                column: "PlanFileId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectRequestsTable_ConfigTypeId",
@@ -356,6 +487,11 @@ namespace MarketAnalysisWebApi.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectRequestsTable_UserId",
                 table: "ProjectRequestsTable",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RefreshTokens_UserId",
+                table: "RefreshTokens",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -378,16 +514,19 @@ namespace MarketAnalysisWebApi.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "DbKnsConfig");
-
-            migrationBuilder.DropTable(
                 name: "EquipRequestTable");
 
             migrationBuilder.DropTable(
                 name: "FavoritesTable");
 
             migrationBuilder.DropTable(
+                name: "KnsConfigurations");
+
+            migrationBuilder.DropTable(
                 name: "OffersTable");
+
+            migrationBuilder.DropTable(
+                name: "RefreshTokens");
 
             migrationBuilder.DropTable(
                 name: "SupplierUsersCompaniesTable");
@@ -397,6 +536,18 @@ namespace MarketAnalysisWebApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProjectRequestsTable");
+
+            migrationBuilder.DropTable(
+                name: "CertificatesFilesTable");
+
+            migrationBuilder.DropTable(
+                name: "OfferFilesTable");
+
+            migrationBuilder.DropTable(
+                name: "PassportsFilesTable");
+
+            migrationBuilder.DropTable(
+                name: "PlanFilesTable");
 
             migrationBuilder.DropTable(
                 name: "CompaniesTable");
@@ -411,7 +562,7 @@ namespace MarketAnalysisWebApi.Migrations
                 name: "CompanyTypesTable");
 
             migrationBuilder.DropTable(
-                name: "DbImageFileModel");
+                name: "ImageFilesTable");
 
             migrationBuilder.DropTable(
                 name: "UsersRolesTable");

@@ -17,7 +17,7 @@ namespace MarketAnalysisWebApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.3")
+                .HasAnnotation("ProductVersion", "10.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -438,11 +438,14 @@ namespace MarketAnalysisWebApi.Migrations
                     b.Property<int>("Units")
                         .HasColumnType("integer");
 
+                    b.Property<int>("startupMethod")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RequestId");
 
-                    b.ToTable("DbKnsConfig");
+                    b.ToTable("KnsConfigurations");
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.FileStorages.DbBusinessOfferFileModel", b =>

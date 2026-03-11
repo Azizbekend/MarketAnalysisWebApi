@@ -12,15 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MarketAnalysisWebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260305134238_FileStorages")]
-    partial class FileStorages
+    [Migration("20260311112948_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.3")
+                .HasAnnotation("ProductVersion", "10.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -242,6 +242,43 @@ namespace MarketAnalysisWebApi.Migrations
                     b.ToTable("ProjectRequestsTable");
                 });
 
+            modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbRefreshToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("IpAddress")
+                        .HasMaxLength(65)
+                        .HasColumnType("character varying(65)");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserAgent")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RefreshTokens");
+                });
+
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbRequestConfigType", b =>
                 {
                     b.Property<Guid>("Id")
@@ -282,6 +319,9 @@ namespace MarketAnalysisWebApi.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -401,11 +441,14 @@ namespace MarketAnalysisWebApi.Migrations
                     b.Property<int>("Units")
                         .HasColumnType("integer");
 
+                    b.Property<int>("startupMethod")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RequestId");
 
-                    b.ToTable("DbKnsConfig");
+                    b.ToTable("KnsConfigurations");
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.FileStorages.DbBusinessOfferFileModel", b =>
@@ -645,6 +688,17 @@ namespace MarketAnalysisWebApi.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbRefreshToken", b =>
+                {
+                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbUser", "User")
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbSupplierUserCompany", b =>
                 {
                     b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbCompany", "SupplierCompany")
@@ -724,6 +778,8 @@ namespace MarketAnalysisWebApi.Migrations
                     b.Navigation("CompanyUsersLinks");
 
                     b.Navigation("FavoriteRequests");
+
+                    b.Navigation("RefreshTokens");
 
                     b.Navigation("UsersRequests");
                 });

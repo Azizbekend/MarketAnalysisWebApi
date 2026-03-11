@@ -1,4 +1,5 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
+using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations;
 using MarketAnalysisWebApi.DbEntities.FileStorages;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,7 @@ namespace MarketAnalysisWebApi.DbEntities
         public DbSet<DbImageFileModel> ImageFilesTable { get; set; }
         public DbSet<DbUserRole> UsersRolesTable { get; set; }
         public DbSet<DbRefreshToken> RefreshTokens { get; set; }
+        public DbSet<DbKnsConfig> KnsConfigurations { get; set; }
 
 
 

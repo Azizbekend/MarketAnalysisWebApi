@@ -1,6 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbEntities;
-using MarketAnalysisWebApi.DTOs;
+using MarketAnalysisWebApi.DTOs.AuthDTOs;
 using MarketAnalysisWebApi.Repos.JwtRepo;
 using MarketAnalysisWebApi.Repos.UserRepo;
 using Microsoft.AspNetCore.Authorization;

@@ -1,6 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbEntities;
-using MarketAnalysisWebApi.DTOs;
+using MarketAnalysisWebApi.DTOs.AuthDTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

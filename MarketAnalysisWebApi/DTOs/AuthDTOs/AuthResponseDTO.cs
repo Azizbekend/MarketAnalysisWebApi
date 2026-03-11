@@ -1,4 +1,4 @@
-﻿namespace MarketAnalysisWebApi.DTOs
+﻿namespace MarketAnalysisWebApi.DTOs.AuthDTOs
 {
     public class AuthResponseDTO
     {

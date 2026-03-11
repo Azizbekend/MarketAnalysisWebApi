@@ -1,5 +1,5 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
-using MarketAnalysisWebApi.DTOs;
+using MarketAnalysisWebApi.DTOs.AuthDTOs;
 using System.Security.Claims;
 
 namespace MarketAnalysisWebApi.Repos.JwtRepo

@@ -1,5 +1,7 @@
 using MarketAnalysisWebApi.DbEntities;
+using MarketAnalysisWebApi.Repos.InnerHelperRepo;
 using MarketAnalysisWebApi.Repos.JwtRepo;
+using MarketAnalysisWebApi.Repos.KnsConfiGRepo;
 using MarketAnalysisWebApi.Repos.UserRepo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
@@ -25,6 +27,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("MarketAnalysisDb")));
 builder.Services.AddTransient<IJwtRepo, JwtRepo>();
 builder.Services.AddTransient<IUserRepo, UserRepo>();
+builder.Services.AddTransient<IInnerHelperRepo, InnerHelperRepo>();
+builder.Services.AddTransient<IKnsConfigRepo, KnsConfigRepo>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
