@@ -5,7 +5,7 @@ namespace MarketAnalysisWebApi.Repos.BaseRepo
 {
     public abstract class BaseRepo<T> : IBaseRepo<T> where T : class
     {
-        private readonly AppDbContext _appDbContext;
+        internal readonly AppDbContext _appDbContext;
 
         protected BaseRepo(AppDbContext appDbContext)
         {
