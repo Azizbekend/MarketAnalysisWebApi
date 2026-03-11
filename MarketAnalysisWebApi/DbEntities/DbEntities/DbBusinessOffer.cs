@@ -15,7 +15,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         [ForeignKey(nameof(CompanyId))]
         public DbCompany? Company { get; set; }
 
-        public Guid OfferFileId { get; set; }
+        public Guid? OfferFileId { get; set; }
         [ForeignKey(nameof(OfferFileId))]
         public DbBusinessOfferFileModel? BusinesOfferFile { get; set; }
 
