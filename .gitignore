@@ -416,3 +416,9 @@ MarketAnalysisWebApi/obj/project.nuget.cache
 .vs/MarketAnalysisWebApi.slnx/v18/DocumentLayout.json
 /.vs/MarketAnalysisWebApi.slnx/v18
 *.json
+MarketAnalysisWebApi/obj/project.nuget.cache
+MarketAnalysisWebApi/obj/project.assets.json
+MarketAnalysisWebApi/obj/MarketAnalysisWebApi.csproj.nuget.dgspec.json
+MarketAnalysisWebApi/obj/Debug/net10.0/MarketAnalysisWebApi.assets.cache
+MarketAnalysisWebApi/obj/Debug/net10.0/MarketAnalysisWebApi.AssemblyInfoInputs.cache
+MarketAnalysisWebApi/obj/Debug/net10.0/MarketAnalysisWebApi.AssemblyInfo.cs
