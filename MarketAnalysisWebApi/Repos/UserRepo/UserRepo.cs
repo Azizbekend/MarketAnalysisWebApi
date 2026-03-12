@@ -15,9 +15,8 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
         }
 
         public async Task<Guid> CreateEmployeUser(EmployeCreateDTO dto)
-        {
-            var check = await _appDbContext.CompaniesTable.FirstOrDefaultAsync(x => x.Id == dto.CompanyId);
-            if (check == null) { throw new Exception("Company not found!"); }
+        {           
+            if (await _appDbContext.UsersTable.AnyAsync(x => x.Email == dto.Email)) { throw new Exception("Company not found!"); }
             else
             {
                 var newEmployee = new DbUser()

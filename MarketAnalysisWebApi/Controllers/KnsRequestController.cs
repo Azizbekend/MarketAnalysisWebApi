@@ -48,7 +48,7 @@ namespace MarketAnalysisWebApi.Controllers
             }
             catch (Exception ex)
             {
-                return NotFound(ex);
+                return NotFound(ex.Message);
             }
         }
         [HttpPost("create/new")]

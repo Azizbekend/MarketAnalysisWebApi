@@ -1,6 +1,7 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs.AuthDTOs;
+using MarketAnalysisWebApi.DTOs.UserDTOs;
 using MarketAnalysisWebApi.Repos.JwtRepo;
 using MarketAnalysisWebApi.Repos.UserRepo;
 using Microsoft.AspNetCore.Authorization;
@@ -76,6 +77,20 @@ namespace MarketAnalysisWebApi.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpPost("employe/register")]
+        public async Task<IActionResult> EmployeRegistration(EmployeCreateDTO dto)
+        {
+            try
+            {
+                var res = await _userRepo.CreateEmployeUser(dto);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 

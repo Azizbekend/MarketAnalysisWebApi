@@ -17,7 +17,7 @@ namespace MarketAnalysisWebApi.Repos.CompanyRepo
         public async Task<Guid> CreateCompany(CreateCompanyDTO dto)
         {
             var check = await _appDbContext.CompaniesTable.FirstOrDefaultAsync(x => x.INN == dto.INN);
-            if (check != null)
+            if (check == null)
             {
                 var newCompany = new DbCompany
                 {
