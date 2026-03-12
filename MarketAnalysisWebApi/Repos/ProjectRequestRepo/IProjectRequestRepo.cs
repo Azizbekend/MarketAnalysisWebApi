@@ -6,5 +6,6 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
     {
         Task<DbProjectRequest> GetRequestByUserId(Guid requestId);
         Task<ICollection<DbProjectRequest>> GetUsersRequests(Guid userId);
+        Task<ICollection<DbProjectRequest>> GetPublishedRequests();
     }
 }

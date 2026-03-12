@@ -3,6 +3,7 @@ using System;
 using MarketAnalysisWebApi.DbEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MarketAnalysisWebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260312063527_t")]
+    partial class t
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,25 +24,6 @@ namespace MarketAnalysisWebApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbBusinessAccount", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<double>("Coins")
-                        .HasColumnType("double precision");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("BusinessAccounts");
-                });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbBusinessOffer", b =>
                 {
@@ -586,17 +570,6 @@ namespace MarketAnalysisWebApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PlanFilesTable");
-                });
-
-            modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbBusinessAccount", b =>
-                {
-                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbBusinessOffer", b =>

@@ -27,6 +27,7 @@ namespace MarketAnalysisWebApi.DbEntities
         public DbSet<DbUserRole> UsersRolesTable { get; set; }
         public DbSet<DbRefreshToken> RefreshTokens { get; set; }
         public DbSet<DbKnsConfig> KnsConfigurations { get; set; }
+        public DbSet<DbBusinessAccount> BusinessAccounts { get; set; }
 
 
 
