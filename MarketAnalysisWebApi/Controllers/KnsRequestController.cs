@@ -66,6 +66,7 @@ namespace MarketAnalysisWebApi.Controllers
                     PhoneNumber = dto.PhoneNumber,
                     UserId = dto.UserId,
                     ConfigTypeId = dto.ConfigTypeId
+                    
                 };
                 var resId = await _knsConfigRepo.CreateKnsRequest(request);
                 var config = new CreateKnsInnerConfigDTO()

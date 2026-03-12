@@ -1,4 +1,7 @@
-﻿using MarketAnalysisWebApi.DTOs.OffersDTO;
+﻿using MarketAnalysisWebApi.DbEntities.FileStorages;
+using MarketAnalysisWebApi.DTOs.FileStorageDTOS;
+using MarketAnalysisWebApi.DTOs.OffersDTO;
+using MarketAnalysisWebApi.Repos.FileStorageRepo;
 using MarketAnalysisWebApi.Repos.OffersRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +13,12 @@ namespace MarketAnalysisWebApi.Controllers
     public class OffersController : ControllerBase
     {
         private readonly IOfferRepo _offerRepo;
+        private readonly IFileStorageRepo _fileStorageRepo;
 
-        public OffersController(IOfferRepo offerRepo)
+        public OffersController(IOfferRepo offerRepo, IFileStorageRepo fileStorageRepo)
         {
             _offerRepo = offerRepo;
+            _fileStorageRepo = fileStorageRepo;
         }
 
         [HttpPost("create")]
@@ -83,6 +88,70 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+
+        [HttpPost("offerFile/upload")]
+        public async Task<IActionResult> UploadOfferFile(OfferFileCreateDTO dto, CancellationToken token)
+        {
+            try
+            {
+                if (dto.OfferFile == null || dto.OfferFile.Length == 0)
+                {
+                    return BadRequest("Файл не выбран или пуст");
+                }
+                if (dto.OfferFile.Length > 10 * 1024 * 1024)
+                {
+                    return BadRequest("Размер файла не должен превышать 10 MB");
+                }
+                var savedFileId = await _fileStorageRepo.SaveBusinesOfferFileAsync(dto, token);
+                return Ok(savedFileId);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost("passportFile/upload")]
+        public async Task<IActionResult> UploadPassportFile(EquipmentPassportFileCreateDTO dto, CancellationToken token)
+        {
+            try
+            {
+                if (dto.PassportFile == null || dto.PassportFile.Length == 0)
+                {
+                    return BadRequest("Файл не выбран или пуст");
+                }
+                if (dto.PassportFile.Length > 10 * 1024 * 1024)
+                {
+                    return BadRequest("Размер файла не должен превышать 10 MB");
+                }
+                var savedFileId = await _fileStorageRepo.SaveEquipmentPassportFileAsync(dto, token);
+                return Ok(savedFileId);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("certificateFile/upload")]
+        public async Task<IActionResult> UploadCertificateFile(EquipmentCertificateCreateDTO dto, CancellationToken token)
+        {
+            try
+            {
+                if (dto.CertificateFile == null || dto.CertificateFile.Length == 0)
+                {
+                    return BadRequest("Файл не выбран или пуст");
+                }
+                if (dto.CertificateFile.Length > 10 * 1024 * 1024)
+                {
+                    return BadRequest("Размер файла не должен превышать 10 MB");
+                }
+                var savedFileId = await _fileStorageRepo.SaveEquipmentCertificateAsync(dto, token);
+                return Ok(savedFileId);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

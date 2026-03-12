@@ -1,5 +1,6 @@
 using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.Repos.CompanyRepo;
+using MarketAnalysisWebApi.Repos.FileStorageRepo;
 using MarketAnalysisWebApi.Repos.InnerHelperRepo;
 using MarketAnalysisWebApi.Repos.JwtRepo;
 using MarketAnalysisWebApi.Repos.KnsConfiGRepo;
@@ -35,6 +36,7 @@ builder.Services.AddTransient<IKnsConfigRepo, KnsConfigRepo>();
 builder.Services.AddTransient<ICompanyRepo, CompanyRepo>();
 builder.Services.AddTransient<IProjectRequestRepo, ProjectRequestRepo>();
 builder.Services.AddTransient<IOfferRepo, OfferRepo>();
+builder.Services.AddTransient<IFileStorageRepo, FileStorageRepo>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
