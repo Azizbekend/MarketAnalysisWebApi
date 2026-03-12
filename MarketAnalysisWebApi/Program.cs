@@ -33,6 +33,7 @@ builder.Services.AddTransient<IUserRepo, UserRepo>();
 builder.Services.AddTransient<IInnerHelperRepo, InnerHelperRepo>();
 builder.Services.AddTransient<IKnsConfigRepo, KnsConfigRepo>();
 builder.Services.AddTransient<ICompanyRepo, CompanyRepo>();
+builder.Services.AddTransient<IProjectRequestRepo, ProjectRequestRepo>();
 builder.Services.AddTransient<IOfferRepo, OfferRepo>();
 builder.Services.AddCors(options =>
 {

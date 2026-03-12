@@ -30,7 +30,7 @@ namespace MarketAnalysisWebApi.Controllers
             }
         }
 
-        [HttpHead("users/offers")]
+        [HttpGet("users/offers")]
         public async Task<IActionResult> GetUsersOffers(Guid userId)
         {
             try
@@ -43,7 +43,7 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpHead("businessacc/offers")]
+        [HttpGet("businessacc/offers")]
         public async Task<IActionResult> GetAccOffers(Guid acc)
         {
             try
@@ -56,7 +56,7 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpHead("requests/offers")]
+        [HttpGet("requests/offers")]
         public async Task<IActionResult> GetRequestOffers(Guid requestId)
         {
             try
