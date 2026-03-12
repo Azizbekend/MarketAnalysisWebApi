@@ -1,8 +1,8 @@
 ﻿namespace MarketAnalysisWebApi.DTOs.FileStorageDTOS
 {
-    public class OfferFileCreateDTO
+    public class PlanFileCreateDTO
     {
         public Guid OfferId { get; set; }
-        public IFormFile OfferFile { get; set; }
+        public IFormFile PlanFile { get; set; }
     }
 }

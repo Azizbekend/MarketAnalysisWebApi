@@ -18,6 +18,7 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
         {
             var BO = new DbBusinessOffer
             {
+                OffersNumber = dto.OfferNumber,
                 NameByProject = dto.NameByProject,
                 NameBySupplier = dto.NameBySupplier,
                 CurrentPriceNDS = dto.CurrentPriceNDS,
@@ -71,7 +72,7 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
             {
                 var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == BO.RequestId);
                 var businessAcc = await _appDbContext.BusinessAccounts.FirstOrDefaultAsync(x => x.Id == BO.BussinessAccId);
-                var user = await _appDbContext.UsersTable.FirstOrDefaultAsync(x => x.Id == request.UserId);
+                var user = await _appDbContext.UsersTable.FirstOrDefaultAsync(x => x.Id == businessAcc.UserId);
                 var copmuser = await _appDbContext.SupplierUsersCompaniesTable.FirstOrDefaultAsync(x => x.SupplierUserId == user.Id);
                 var company = await _appDbContext.CompaniesTable.FirstOrDefaultAsync(x => x.Id == copmuser.CompanyId);
                 if (user == null && businessAcc == null && user == null)
