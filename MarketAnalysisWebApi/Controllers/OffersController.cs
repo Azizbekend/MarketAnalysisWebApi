@@ -21,7 +21,7 @@ namespace MarketAnalysisWebApi.Controllers
         {
             try
             {
-                var res = await _offerRepo.CreateBusinesOffet(dto);
+                var res = await _offerRepo.CreateBusinesOffer(dto);
                 return Ok(res);
             }
             catch (Exception ex)
@@ -69,5 +69,20 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("single/offer/fullinfo")]
+        public async Task<IActionResult> GetFullOfferById(Guid id)
+        {
+            try
+            {
+                var res = await _offerRepo.GetFullOfferForCustomer(id);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
     }
 }

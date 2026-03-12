@@ -1,16 +1,23 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
 using MarketAnalysisWebApi.DbEntities.FileStorages;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
     public class DbBusinessOffer : DbBase
     {
+        [MaxLength(255)]
+        public string? OffersNumber { get; set; }
         public string? NameByProject { get; set; } //from request name
         public string? NameBySupplier { get; set; } // from supplier BO form
         public double CurrentPriceNDS { get; set; } // from form BO
+        public double CurrentPriceNoNDS { get; set; }
+        public DateTime SupportingDocumentDate { get; set; }
+        public string? ManufacturerCountry { get; set; }
         public string? WarehouseLocation { get; set; }
         public string? SupplierSiteURL { get; set; }
+
         public Guid RequestId { get; set; }
         [ForeignKey(nameof(RequestId))]
         public DbProjectRequest? Request { get; set; }
