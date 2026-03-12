@@ -33,6 +33,11 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
                     CompanyId = dto.CompanyId,
                     SupplierUserId = newEmployee.Id
                 };
+                var busAcc = new DbBusinessAccount
+                {
+                    UserId = newEmployee.Id,
+                };
+                await _appDbContext.BusinessAccounts.AddAsync(busAcc);
                 await _appDbContext.SupplierUsersCompaniesTable.AddAsync(userCompany);
                 await _appDbContext.SaveChangesAsync();
                 return newEmployee.Id;

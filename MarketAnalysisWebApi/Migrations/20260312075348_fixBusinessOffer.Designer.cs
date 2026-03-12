@@ -3,6 +3,7 @@ using System;
 using MarketAnalysisWebApi.DbEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MarketAnalysisWebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260312075348_fixBusinessOffer")]
+    partial class fixBusinessOffer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,9 +77,6 @@ namespace MarketAnalysisWebApi.Migrations
                     b.Property<Guid?>("PlanFileId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("RequestId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("SupplierSiteURL")
                         .HasColumnType("text");
 
@@ -96,8 +96,6 @@ namespace MarketAnalysisWebApi.Migrations
                     b.HasIndex("PassportFileId");
 
                     b.HasIndex("PlanFileId");
-
-                    b.HasIndex("RequestId");
 
                     b.ToTable("OffersTable");
                 });
@@ -637,12 +635,6 @@ namespace MarketAnalysisWebApi.Migrations
                         .WithMany("BusinesOffers")
                         .HasForeignKey("PlanFileId");
 
-                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbProjectRequest", "Request")
-                        .WithMany()
-                        .HasForeignKey("RequestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("BusinesOfferFile");
 
                     b.Navigation("BussinessAccount");
@@ -652,8 +644,6 @@ namespace MarketAnalysisWebApi.Migrations
                     b.Navigation("PassportFile");
 
                     b.Navigation("PlanFile");
-
-                    b.Navigation("Request");
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbCompany", b =>

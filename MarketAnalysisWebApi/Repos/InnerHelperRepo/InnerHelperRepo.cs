@@ -30,6 +30,13 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
             await _appDbContext.SaveChangesAsync();
         }
 
+        public async Task InnerCreateBusinessAcc(Guid userId)
+        {
+            var BA = new DbBusinessAccount { UserId = userId };
+            await _appDbContext.AddAsync(BA);
+            await _appDbContext.SaveChangesAsync();
+        }
+
         public async Task InnerCreateCompanyType(string name)
         {
             var type = new DbCompanyType

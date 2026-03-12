@@ -3,6 +3,7 @@ using MarketAnalysisWebApi.Repos.CompanyRepo;
 using MarketAnalysisWebApi.Repos.InnerHelperRepo;
 using MarketAnalysisWebApi.Repos.JwtRepo;
 using MarketAnalysisWebApi.Repos.KnsConfiGRepo;
+using MarketAnalysisWebApi.Repos.OffersRepo;
 using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
 using MarketAnalysisWebApi.Repos.UserRepo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -32,7 +33,7 @@ builder.Services.AddTransient<IUserRepo, UserRepo>();
 builder.Services.AddTransient<IInnerHelperRepo, InnerHelperRepo>();
 builder.Services.AddTransient<IKnsConfigRepo, KnsConfigRepo>();
 builder.Services.AddTransient<ICompanyRepo, CompanyRepo>();
-builder.Services.AddTransient<IProjectRequestRepo, ProjectRequestRepo>();
+builder.Services.AddTransient<IOfferRepo, OfferRepo>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",

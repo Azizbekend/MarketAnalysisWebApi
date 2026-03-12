@@ -1,0 +1,73 @@
+﻿using MarketAnalysisWebApi.DTOs.OffersDTO;
+using MarketAnalysisWebApi.Repos.OffersRepo;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace MarketAnalysisWebApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class OffersController : ControllerBase
+    {
+        private readonly IOfferRepo _offerRepo;
+
+        public OffersController(IOfferRepo offerRepo)
+        {
+            _offerRepo = offerRepo;
+        }
+
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateOffer(OfferCreateDTO dto)
+        {
+            try
+            {
+                var res = await _offerRepo.CreateBusinesOffet(dto);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpHead("users/offers")]
+        public async Task<IActionResult> GetUsersOffers(Guid userId)
+        {
+            try
+            {
+                var res = await _offerRepo.GetEmpoyesOffersByUser(userId);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpHead("businessacc/offers")]
+        public async Task<IActionResult> GetAccOffers(Guid acc)
+        {
+            try
+            {
+                var res = await _offerRepo.GetEmpoyesOffersByBusinessAccId(acc);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpHead("requests/offers")]
+        public async Task<IActionResult> GetRequestOffers(Guid requestId)
+        {
+            try
+            {
+                var res = await _offerRepo.GetEmpoyesOffersByRequestId(requestId);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+    }
+}

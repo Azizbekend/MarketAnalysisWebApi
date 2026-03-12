@@ -11,11 +11,14 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public double CurrentPriceNDS { get; set; } // from form BO
         public string? WarehouseLocation { get; set; }
         public string? SupplierSiteURL { get; set; }
-        public Guid CompanyId { get; set; }
-        [ForeignKey(nameof(CompanyId))]
-        public DbCompany? Company { get; set; }
+        public Guid RequestId { get; set; }
+        [ForeignKey(nameof(RequestId))]
+        public DbProjectRequest? Request { get; set; }
 
-        
+        public Guid BussinessAccId { get; set; }
+        [ForeignKey(nameof(BussinessAccId))]
+        public DbBusinessAccount? BussinessAccount { get; set; }
+
 
         public Guid? OfferFileId { get; set; }
         [ForeignKey(nameof(OfferFileId))]

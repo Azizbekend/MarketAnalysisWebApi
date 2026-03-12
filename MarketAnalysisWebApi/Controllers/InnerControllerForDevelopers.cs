@@ -42,10 +42,16 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost]
+        [HttpPost("companyType/create/new")]
         public async Task<IActionResult> CreateCompanyType(string name)
         {
             await _innerHelperRepo.InnerCreateCompanyType(name);  
+            return Ok();
+        }
+        [HttpPost("businessAccount/noUser/create")]
+        public async Task<IActionResult> CreateBusinessAcc(Guid userId)
+        {
+            await _innerHelperRepo.InnerCreateBusinessAcc(userId);
             return Ok();
         }
     }

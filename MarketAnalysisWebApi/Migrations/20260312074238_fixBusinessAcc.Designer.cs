@@ -3,6 +3,7 @@ using System;
 using MarketAnalysisWebApi.DbEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MarketAnalysisWebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260312074238_fixBusinessAcc")]
+    partial class fixBusinessAcc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,17 +50,14 @@ namespace MarketAnalysisWebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("BussinessAccId")
+                    b.Property<Guid?>("CertificateFileId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("CertificateFileId")
+                    b.Property<Guid>("CompanyId")
                         .HasColumnType("uuid");
 
                     b.Property<double>("CurrentPriceNDS")
                         .HasColumnType("double precision");
-
-                    b.Property<Guid?>("DbCompanyId")
-                        .HasColumnType("uuid");
 
                     b.Property<string>("NameByProject")
                         .HasColumnType("text");
@@ -74,9 +74,6 @@ namespace MarketAnalysisWebApi.Migrations
                     b.Property<Guid?>("PlanFileId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("RequestId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("SupplierSiteURL")
                         .HasColumnType("text");
 
@@ -85,19 +82,15 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BussinessAccId");
-
                     b.HasIndex("CertificateFileId");
 
-                    b.HasIndex("DbCompanyId");
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("OfferFileId");
 
                     b.HasIndex("PassportFileId");
 
                     b.HasIndex("PlanFileId");
-
-                    b.HasIndex("RequestId");
 
                     b.ToTable("OffersTable");
                 });
@@ -611,19 +604,15 @@ namespace MarketAnalysisWebApi.Migrations
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbBusinessOffer", b =>
                 {
-                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbBusinessAccount", "BussinessAccount")
-                        .WithMany()
-                        .HasForeignKey("BussinessAccId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MarketAnalysisWebApi.DbEntities.FileStorages.DbEquipmentCertificateFileModel", "CertificateFile")
                         .WithMany("BusinesOffers")
                         .HasForeignKey("CertificateFileId");
 
-                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbCompany", null)
+                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbCompany", "Company")
                         .WithMany("CompanyOffers")
-                        .HasForeignKey("DbCompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MarketAnalysisWebApi.DbEntities.FileStorages.DbBusinessOfferFileModel", "BusinesOfferFile")
                         .WithMany("BusinesOffers")
@@ -637,23 +626,15 @@ namespace MarketAnalysisWebApi.Migrations
                         .WithMany("BusinesOffers")
                         .HasForeignKey("PlanFileId");
 
-                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbProjectRequest", "Request")
-                        .WithMany()
-                        .HasForeignKey("RequestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("BusinesOfferFile");
 
-                    b.Navigation("BussinessAccount");
-
                     b.Navigation("CertificateFile");
+
+                    b.Navigation("Company");
 
                     b.Navigation("PassportFile");
 
                     b.Navigation("PlanFile");
-
-                    b.Navigation("Request");
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbCompany", b =>
