@@ -87,6 +87,33 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
 
         }
 
+        public async Task<ICollection<DbEquipment>> GetCurrentKnsEquipment(Guid request)
+        {
+            var prEqList = await _context.EquipRequestTable.Where(x => x.RequestId == request).ToListAsync();
+            var list = new List<DbEquipment>();
+            foreach (var eq in prEqList)
+            {
+                var res2 = await _context.EquipmentTable.FirstOrDefaultAsync(x => x.Id == eq.EquipmentId);
+                list.Add(res2);
+            }
+            return list;
+
+        }
+
+        public async Task<DbKnsConfig> GetKnsConfig(Guid requestId)
+        {
+            var res = await _context.KnsConfigurations.FirstOrDefaultAsync(x => x.RequestId == requestId);
+            if (res == null)
+            {
+                throw new Exception("Не корректный Id заявки!");
+
+            }
+            else
+            {
+                return res;
+            }
+        }
+
         public async Task<ICollection<DbEquipment>> GetKnsConfigEquipment(Guid typeId)
         {
             return await _context.EquipmentTable.Where(x => x.ConfigTypeId == typeId).ToListAsync();

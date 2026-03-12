@@ -3,6 +3,7 @@ using MarketAnalysisWebApi.DTOs.KnsCongigDTOs;
 using MarketAnalysisWebApi.Repos.KnsConfiGRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MarketAnalysisWebApi.Controllers
 {
@@ -23,6 +24,33 @@ namespace MarketAnalysisWebApi.Controllers
             return Ok(res);
         }
 
+        [HttpGet("knsConfig/current")]
+        public async Task<IActionResult> GetCurrentKnsCongig(Guid requestId)
+        {
+            try
+            {
+                var res = await _knsConfigRepo.GetKnsConfig(requestId);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("knsConfig/equipment/current")]
+        public async Task<IActionResult> GetCurrentKnsEquipment(Guid requestId)
+        {
+            try
+            {
+                var res = await _knsConfigRepo.GetCurrentKnsEquipment(requestId);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex);
+            }
+        }
         [HttpPost("create/new")]
         public async Task<IActionResult> CreateKnsRequest(CreateKnsRequestFullDTO dto)
         {
