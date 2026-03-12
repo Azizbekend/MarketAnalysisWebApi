@@ -153,5 +153,26 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost("schemeFile/upload")]
+        public async Task<IActionResult> UploadCPlanFile(PlanFileCreateDTO dto, CancellationToken token)
+        {
+            try
+            {
+                if (dto.PlanFile == null || dto.PlanFile.Length == 0)
+                {
+                    return BadRequest("Файл не выбран или пуст");
+                }
+                if (dto.PlanFile.Length > 10 * 1024 * 1024)
+                {
+                    return BadRequest("Размер файла не должен превышать 10 MB");
+                }
+                var savedFileId = await _fileStorageRepo.SavePlanFileAsync(dto, token);
+                return Ok(savedFileId);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
