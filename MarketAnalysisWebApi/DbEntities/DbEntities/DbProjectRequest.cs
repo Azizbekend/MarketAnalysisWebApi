@@ -47,5 +47,6 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public ICollection<DbEquipRequest>? EquipRequest { get; set; }
 
         public ICollection<DbFavoriteRequest>? FavoriteRequests { get; set; }
+        public ICollection<DbAccountRequest>? AccountRequests { get; set; }
     }
 }
