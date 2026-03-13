@@ -124,7 +124,7 @@ namespace MarketAnalysisWebApi.Controllers
             return Ok(response);
         }
 
-        [HttpGet("employer/account/{id}")]
+        [HttpGet("employer/account/")]
         public async Task<IActionResult> GetEmployerAccount(Guid userId)
         {
             try
