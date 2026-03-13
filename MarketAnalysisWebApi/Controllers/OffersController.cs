@@ -237,27 +237,31 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-            [HttpGet("scemeFile/download/{id}")]
-            public async Task<IActionResult> GetSchemee(Guid shemeFileId, CancellationToken token = default)
+        [HttpGet("scemeFile/download/{id}")]
+        public async Task<IActionResult> GetSchemee(Guid shemeFileId, CancellationToken token = default)
+        {
+            try
             {
-                try
+                var file = await _fileStorageRepo.GetPlanFileAsync(shemeFileId, token);
+                if (file == null)
                 {
-                    var file = await _fileStorageRepo.GetPlanFileAsync(shemeFileId, token);
-                    if (file == null)
-                    {
-                        return BadRequest("Файл перемещен или удален!");
-                    }
-                    else
-                    {
-                        return File(file.FileData, file.ContentType);
-                    }
+                    return BadRequest("Файл перемещен или удален!");
                 }
-                catch (Exception ex)
+                else
                 {
-                    return BadRequest($"{ex.Message}");
+                    return File(file.FileData, file.ContentType);
                 }
             }
+            catch (Exception ex)
+            {
+                return BadRequest($"{ex.Message}");
+            }
         }
+
+
+
     }
-}
+
+
+
+    }
