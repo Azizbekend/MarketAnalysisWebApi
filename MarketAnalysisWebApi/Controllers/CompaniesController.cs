@@ -23,6 +23,22 @@ namespace MarketAnalysisWebApi.Controllers
             return Ok(res);
         }
 
+        [HttpGet("company/inn")]
+        public async Task<IActionResult> GetByInn(string inn)
+        {
+            try
+            {
+                var res = await _companyRepo.GetByInnAsync(inn);
+                if(res != null)
+                    return Ok(res);
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost("create")]
         public async Task<IActionResult> CreateNewCompany(CreateCompanyDTO dto)
         {

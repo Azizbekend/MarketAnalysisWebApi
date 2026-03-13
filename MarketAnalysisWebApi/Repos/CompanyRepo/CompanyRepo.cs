@@ -39,6 +39,11 @@ namespace MarketAnalysisWebApi.Repos.CompanyRepo
 
         }
 
+        public async Task<DbCompany> GetByInnAsync(string inn)
+        {
+            return await _appDbContext.CompaniesTable.FirstOrDefaultAsync(x => x.INN == inn);
+        }
+
         public async Task<ICollection<DbCompanyType>> GetCompanyTypes()
         {
             return await _appDbContext.CompanyTypesTable.ToListAsync();

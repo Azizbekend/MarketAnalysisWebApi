@@ -8,5 +8,6 @@ namespace MarketAnalysisWebApi.Repos.CompanyRepo
     {
         Task<ICollection<DbCompanyType>> GetCompanyTypes();
         Task<Guid> CreateCompany(CreateCompanyDTO dto);
+        Task<DbCompany> GetByInnAsync(string inn);
     }
 }
