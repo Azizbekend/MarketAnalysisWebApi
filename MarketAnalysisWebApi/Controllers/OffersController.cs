@@ -110,6 +110,29 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("offerFile/download/{id}")]
+        public async Task<IActionResult> GetOffer(Guid offerId, CancellationToken token = default)
+        {
+            try
+            {
+                var file = await _fileStorageRepo.GetDbBusinessOfferFileModel(offerId, token);
+                if (file == null)
+                {
+                    return BadRequest("Файл перемещен или удален!");
+                }
+                else
+                {
+                    return File(file.FileData, file.ContentType);
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"{ex.Message}");
+            }
+        }
+
+
+
         [HttpPost("passportFile/upload")]
         public async Task<IActionResult> UploadPassportFile(EquipmentPassportFileCreateDTO dto, CancellationToken token)
         {
@@ -129,6 +152,26 @@ namespace MarketAnalysisWebApi.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("equipPassport/download/{id}")]
+        public async Task<IActionResult> GetPassport(Guid passportId, CancellationToken token = default)
+        {
+            try
+            {
+                var file = await _fileStorageRepo.GetEquipmentPassportFileAsync(passportId, token);
+                if (file == null)
+                {
+                    return BadRequest("Файл перемещен или удален!");
+                }
+                else
+                {
+                    return File(file.FileData, file.ContentType);
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"{ex.Message}");
             }
         }
 
@@ -153,6 +196,26 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("equipCertificate/download/{id}")]
+        public async Task<IActionResult> GetCertificate(Guid certifecateId, CancellationToken token = default)
+        {
+            try
+            {
+                var file = await _fileStorageRepo.GetEquipmentCertificateAsync(certifecateId, token);
+                if (file == null)
+                {
+                    return BadRequest("Файл перемещен или удален!");
+                }
+                else
+                {
+                    return File(file.FileData, file.ContentType);
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"{ex.Message}");
+            }
+        }
         [HttpPost("schemeFile/upload")]
         public async Task<IActionResult> UploadCPlanFile(PlanFileCreateDTO dto, CancellationToken token)
         {
@@ -172,6 +235,28 @@ namespace MarketAnalysisWebApi.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+            [HttpGet("scemeFile/download/{id}")]
+            public async Task<IActionResult> GetSchemee(Guid shemeFileId, CancellationToken token = default)
+            {
+                try
+                {
+                    var file = await _fileStorageRepo.GetPlanFileAsync(shemeFileId, token);
+                    if (file == null)
+                    {
+                        return BadRequest("Файл перемещен или удален!");
+                    }
+                    else
+                    {
+                        return File(file.FileData, file.ContentType);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest($"{ex.Message}");
+                }
             }
         }
     }

@@ -14,24 +14,24 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
             _appDbContext = appDbContext;
         }
 
-        public Task<DbBusinessOfferFileModel> GetDbBusinessOfferFileModel(Guid fileId, CancellationToken token = default)
+        public async Task<DbBusinessOfferFileModel> GetDbBusinessOfferFileModel(Guid fileId, CancellationToken token = default)
         {
-            throw new NotImplementedException();
+            return await _appDbContext.OfferFilesTable.AsNoTracking().FirstOrDefaultAsync(x => x.Id == fileId, token);
         }
 
-        public Task<DbEquipmentCertificateFileModel> GetEquipmentCertificateAsync(Guid certId, CancellationToken token = default)
+        public async Task<DbEquipmentCertificateFileModel> GetEquipmentCertificateAsync(Guid certId, CancellationToken token = default)
         {
-            throw new NotImplementedException();
+            return await _appDbContext.CertificatesFilesTable.AsNoTracking().FirstOrDefaultAsync(x => x.Id == certId, token);
         }
 
-        public Task<DbEquipmentPassportFile> GetEquipmentPassportFileAsync(Guid passportFileId, CancellationToken token = default)
+        public async Task<DbEquipmentPassportFile> GetEquipmentPassportFileAsync(Guid passportFileId, CancellationToken token = default)
         {
-            throw new NotImplementedException();
+            return await _appDbContext.PassportsFilesTable.AsNoTracking().FirstOrDefaultAsync(x => x.Id == passportFileId, token);
         }
 
-        public Task<DbPlanFile> GetPlanFileAsync(Guid planFileId, CancellationToken token = default)
+        public async Task<DbPlanFile> GetPlanFileAsync(Guid planFileId, CancellationToken token = default)
         {
-            throw new NotImplementedException();
+            return await _appDbContext.PlanFilesTable.AsNoTracking().FirstOrDefaultAsync(x => x.Id == planFileId, token);
         }
 
         public async Task<Guid> SaveBusinesOfferFileAsync(OfferFileCreateDTO dto, CancellationToken token = default)
