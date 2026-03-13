@@ -62,6 +62,7 @@ namespace MarketAnalysisWebApi.Controllers
                     ObjectName = dto.ObjectName,
                     LocationRegion = dto.LocationRegion,
                     CustomerName = dto.CustomerName,
+                    ProjectOrganizationName = dto.ProjectOrganizationName,
                     ContactName = dto.ContactName,
                     PhoneNumber = dto.PhoneNumber,
                     UserId = dto.UserId,

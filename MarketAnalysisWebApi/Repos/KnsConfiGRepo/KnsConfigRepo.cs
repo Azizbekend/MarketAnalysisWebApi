@@ -69,18 +69,20 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
 
         public async Task<Guid> CreateKnsRequest(CreateKnsInnerRequestDTO dto)
         {
+
             var knsRequest = new DbProjectRequest
             {
                 NameByProjectDocs = dto.NameByProjectDocs,
                 ObjectName = dto.ObjectName,
                 LocationRegion = dto.LocationRegion,
                 CustomerName = dto.CustomerName,
+                ProjectOrganizationName = dto.ProjectOrganizationName,
                 ContactName = dto.ContactName,
                 PhoneNumber = dto.PhoneNumber,
                 ConfigTypeId = dto.ConfigTypeId,
                 UserId = dto.UserId,
-                Status = RequestStatus.Published
-
+                Status = RequestStatus.Published,
+                InnerId = await GenerateRequestNumber(dto.UserId)
             };
             await  _context.ProjectRequestsTable.AddAsync(knsRequest);
             await _context.SaveChangesAsync();
@@ -118,6 +120,28 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
         public async Task<ICollection<DbEquipment>> GetKnsConfigEquipment(Guid typeId)
         {
             return await _context.EquipmentTable.Where(x => x.ConfigTypeId == typeId).ToListAsync();
+        }
+
+        private async Task<string> GenerateRequestNumber(Guid userId)
+        {
+            var user = await _context.UsersTable.ToListAsync();
+            var requests = await _context.ProjectRequestsTable.ToListAsync();
+            int usersIndex = user.FindIndex(x => x.Id == userId);
+            var uscomp = await _context.SupplierUsersCompaniesTable.FirstOrDefaultAsync(x => x.SupplierUserId == userId);
+            if (uscomp == null)
+            {
+                string number = $"{requests.Count}-{usersIndex}-П";
+                return number;
+            }
+            else
+            {
+                var company = await _context.CompaniesTable.FirstOrDefaultAsync(x => x.Id == uscomp.CompanyId);
+                var comps = await _context.CompaniesTable.ToListAsync();
+                int index = comps.FindIndex(x => x.Id == company.Id);
+                string number = $"{requests.Count}-{usersIndex}-{index}";
+                return number;
+            }
+            
         }
     }
 }

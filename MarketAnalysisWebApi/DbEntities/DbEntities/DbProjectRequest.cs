@@ -14,6 +14,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
     }
     public class DbProjectRequest : DbBase
     {
+        public string? InnerId { get; set; }
         [Required]
         public string? NameByProjectDocs { get; set; }
         [Required]
@@ -23,6 +24,8 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public string? LocationRegion { get; set; }
         [Required]
         public string? CustomerName { get; set; }
+        [Required]
+        public string? ProjectOrganizationName { get; set; }
         [Required]
         public string? ContactName { get; set; }
         [Required]
