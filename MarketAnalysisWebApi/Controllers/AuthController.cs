@@ -129,8 +129,8 @@ namespace MarketAnalysisWebApi.Controllers
         {
             try
             {
-                await _userRepo.GetEmployeAccountInfoAsync(userId);
-                return Ok();
+                var res =  await _userRepo.GetEmployeAccountInfoAsync(userId);
+                return Ok(res);
             }
             catch (Exception ex)
             {

@@ -10,5 +10,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public Guid UserId { get; set; }
         public DbUser? User { get; set; }
 
+
+
     }
 }

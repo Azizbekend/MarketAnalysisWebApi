@@ -24,6 +24,8 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public ICollection<DbProjectRequest>? UsersRequests { get; set; }
         public ICollection<DbFavoriteRequest>? FavoriteRequests { get; set; }
         public ICollection<DbRefreshToken>? RefreshTokens { get; set; }
+
+        public ICollection<DbBusinessAccount>? BusinessAccounts { get; set; }
     }
 }
  
