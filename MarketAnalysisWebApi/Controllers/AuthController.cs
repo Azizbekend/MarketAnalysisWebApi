@@ -124,6 +124,20 @@ namespace MarketAnalysisWebApi.Controllers
             return Ok(response);
         }
 
+        [HttpGet("employer/account/{id}")]
+        public async Task<IActionResult> GetEmployerAccount(Guid userId)
+        {
+            try
+            {
+                await _userRepo.GetEmployeAccountInfoAsync(userId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost("refresh")]
         public async Task<ActionResult<AuthResponseDTO>> Refresh(RefreshTokenRequestDTO request)
         {

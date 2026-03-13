@@ -13,6 +13,11 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             _context = context;
         }
 
+        public async Task CreateClickForCoins(Guid employerAccountId)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ICollection<DbProjectRequest>> GetPublishedRequests()
         {
             var res = await _context.ProjectRequestsTable.Where(x => !x.IsArchived && x.Status == RequestStatus.Published).ToListAsync();

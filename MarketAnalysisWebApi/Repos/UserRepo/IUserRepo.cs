@@ -7,5 +7,6 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
     public interface IUserRepo : IBaseRepo<DbUser>
     {
         Task<Guid> CreateEmployeUser(EmployeCreateDTO dto);
+        Task<DbBusinessAccount> GetEmployeAccountInfoAsync(Guid userId);
     }
 }

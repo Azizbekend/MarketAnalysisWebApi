@@ -43,5 +43,10 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
                 return newEmployee.Id;
             }
         }
+
+        public async Task<DbBusinessAccount> GetEmployeAccountInfoAsync(Guid userId)
+        {
+            return await _appDbContext.BusinessAccounts.FirstOrDefaultAsync(x => x.UserId == userId);
+        }
     }
 }
