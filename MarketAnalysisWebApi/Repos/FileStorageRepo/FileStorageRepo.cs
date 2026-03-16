@@ -89,9 +89,22 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
             return fileModel.Id;
         }
 
-        public Task<Guid> SavePlanFileAsync(PlanFileCreateDTO dto, CancellationToken token = default)
+        public async  Task<Guid> SavePlanFileAsync(PlanFileCreateDTO dto, CancellationToken token = default)
         {
-            throw new NotImplementedException();
+            ArgumentNullException.ThrowIfNull(dto.PlanFile);
+            var offer = await _appDbContext.OffersTable.FirstOrDefaultAsync(x => x.Id == dto.OfferId);
+            ArgumentNullException.ThrowIfNull(offer);
+            var fileModel = new DbBusinessOfferFileModel
+            {
+                FileName = dto.PlanFile.FileName,
+                ContentType = dto.PlanFile.ContentType,
+                FileSize = dto.PlanFile.Length,
+                FileData = await ReadFileDataAsync(dto.PlanFile, token)
+            };
+            await _appDbContext.OfferFilesTable.AddAsync(fileModel, token);
+            await _appDbContext.SaveChangesAsync(token);
+            offer.OfferFileId = fileModel.Id;
+            return fileModel.Id;
         }
 
         private static async Task<byte[]> ReadFileDataAsync(

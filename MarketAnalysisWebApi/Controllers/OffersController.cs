@@ -110,7 +110,7 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("offerFile/download/{id}")]
+        [HttpGet("offerFile/download/")]
         public async Task<IActionResult> GetOffer(Guid offerId, CancellationToken token = default)
         {
             try
@@ -154,7 +154,7 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("equipPassport/download/{id}")]
+        [HttpGet("equipPassport/download/")]
         public async Task<IActionResult> GetPassport(Guid passportId, CancellationToken token = default)
         {
             try
@@ -196,7 +196,7 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("equipCertificate/download/{id}")]
+        [HttpGet("equipCertificate/download/")]
         public async Task<IActionResult> GetCertificate(Guid certifecateId, CancellationToken token = default)
         {
             try
@@ -237,7 +237,7 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("scemeFile/download/{id}")]
+        [HttpGet("scemeFile/download/")]
         public async Task<IActionResult> GetSchemee(Guid shemeFileId, CancellationToken token = default)
         {
             try
