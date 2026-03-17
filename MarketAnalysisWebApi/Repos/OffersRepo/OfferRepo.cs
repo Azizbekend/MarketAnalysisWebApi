@@ -23,7 +23,7 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
                 NameBySupplier = dto.NameBySupplier,
                 CurrentPriceNDS = dto.CurrentPriceNDS,
                 CurrentPriceNoNDS = dto.CurrentPriceNoNDS,
-                SupportingDocumentDate = dto.SupportingDocumentDate.ToUniversalTime(),
+                SupportingDocumentDate = dto.SupportingDocumentDate.ToUniversalTime().AddHours(3),
                 WarehouseLocation = dto.WarehouseLocation,
                 ManufacturerCountry = dto.ManufacturerCountry,
                 SupplierSiteURL = dto.SupplierSiteURL,

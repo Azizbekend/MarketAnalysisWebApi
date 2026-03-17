@@ -19,12 +19,13 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
             if (await _appDbContext.UsersTable.AnyAsync(x => x.Email == dto.Email)) { throw new Exception("Company not found!"); }
             else
             {
+                var role = await _appDbContext.UsersRolesTable.FirstOrDefaultAsync(x => x.RoleName == dto.RoleName);
                 var newEmployee = new DbUser()
                 {
                     FullName = dto.FullName,
                     Email = dto.Email,
                     PhoneNumber = dto.PhoneNumber,
-                    RoleId = dto.RoleId
+                    RoleId = Guid.Parse(role.Id.ToString())
                 };
                 newEmployee.Password = _passwordHasher.HashPassword(newEmployee, dto.Password);
                 await _appDbContext.UsersTable.AddAsync(newEmployee);

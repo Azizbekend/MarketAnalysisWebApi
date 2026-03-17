@@ -10,7 +10,7 @@ namespace MarketAnalysisWebApi.DTOs.UserDTOs
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Password { get; set; }
-        public Guid RoleId { get; set; }
+        public string? RoleName { get; set; }
         public Guid CompanyId { get; set; }
     }
 }
