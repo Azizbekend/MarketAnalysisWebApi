@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\Azizbek_Projects\\Experiment\\Docker-back\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj": {}
+    "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\Azizbek_Projects\\Experiment\\Docker-back\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj": {
+    "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Azizbek_Projects\\Experiment\\Docker-back\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj",
         "projectName": "MarketAnalysisWebApi",
-        "projectPath": "C:\\Users\\User\\Desktop\\Azizbek_Projects\\Experiment\\Docker-back\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\MarketAnalysisWebApi.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Azizbek_Projects\\Experiment\\Docker-back\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\ResearcherApiGit\\MarketAnalysisWebApi\\MarketAnalysisWebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
@@ -52,23 +52,23 @@
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[10.0.3, )"
+              "version": "[10.0.4, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[10.0.3, )"
+              "version": "[10.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.3, )"
+              "version": "[10.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.3, )"
+              "version": "[10.0.4, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
@@ -80,11 +80,11 @@
             },
             "Swashbuckle.AspNetCore.SwaggerGen": {
               "target": "Package",
-              "version": "[10.1.4, )"
+              "version": "[10.1.5, )"
             },
             "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
-              "version": "[10.1.4, )"
+              "version": "[10.1.5, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
@@ -110,11 +110,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json",
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
->>>>>>> 738b86885c7699aa5f9e9c0dc8e55efe26bb1918
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.200/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

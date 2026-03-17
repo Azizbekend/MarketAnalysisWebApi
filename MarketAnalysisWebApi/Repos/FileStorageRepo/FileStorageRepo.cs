@@ -45,10 +45,11 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
                 ContentType = dto.OfferFile.ContentType,
                 FileSize = dto.OfferFile.Length,
                 FileData = await ReadFileDataAsync(dto.OfferFile, token)
-            };           
+            };
             await _appDbContext.OfferFilesTable.AddAsync(fileModel, token);
-            await _appDbContext.SaveChangesAsync(token);
             offer.OfferFileId = fileModel.Id;
+            _appDbContext.OffersTable.Attach(offer);
+            await _appDbContext.SaveChangesAsync(token);
             return fileModel.Id;
 
         }
@@ -58,16 +59,17 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
             ArgumentNullException.ThrowIfNull(dto.CertificateFile);
             var offer = await _appDbContext.OffersTable.FirstOrDefaultAsync(x => x.Id == dto.OfferId);
             ArgumentNullException.ThrowIfNull(offer);
-            var fileModel = new DbBusinessOfferFileModel
+            var fileModel = new DbEquipmentCertificateFileModel
             {
                 FileName = dto.CertificateFile.FileName,
                 ContentType = dto.CertificateFile.ContentType,
                 FileSize = dto.CertificateFile.Length,
                 FileData = await ReadFileDataAsync(dto.CertificateFile, token)
             };
-            await _appDbContext.OfferFilesTable.AddAsync(fileModel, token);
+            await _appDbContext.CertificatesFilesTable.AddAsync(fileModel, token);
+            offer.CertificateFileId = fileModel.Id;
+            _appDbContext.OffersTable.Attach(offer);
             await _appDbContext.SaveChangesAsync(token);
-            offer.OfferFileId = fileModel.Id;
             return fileModel.Id;
         }
 
@@ -76,16 +78,17 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
             ArgumentNullException.ThrowIfNull(dto.PassportFile);
             var offer = await _appDbContext.OffersTable.FirstOrDefaultAsync(x => x.Id == dto.OfferId);
             ArgumentNullException.ThrowIfNull(offer);
-            var fileModel = new DbBusinessOfferFileModel
+            var fileModel = new DbEquipmentPassportFile
             {
                 FileName = dto.PassportFile.FileName,
                 ContentType = dto.PassportFile.ContentType,
                 FileSize = dto.PassportFile.Length,
                 FileData = await ReadFileDataAsync(dto.PassportFile, token)
             };
-            await _appDbContext.OfferFilesTable.AddAsync(fileModel, token);
+            await _appDbContext.PassportsFilesTable.AddAsync(fileModel, token);
+            offer.PassportFileId = fileModel.Id;
+            _appDbContext.OffersTable.Attach(offer);
             await _appDbContext.SaveChangesAsync(token);
-            offer.OfferFileId = fileModel.Id;
             return fileModel.Id;
         }
 
@@ -94,16 +97,17 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
             ArgumentNullException.ThrowIfNull(dto.PlanFile);
             var offer = await _appDbContext.OffersTable.FirstOrDefaultAsync(x => x.Id == dto.OfferId);
             ArgumentNullException.ThrowIfNull(offer);
-            var fileModel = new DbBusinessOfferFileModel
+            var fileModel = new DbPlanFile
             {
                 FileName = dto.PlanFile.FileName,
                 ContentType = dto.PlanFile.ContentType,
                 FileSize = dto.PlanFile.Length,
                 FileData = await ReadFileDataAsync(dto.PlanFile, token)
             };
-            await _appDbContext.OfferFilesTable.AddAsync(fileModel, token);
+            await _appDbContext.PlanFilesTable.AddAsync(fileModel, token);
+            offer.PlanFileId = fileModel.Id;
+            _appDbContext.OffersTable.Attach(offer);
             await _appDbContext.SaveChangesAsync(token);
-            offer.OfferFileId = fileModel.Id;
             return fileModel.Id;
         }
 
