@@ -122,7 +122,7 @@ namespace MarketAnalysisWebApi.Controllers
                 }
                 else
                 {
-                    return File(file.FileData, file.ContentType);
+                    return File(file.FileData, file.ContentType, file.FileName);
                 }
             }
             catch (Exception ex)
@@ -166,7 +166,7 @@ namespace MarketAnalysisWebApi.Controllers
                 }
                 else
                 {
-                    return File(file.FileData, file.ContentType);
+                    return File(file.FileData, file.ContentType, file.FileName);
                 }
             }
             catch (Exception ex)
@@ -208,7 +208,7 @@ namespace MarketAnalysisWebApi.Controllers
                 }
                 else
                 {
-                    return File(file.FileData, file.ContentType);
+                    return File(file.FileData, file.ContentType, file.FileName);
                 }
             }
             catch (Exception ex)
@@ -249,7 +249,7 @@ namespace MarketAnalysisWebApi.Controllers
                 }
                 else
                 {
-                    return File(file.FileData, file.ContentType);
+                    return File(file.FileData, file.ContentType, file.FileName);
                 }
             }
             catch (Exception ex)
