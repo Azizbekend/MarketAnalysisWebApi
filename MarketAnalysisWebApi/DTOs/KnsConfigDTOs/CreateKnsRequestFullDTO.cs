@@ -14,6 +14,7 @@ namespace MarketAnalysisWebApi.DTOs.KnsConfigDTOs
         public Guid UserId { get; set; }
         public Guid ConfigTypeId { get; set; }
         public double Perfomance { get; set; }
+        public PerfomanceUnitType UnitType { get; set; }
         public PerfomanceMeasureUnit Units { get; set; }
         public double RequiredPumpPressure { get; set; }
         public int ActivePumpsCount { get; set; }
