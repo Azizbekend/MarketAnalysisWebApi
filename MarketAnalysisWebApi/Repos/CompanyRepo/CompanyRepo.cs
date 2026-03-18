@@ -1,17 +1,15 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs.CompanyDTOs;
+using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketAnalysisWebApi.Repos.CompanyRepo
 {
-    public class CompanyRepo : ICompanyRepo
+    public class CompanyRepo : BaseRepo<DbCompany>, ICompanyRepo
     {
-        private readonly AppDbContext _appDbContext;
-
-        public CompanyRepo(AppDbContext appDbContext)
+        public CompanyRepo(AppDbContext appDbContext) : base(appDbContext)
         {
-            _appDbContext = appDbContext;
         }
 
         public async Task<Guid> CreateCompany(CreateCompanyDTO dto)
