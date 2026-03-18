@@ -53,14 +53,14 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
 
         public async Task<Guid> RequestArchive(Guid requestId)
         {
-            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId && x.!IsArchived);
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId && !x.IsArchived);
             if (request == null)
             {
                 throw new Exception("Request not found!");
             }
             else
             {
-                request.IsArchive = !request.IsArchive;
+                request.IsArchived = !request.IsArchived;
                 _appDbContext.ProjectRequestsTable.Attach(request);
                 await _appDbContext.SaveChangesAsync();
                 return request.Id;
