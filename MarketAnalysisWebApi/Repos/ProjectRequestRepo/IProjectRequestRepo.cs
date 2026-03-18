@@ -1,11 +1,12 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
+using MarketAnalysisWebApi.Repos.BaseRepo;
 
 namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 {
-    public interface IProjectRequestRepo
+    public interface IProjectRequestRepo : IBaseRepo<DbProjectRequest>
     {
-        Task<DbProjectRequest> GetRequestByUserId(Guid requestId);
+        Task<DbProjectRequest> GetRequestById(Guid requestId);
         Task CreateClickForCoins(Guid userId);
         Task<ICollection<DbProjectRequest>> GetUsersRequests(Guid userId);
         Task<ICollection<DbProjectRequest>> GetPublishedRequests();

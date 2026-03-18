@@ -19,7 +19,7 @@ namespace MarketAnalysisWebApi.Controllers
         [HttpGet("single")]
         public async Task<IActionResult> GetRequets(Guid id)
         {
-            var res = await _projectRequestRepo.GetRequestByUserId(id);
+            var res = await _projectRequestRepo.GetRequestById(id);
             return Ok(res);
         }
         [HttpGet("user/requests/all")]

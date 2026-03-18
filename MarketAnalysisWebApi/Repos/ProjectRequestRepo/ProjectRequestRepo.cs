@@ -1,27 +1,25 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
+using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 {
-    public class ProjectRequestRepo : IProjectRequestRepo
+    public class ProjectRequestRepo : BaseRepo<DbProjectRequest>,  IProjectRequestRepo
     {
-        private readonly AppDbContext _context;
-
-        public ProjectRequestRepo(AppDbContext context)
+        public ProjectRequestRepo(AppDbContext appDbContext) : base(appDbContext)
         {
-            _context = context;
         }
 
         public async Task<Guid> ArchiveRequest(RequestStandartDTO dto)
         {
-            var request = await _context.ProjectRequestsTable.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.Id == dto.RequestId);
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.Id == dto.RequestId);
             if(request != null && !request.IsArchived)
             {
                 request.IsArchived = true;
-                _context.ProjectRequestsTable.Attach(request);
-                await _context.SaveChangesAsync();
+                _appDbContext.ProjectRequestsTable.Attach(request);
+                await _appDbContext.SaveChangesAsync();
                 return request.Id;
             }
             else
@@ -37,30 +35,35 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 
         public async Task<ICollection<DbProjectRequest>> GetPublishedRequests()
         {
-            var res = await _context.ProjectRequestsTable.Where(x => !x.IsArchived && x.Status == RequestStatus.Published).ToListAsync();
+            var res = await _appDbContext.ProjectRequestsTable.Where(x => !x.IsArchived && x.Status == RequestStatus.Published).ToListAsync();
             return res;
         }
 
-        public async Task<DbProjectRequest> GetRequestByUserId(Guid requestId)
+        public async Task<DbProjectRequest> GetRequestById(Guid requestId)
         {
-            var res = await _context.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId);
+            var res = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId);
+            return res;
+        }
+        public async Task<DbProjectRequest> GetRequestBySupplierId(Guid requestId)
+        {
+            var res = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId);
             return res;
         }
 
         public async Task<ICollection<DbProjectRequest>> GetUsersRequests(Guid userId)
         {
-            var res = await _context.ProjectRequestsTable.Where(x => x.UserId == userId).ToListAsync(); 
+            var res = await _appDbContext.ProjectRequestsTable.Where(x => x.UserId == userId).ToListAsync(); 
             return res;
         }
 
         public async Task<Guid> PublishRequest(RequestStandartDTO dto)
         {
-            var request = await _context.ProjectRequestsTable.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.Id == dto.RequestId);
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.Id == dto.RequestId);
             if(request != null && !request.IsArchived)
             {
                 request.Status = RequestStatus.Published;
-                _context.ProjectRequestsTable.Attach(request);
-                await _context.SaveChangesAsync();
+                _appDbContext.ProjectRequestsTable.Attach(request);
+                await _appDbContext.SaveChangesAsync();
                 return request.Id;
             }
             else

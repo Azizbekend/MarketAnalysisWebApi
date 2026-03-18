@@ -1,6 +1,7 @@
 ﻿using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.Repos.CompanyRepo;
 using MarketAnalysisWebApi.Repos.InnerHelperRepo;
+using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
 using MarketAnalysisWebApi.Repos.UserRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,14 @@ namespace MarketAnalysisWebApi.Controllers
         private readonly IUserRepo _userRepo;
         private readonly ICompanyRepo _companyRepo;
         private readonly IInnerHelperRepo _innerHelperRepo;
+        private readonly IProjectRequestRepo _requestRepo;
 
-        public AdminController(IUserRepo userRepo, ICompanyRepo companyRepo, IInnerHelperRepo innerHelperRepo)
+        public AdminController(IUserRepo userRepo, ICompanyRepo companyRepo, IInnerHelperRepo innerHelperRepo, IProjectRequestRepo requestRepo)
         {
             _userRepo = userRepo;
             _companyRepo = companyRepo;
             _innerHelperRepo = innerHelperRepo;
+            _requestRepo = requestRepo;
         }
 
         [HttpGet("users/all")]
@@ -47,6 +50,20 @@ namespace MarketAnalysisWebApi.Controllers
                 return Ok(res);
             }
             catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("requests/all")]
+        public async Task<IActionResult> GetAllRequests()
+        {
+            try
+            {
+                var res = await _requestRepo.GetAllAsync();
+                return Ok(res);
+            }
+            catch(Exception ex)
             {
                 return BadRequest(ex.Message);
             }
