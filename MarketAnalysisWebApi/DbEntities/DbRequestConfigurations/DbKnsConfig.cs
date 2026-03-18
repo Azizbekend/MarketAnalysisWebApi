@@ -7,7 +7,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations
 {
     public enum PerfomanceMeasureUnit
     {
-        HorsePower = 0,
+        LiterInSecond = 0,
         CubicMeter
     }
 
@@ -39,16 +39,10 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations
         UHL4 = 3
     }
 
-    public enum PerfomanceUnitType
-    {
-        CubicMeterInHour = 1,
-        LiterInSecond
-    }
 
     public class DbKnsConfig : DbBase
     {
         public double Perfomance { get; set; }
-        public PerfomanceUnitType UnitType { get; set; }
 
         [Range(0, 1, ErrorMessage = "Значение может быть только 0 или 1")]
         public PerfomanceMeasureUnit Units { get; set; }

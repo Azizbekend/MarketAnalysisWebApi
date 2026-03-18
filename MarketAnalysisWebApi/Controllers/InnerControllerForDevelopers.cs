@@ -54,5 +54,12 @@ namespace MarketAnalysisWebApi.Controllers
             await _innerHelperRepo.InnerCreateBusinessAcc(userId);
             return Ok();
         }
+
+        //[HttpGet("sql/join/test")]
+        //public async Task<IActionResult> GetJoinTestResuilt(Guid userId)
+        //{
+        //    var res = await _innerHelperRepo.InnerUserRequestJoin(userId);
+        //    return Ok(res);
+        //}
     }
 }

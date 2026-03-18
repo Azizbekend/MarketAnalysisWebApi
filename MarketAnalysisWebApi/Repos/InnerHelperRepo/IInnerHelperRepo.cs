@@ -1,4 +1,6 @@
-﻿namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
+﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
+
+namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
 {
     public interface IInnerHelperRepo
     {
@@ -6,5 +8,6 @@
         Task CreateKnsEquipment(string name);
         Task InnerCreateCompanyType(string name);
         Task InnerCreateBusinessAcc(Guid userId);
+        Task<ICollection<object>> InnerUserRequestJoin(Guid userId);
     }
 }

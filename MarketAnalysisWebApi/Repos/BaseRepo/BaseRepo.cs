@@ -25,7 +25,7 @@ namespace MarketAnalysisWebApi.Repos.BaseRepo
 
         }
 
-        public virtual async Task<ICollection<T>> GetAll()
+        public virtual async Task<ICollection<T>> GetAllAsync()
         {
             var list = await _appDbContext.Set<T>().ToListAsync();
             return list;

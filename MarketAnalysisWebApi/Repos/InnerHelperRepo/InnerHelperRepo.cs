@@ -1,11 +1,13 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbEntities;
+using Microsoft.EntityFrameworkCore;
 
 namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
 {
     public class InnerHelperRepo : IInnerHelperRepo
     {
         private readonly AppDbContext _appDbContext;
+        
 
         public InnerHelperRepo(AppDbContext appDbContext)
         {
@@ -46,6 +48,20 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
             await _appDbContext.CompanyTypesTable.AddAsync(type);
             await _appDbContext.SaveChangesAsync();
 
+        }
+
+        public async Task<ICollection<object>> InnerUserRequestJoin(Guid userId) 
+        {
+            var res = await _appDbContext.UsersTable.Join(_appDbContext.ProjectRequestsTable,
+                user => user.Id,
+                projectReq => projectReq.UserId,
+                (user, projectReq) => new
+                {
+                    userName = user.FullName, 
+                    request = projectReq.NameByProjectDocs
+                    
+                }).ToListAsync();
+            return (ICollection<object>)res;
         }
     }
 }

@@ -6,7 +6,6 @@ namespace MarketAnalysisWebApi.DTOs.KnsCongigDTOs
     public class CreateKnsInnerConfigDTO
     {
         public double Perfomance { get; set; }
-        public PerfomanceUnitType UnitType { get; set; }
         public PerfomanceMeasureUnit Units { get; set; }
         public double RequiredPumpPressure { get; set; }
         public int ActivePumpsCount { get; set; }
