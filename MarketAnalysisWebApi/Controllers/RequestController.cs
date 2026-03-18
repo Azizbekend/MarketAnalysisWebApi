@@ -1,4 +1,5 @@
-﻿using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
+﻿using MarketAnalysisWebApi.DTOs.RequestDTOs;
+using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,6 +35,33 @@ namespace MarketAnalysisWebApi.Controllers
             try
             {
                 var res = await _projectRequestRepo.GetPublishedRequests();
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("publish")]
+        public async Task<IActionResult> PublishRequest(RequestStandartDTO dto)
+        {
+            try
+            {
+                var res = await _projectRequestRepo.PublishRequest(dto);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost("archive")]
+        public async Task<IActionResult> ArchiveRequest(RequestStandartDTO dto)
+        {
+            try
+            {
+                var res = await _projectRequestRepo.ArchiveRequest(dto);
                 return Ok(res);
             }
             catch (Exception ex)

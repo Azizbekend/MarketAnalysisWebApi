@@ -1,5 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbEntities;
+using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
@@ -50,18 +51,36 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
 
         }
 
-        public async Task<ICollection<object>> InnerUserRequestJoin(Guid userId) 
+        public async Task<Guid> RequestArchive(Guid requestId)
         {
-            var res = await _appDbContext.UsersTable.Join(_appDbContext.ProjectRequestsTable,
-                user => user.Id,
-                projectReq => projectReq.UserId,
-                (user, projectReq) => new
-                {
-                    userName = user.FullName, 
-                    request = projectReq.NameByProjectDocs
-                    
-                }).ToListAsync();
-            return (ICollection<object>)res;
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId && x.!IsArchived);
+            if (request == null)
+            {
+                throw new Exception("Request not found!");
+            }
+            else
+            {
+                request.IsArchive = !request.IsArchive;
+                _appDbContext.ProjectRequestsTable.Attach(request);
+                await _appDbContext.SaveChangesAsync();
+                return request.Id;
+            }
+        }
+
+        public async Task<Guid> RequestStatusChangeAsync(RequestStasusChangeDTo dto)
+        {
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
+            if(request == null)
+            {
+                throw new Exception("Request not found!");
+            }
+            else
+            {
+                request.Status = dto.NewStatus;
+                _appDbContext.ProjectRequestsTable.Attach(request);
+                await _appDbContext.SaveChangesAsync();
+                return request.Id;
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
+using MarketAnalysisWebApi.DTOs.RequestDTOs;
+using MarketAnalysisWebApi.Repos.BaseRepo;
 
 namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
 {
@@ -8,6 +10,8 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
         Task CreateKnsEquipment(string name);
         Task InnerCreateCompanyType(string name);
         Task InnerCreateBusinessAcc(Guid userId);
-        Task<ICollection<object>> InnerUserRequestJoin(Guid userId);
+        Task<Guid> RequestStatusChangeAsync(RequestStasusChangeDTo dto);
+        Task<Guid> RequestArchive(Guid requestId);
+        
     }
 }
