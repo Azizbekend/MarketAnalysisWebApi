@@ -1,5 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
+using MarketAnalysisWebApi.DTOs.SupplierDTOs;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 
 namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
@@ -7,8 +8,9 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
     public interface IProjectRequestRepo : IBaseRepo<DbProjectRequest>
     {
         Task<DbProjectRequest> GetRequestById(Guid requestId);
-        Task CreateClickForCoins(Guid userId);
+        Task CreateClickForCoins(SupplierCheckRequestDTo dto);
         Task<ICollection<DbProjectRequest>> GetUsersRequests(Guid userId);
+        Task <Guid> CheckRequestBySupplier(SupplierCheckRequestDTo dto);
         Task<ICollection<DbProjectRequest>> GetPublishedRequests();
         Task<Guid> PublishRequest(RequestStandartDTO dto);
         Task<Guid> ArchiveRequest(RequestStandartDTO dto);

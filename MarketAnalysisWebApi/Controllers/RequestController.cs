@@ -1,4 +1,5 @@
 ﻿using MarketAnalysisWebApi.DTOs.RequestDTOs;
+using MarketAnalysisWebApi.DTOs.SupplierDTOs;
 using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +41,34 @@ namespace MarketAnalysisWebApi.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("supplier/view/request")]
+        public async Task<IActionResult> CheckRequest(SupplierCheckRequestDTo dto)
+        {
+            try
+            {
+                var res = await _projectRequestRepo.CheckRequestBySupplier(dto);
+                return Ok(res);
+            }
+            catch(Exception ex) 
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("supplier/click/request")]
+        public async Task<IActionResult> BayRequest(SupplierCheckRequestDTo dto)
+        {
+            try
+            {
+                await _projectRequestRepo.CreateClickForCoins(dto);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest("что-то пошло не так...");
             }
         }
 

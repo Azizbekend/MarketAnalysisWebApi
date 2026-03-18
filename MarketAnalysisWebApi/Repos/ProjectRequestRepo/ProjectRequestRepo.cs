@@ -1,6 +1,7 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
+using MarketAnalysisWebApi.DTOs.SupplierDTOs;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 {
     public class ProjectRequestRepo : BaseRepo<DbProjectRequest>,  IProjectRequestRepo
     {
+        private const int price = 1;
         public ProjectRequestRepo(AppDbContext appDbContext) : base(appDbContext)
         {
         }
@@ -28,9 +30,47 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             }
         }
 
-        public async Task CreateClickForCoins(Guid employerAccountId)
+        public async Task<Guid> CheckRequestBySupplier(SupplierCheckRequestDTo dto)
         {
-            throw new NotImplementedException();
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
+
+            if (request == null)
+            {
+                throw new Exception("Неверный ввод данных");
+            }
+            else
+            {
+                
+                var requestLink = new DbAccountRequest
+                {
+                    AccountId = dto.AccountId,
+                    RequestId = request.Id,
+                    Status = "Viewed"
+                };
+                await _appDbContext.AccountRequests.AddAsync(requestLink);
+                await _appDbContext.SaveChangesAsync();
+                return requestLink.Id;
+            }
+        }
+
+
+        public async Task CreateClickForCoins(SupplierCheckRequestDTo dto)
+        {
+            var account = await _appDbContext.BusinessAccounts.FirstOrDefaultAsync(x => x.Id == dto.AccountId);
+            if(account == null || account.Coins <= 0)
+            {
+                throw new Exception("Не хватает монет");
+            }
+            else
+            {
+                var link = await _appDbContext.AccountRequests.FirstOrDefaultAsync(x => x.AccountId == dto.AccountId && x.RequestId == dto.RequestId);
+                link.Status = "Payed";
+                account.Coins -= price;
+                _appDbContext.AccountRequests.Attach(link);
+                _appDbContext.BusinessAccounts.Attach(account);
+                await _appDbContext.SaveChangesAsync();
+
+            }
         }
 
         public async Task<ICollection<DbProjectRequest>> GetPublishedRequests()
@@ -49,7 +89,6 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             var res = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId);
             return res;
         }
-
         public async Task<ICollection<DbProjectRequest>> GetUsersRequests(Guid userId)
         {
             var res = await _appDbContext.ProjectRequestsTable.Where(x => x.UserId == userId).ToListAsync(); 
