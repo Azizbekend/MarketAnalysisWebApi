@@ -14,6 +14,18 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         {
         }
 
+        public async Task<Guid> AddToFavourites(RequestStandartDTO dto)
+        {
+            var favourite = new DbFavoriteRequest
+            {
+                RequestId = dto.RequestId,
+                UserId = dto.UserId,
+            };
+            await _appDbContext.FavoritesTable.AddAsync(favourite);
+            await _appDbContext.SaveChangesAsync();
+            return favourite.Id;        
+        }
+
         public async Task<Guid> ArchiveRequest(RequestStandartDTO dto)
         {
             var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.Id == dto.RequestId);
@@ -71,6 +83,19 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 await _appDbContext.SaveChangesAsync();
 
             }
+        }
+
+        public async Task<ICollection<DbProjectRequest>> GetFavourites(Guid userId)
+        {
+            var list = new List<DbProjectRequest>();
+            var link = await _appDbContext.FavoritesTable.Where(x => x.UserId == userId).ToListAsync();
+            foreach(var favourite in link)
+            {
+                var buff = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == favourite.RequestId);
+                list.Add(buff);
+            }
+            return list;
+
         }
 
         public async Task<ICollection<DbProjectRequest>> GetPublishedRequests()

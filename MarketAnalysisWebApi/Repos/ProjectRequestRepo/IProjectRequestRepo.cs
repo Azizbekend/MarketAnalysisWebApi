@@ -14,5 +14,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         Task<ICollection<DbProjectRequest>> GetPublishedRequests();
         Task<Guid> PublishRequest(RequestStandartDTO dto);
         Task<Guid> ArchiveRequest(RequestStandartDTO dto);
+        Task<Guid> AddToFavourites(RequestStandartDTO dto);
+        Task<ICollection<DbProjectRequest>> GetFavourites(Guid userId);
     }
 }

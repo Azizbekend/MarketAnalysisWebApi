@@ -43,7 +43,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("RequestId");
 
-                    b.ToTable("AccountRequests");
+                    b.ToTable("AccountRequests", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbBusinessAccount", b =>
@@ -62,7 +62,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("BusinessAccounts");
+                    b.ToTable("BusinessAccounts", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbBusinessOffer", b =>
@@ -136,7 +136,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("RequestId");
 
-                    b.ToTable("OffersTable");
+                    b.ToTable("OffersTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbCompany", b =>
@@ -177,7 +177,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("LogoFileId");
 
-                    b.ToTable("CompaniesTable");
+                    b.ToTable("CompaniesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbCompanyType", b =>
@@ -191,7 +191,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CompanyTypesTable");
+                    b.ToTable("CompanyTypesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbEquipRequest", b =>
@@ -212,7 +212,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("RequestId");
 
-                    b.ToTable("EquipRequestTable");
+                    b.ToTable("EquipRequestTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbEquipment", b =>
@@ -231,7 +231,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("ConfigTypeId");
 
-                    b.ToTable("EquipmentTable");
+                    b.ToTable("EquipmentTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbFavoriteRequest", b =>
@@ -252,7 +252,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("FavoritesTable");
+                    b.ToTable("FavoritesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbProjectRequest", b =>
@@ -315,7 +315,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ProjectRequestsTable");
+                    b.ToTable("ProjectRequestsTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbRefreshToken", b =>
@@ -352,7 +352,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RefreshTokens");
+                    b.ToTable("RefreshTokens", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbRequestConfigType", b =>
@@ -366,7 +366,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ConfigurationTypesTable");
+                    b.ToTable("ConfigurationTypesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbSupplierUserCompany", b =>
@@ -387,7 +387,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("SupplierUserId");
 
-                    b.ToTable("SupplierUsersCompaniesTable");
+                    b.ToTable("SupplierUsersCompaniesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbUser", b =>
@@ -422,7 +422,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UsersTable");
+                    b.ToTable("UsersTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbUserRole", b =>
@@ -436,7 +436,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UsersRolesTable");
+                    b.ToTable("UsersRolesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.DbKnsConfig", b =>
@@ -524,7 +524,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasIndex("RequestId");
 
-                    b.ToTable("KnsConfigurations");
+                    b.ToTable("KnsConfigurations", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.FileStorages.DbBusinessOfferFileModel", b =>
@@ -547,7 +547,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OfferFilesTable");
+                    b.ToTable("OfferFilesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.FileStorages.DbEquipmentCertificateFileModel", b =>
@@ -570,7 +570,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CertificatesFilesTable");
+                    b.ToTable("CertificatesFilesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.FileStorages.DbEquipmentPassportFile", b =>
@@ -593,7 +593,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PassportsFilesTable");
+                    b.ToTable("PassportsFilesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.FileStorages.DbImageFileModel", b =>
@@ -616,7 +616,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ImageFilesTable");
+                    b.ToTable("ImageFilesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.FileStorages.DbPlanFile", b =>
@@ -639,7 +639,7 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PlanFilesTable");
+                    b.ToTable("PlanFilesTable", (string)null);
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbAccountRequest", b =>

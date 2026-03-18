@@ -29,9 +29,5 @@ namespace MarketAnalysisWebApi.DbEntities
         public DbSet<DbKnsConfig> KnsConfigurations { get; set; }
         public DbSet<DbBusinessAccount> BusinessAccounts { get; set; }
         public DbSet<DbAccountRequest> AccountRequests { get; set; }
-
-
-
-
     }
 }

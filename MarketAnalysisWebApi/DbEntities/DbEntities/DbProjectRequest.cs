@@ -2,6 +2,7 @@
 using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
@@ -42,11 +43,13 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         [ForeignKey(nameof(ConfigTypeId))]
         public DbRequestConfigType? RequestConfigType { get; set; }
 
-
+        [JsonIgnore]
         public ICollection<DbKnsConfig>? KnsConfigs { get; set; }
+        [JsonIgnore]
         public ICollection<DbEquipRequest>? EquipRequest { get; set; }
-
+        [JsonIgnore]
         public ICollection<DbFavoriteRequest>? FavoriteRequests { get; set; }
+        [JsonIgnore]
         public ICollection<DbAccountRequest>? AccountRequests { get; set; }
     }
 }

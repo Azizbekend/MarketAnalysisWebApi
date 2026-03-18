@@ -71,6 +71,25 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest("что-то пошло не так...");
             }
         }
+        [HttpGet("user/favourites")]
+        public async Task<IActionResult> GetUsersFavouritesRequests(Guid userId)
+        {
+            var res = await _projectRequestRepo.GetFavourites(userId);
+            return Ok(res); 
+        }
+        [HttpPost("favourites/add")]
+        public async Task<IActionResult> AddToFavourites(RequestStandartDTO dto)
+        {
+            try
+            {
+                var res = await _projectRequestRepo.AddToFavourites(dto);
+                return Ok(res);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
 
         [HttpPost("publish")]
         public async Task<IActionResult> PublishRequest(RequestStandartDTO dto)
