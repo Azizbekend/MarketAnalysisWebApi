@@ -53,7 +53,7 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
 
         public async Task<Guid> RequestArchive(Guid requestId)
         {
-            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId && !x.IsArchived);
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId);
             if (request == null)
             {
                 throw new Exception("Request not found!");
