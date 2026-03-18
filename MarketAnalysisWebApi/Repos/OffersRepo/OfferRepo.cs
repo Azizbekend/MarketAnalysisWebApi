@@ -26,6 +26,9 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
                 SupportingDocumentDate = dto.SupportingDocumentDate.ToUniversalTime().AddHours(3),
                 WarehouseLocation = dto.WarehouseLocation,
                 ManufacturerCountry = dto.ManufacturerCountry,
+                DeliveryTerms = dto.DeliveryTerms,
+                GarantyPeriod = dto.GarantyPeriod,
+                PaymentTerms = dto.PaymentTerms,
                 SupplierSiteURL = dto.SupplierSiteURL,
                 BussinessAccId = dto.BussinessAccId,
                 RequestId = dto.RequestId
@@ -92,6 +95,9 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
                         WarehouseLocation = BO.WarehouseLocation,
                         ManufacturerCountry = BO.ManufacturerCountry,
                         SupplierSiteURL = BO.SupplierSiteURL,
+                        DeliveryTerms = BO.DeliveryTerms,
+                        GarantyPeriod = BO.GarantyPeriod,
+                        PaymentTerms = BO.PaymentTerms,
                         FullCompanyName = company.FullCompanyName,
                         INN = company.INN,
                         KPP = company.KPP,
@@ -106,6 +112,11 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
             }
 
 
+        }
+
+        public async Task<Guid> UpdateOffer(OfferUpdateDTO dto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

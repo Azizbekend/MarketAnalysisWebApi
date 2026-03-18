@@ -10,5 +10,6 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
         Task<ICollection<DbBusinessOffer>> GetEmpoyesOffersByRequestId(Guid requestId);
         Task<ICollection<DbBusinessOffer>> GetEmpoyesOffersByBusinessAccId(Guid busAccId);
         Task<FullOfferDTO> GetFullOfferForCustomer(Guid offerId);
+        Task <Guid> UpdateOffer(OfferUpdateDTO dto);
     }
 }

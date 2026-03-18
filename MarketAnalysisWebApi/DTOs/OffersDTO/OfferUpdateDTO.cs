@@ -11,5 +11,8 @@
         public string? WarehouseLocation { get; set; }
         public string? SupplierSiteURL { get; set; }
         public string? ManufacturerCountry { get; set; }
+        public string? DeliveryTerms { get; set; }
+        public string? GarantyPeriod { get; set; }
+        public string? PaymentTerms { get; set; }
     }
 }
