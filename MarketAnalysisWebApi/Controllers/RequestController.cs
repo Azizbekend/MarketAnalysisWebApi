@@ -90,6 +90,19 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(e.Message);
             }
         }
+        [HttpPost("favourites/remove")]
+        public async Task<IActionResult> RemoveFromFavourites(RequestStandartDTO dto)
+        {
+            try
+            {
+                await _projectRequestRepo.RemoveFromFavourites(dto);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"{e.Message}");
+            }
+        }
 
         [HttpPost("publish")]
         public async Task<IActionResult> PublishRequest(RequestStandartDTO dto)

@@ -135,5 +135,19 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 throw new Exception("Данной заявки не существует или у Вас нет прав для работы с ней");
             }
         }
+
+        public async Task RemoveFromFavourites(RequestStandartDTO dto)
+        {
+            var res = await _appDbContext.FavoritesTable.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.RequestId  == dto.RequestId);
+            if(res != null)
+            {
+                _appDbContext.FavoritesTable.Remove(res);
+                await _appDbContext.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("not found!");
+            }
+        }
     }
 }
