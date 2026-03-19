@@ -81,7 +81,7 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
                 PhoneNumber = dto.PhoneNumber,
                 ConfigTypeId = dto.ConfigTypeId,
                 UserId = dto.UserId,
-                Status = RequestStatus.Published,
+                Status = RequestStatus.New,
                 InnerId = await GenerateRequestNumber(dto.UserId)
             };
             await  _context.ProjectRequestsTable.AddAsync(knsRequest);

@@ -66,8 +66,8 @@ namespace MarketAnalysisWebApi.Controllers
             var reciever = new EmailReceiver
             {
                 Address = "r3dinc@yandex.ru",
-                Name = "Test",
-                Login = "login"
+                Name = "Вадим Начаров",
+                Login = "login123"
             };
             await _mailRepo.Send(reciever, "Testing", "TestMessage");
             return Ok();

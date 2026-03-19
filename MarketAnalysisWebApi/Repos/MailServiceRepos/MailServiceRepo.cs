@@ -12,8 +12,8 @@ namespace MarketAnalysisWebApi.Repos.MailServiceRepos
         private const int RetryTimes = 5;
         private const int WaitTime = 500;
 
-        private const string TriecoName = "Компания СМК-ГИДРИКС";
-        private const string TriecoAddr = "market@gsurso.ru";
+        private const string SenderName = "Компания СМК-ГИДРИКС";
+        private const string SenderAddr = "market@gsurso.ru";
 
         private const string ConfirmCodeSubject = "Ваш код подтверждения";
         private const string PasswordSubject = "Ваш пароль";
@@ -29,7 +29,7 @@ namespace MarketAnalysisWebApi.Repos.MailServiceRepos
             var connData = _config.GetEmailServerConnData();
             var authData = _config.GetEmailAuthData();
 
-            emailMessage.From.Add(new MailboxAddress(TriecoName, TriecoAddr));
+            emailMessage.From.Add(new MailboxAddress(SenderName, SenderAddr));
             emailMessage.To.Add(new MailboxAddress(receiver.Name, receiver.Address));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
