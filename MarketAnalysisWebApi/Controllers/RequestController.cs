@@ -71,6 +71,17 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest("что-то пошло не так...");
             }
         }
+        [HttpGet("user/favourites/table/base")]
+        public async Task<IActionResult> GetListWithFavourites(Guid id)
+        {
+            var res = await _projectRequestRepo.GetRequestWithFavouriteLinks(id);
+            return Ok(res);
+        }
+        //public async Task<IActionResult> GetUsersFavouritesRequests(Guid userId)
+        //{
+        //    var res = await _projectRequestRepo.GetFavourites(userId);
+        //    return Ok(res);
+        //}
         [HttpGet("user/favourites")]
         public async Task<IActionResult> GetUsersFavouritesRequests(Guid userId)
         {

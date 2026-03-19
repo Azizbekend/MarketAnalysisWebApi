@@ -1,9 +1,13 @@
+using MailKit;
+using MarketAnalysisWebApi.Controllers;
 using MarketAnalysisWebApi.DbEntities;
+using MarketAnalysisWebApi.Providers.Configuration;
 using MarketAnalysisWebApi.Repos.CompanyRepo;
 using MarketAnalysisWebApi.Repos.FileStorageRepo;
 using MarketAnalysisWebApi.Repos.InnerHelperRepo;
 using MarketAnalysisWebApi.Repos.JwtRepo;
 using MarketAnalysisWebApi.Repos.KnsConfiGRepo;
+using MarketAnalysisWebApi.Repos.MailServiceRepos;
 using MarketAnalysisWebApi.Repos.OffersRepo;
 using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
 using MarketAnalysisWebApi.Repos.UserRepo;
@@ -29,13 +33,17 @@ var key = Encoding.UTF8.GetBytes(jwtSettings.SecretKey);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("MarketAnalysisDb")));
+
 builder.Services.AddTransient<IJwtRepo, JwtRepo>();
 builder.Services.AddTransient<IUserRepo, UserRepo>();
 builder.Services.AddTransient<IInnerHelperRepo, InnerHelperRepo>();
+builder.Services.AddTransient<IInnerConfigurationProvider, InnerConfigurationProvider>();
+
 builder.Services.AddTransient<IKnsConfigRepo, KnsConfigRepo>();
 builder.Services.AddTransient<ICompanyRepo, CompanyRepo>();
 builder.Services.AddTransient<IProjectRequestRepo, ProjectRequestRepo>();
 builder.Services.AddTransient<IOfferRepo, OfferRepo>();
+builder.Services.AddTransient<IMailServiceRepo, MailServiceRepo>();
 builder.Services.AddTransient<IFileStorageRepo, FileStorageRepo>();
 builder.Services.AddCors(options =>
 {

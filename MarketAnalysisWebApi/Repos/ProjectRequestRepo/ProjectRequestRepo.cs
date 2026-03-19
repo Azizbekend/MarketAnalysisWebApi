@@ -114,6 +114,32 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             var res = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId);
             return res;
         }
+
+        public async Task<ICollection<FavouritesViewModel>> GetRequestWithFavouriteLinks(Guid userId)
+        {
+            var query = from req in _appDbContext.ProjectRequestsTable
+                        join fav in _appDbContext.FavoritesTable.Where(f => f.UserId == userId)
+                            on req.Id equals fav.RequestId into favorites
+                        from fav in favorites.DefaultIfEmpty()
+                        select new FavouritesViewModel
+                        {
+                            Id = req.Id,
+                            InnerId = req.InnerId,
+                            ObjectName = req.ObjectName,
+                            LocationRegion = req.LocationRegion,
+                            CustomerName = req.CustomerName,
+                            CreatedAt = req.CreatedAt,
+                            Status = req.Status,
+                            IsArchived = req.IsArchived,
+                            UserId = req.UserId,
+                            ConfigTypeId = req.ConfigTypeId,
+                            IsFavorite = fav != null,
+                            FavoriteId = fav != null ? fav.Id : (Guid?)null
+                        };
+
+            return await query.ToListAsync();
+        }
+
         public async Task<ICollection<DbProjectRequest>> GetUsersRequests(Guid userId)
         {
             var res = await _appDbContext.ProjectRequestsTable.Where(x => x.UserId == userId).ToListAsync(); 

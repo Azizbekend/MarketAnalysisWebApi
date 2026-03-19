@@ -1,7 +1,10 @@
 ﻿using MarketAnalysisWebApi.DTOs.KnsCongigDTOs;
+using MarketAnalysisWebApi.Providers;
 using MarketAnalysisWebApi.Repos.InnerHelperRepo;
+using MarketAnalysisWebApi.Repos.MailServiceRepos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace MarketAnalysisWebApi.Controllers
 {
@@ -10,10 +13,12 @@ namespace MarketAnalysisWebApi.Controllers
     public class InnerControllerForDevelopers : ControllerBase
     {
         private readonly IInnerHelperRepo _innerHelperRepo;
+        private readonly IMailServiceRepo _mailRepo;
 
-        public InnerControllerForDevelopers(IInnerHelperRepo innerHelperRepo)
+        public InnerControllerForDevelopers(IInnerHelperRepo innerHelperRepo, IMailServiceRepo mailRepo)
         {
             _innerHelperRepo = innerHelperRepo;
+            _mailRepo = mailRepo;
         }
 
         [HttpPost("request/config/add")]
@@ -52,6 +57,19 @@ namespace MarketAnalysisWebApi.Controllers
         public async Task<IActionResult> CreateBusinessAcc(Guid userId)
         {
             await _innerHelperRepo.InnerCreateBusinessAcc(userId);
+            return Ok();
+        }
+
+        [HttpPost("email/send")]
+        public async Task<IActionResult> EmailSendingTest()
+        {
+            var reciever = new EmailReceiver
+            {
+                Address = "r3dinc@yandex.ru",
+                Name = "Test",
+                Login = "login"
+            };
+            await _mailRepo.Send(reciever, "Testing", "TestMessage");
             return Ok();
         }
 
