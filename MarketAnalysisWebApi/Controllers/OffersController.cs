@@ -89,6 +89,20 @@ namespace MarketAnalysisWebApi.Controllers
             }
         }
 
+        [HttpPut("offer/info/update")]
+        public async Task<IActionResult> UpdateOfferInfo(OfferUpdateDTO dto)
+        {
+            try
+            {
+                var res = await _offerRepo.UpdateOfferInfo(dto);
+                return Ok(res);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
         [HttpPost("offerFile/upload")]
         public async Task<IActionResult> UploadOfferFile(OfferFileCreateDTO dto, CancellationToken token)
         {

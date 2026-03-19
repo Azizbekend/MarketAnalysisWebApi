@@ -114,9 +114,30 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
 
         }
 
-        public async Task<Guid> UpdateOffer(OfferUpdateDTO dto)
+        public async Task<Guid> UpdateOfferInfo(OfferUpdateDTO dto)
         {
-            throw new NotImplementedException();
+            var offer = await _appDbContext.OffersTable.FirstOrDefaultAsync(x => x.Id == dto.OfferID);
+            if(offer == null)
+            {
+                throw new Exception("not found!");
+            }
+            else
+            {
+                offer.NameByProject = dto.NameByProject;
+                offer.NameBySupplier = dto.NameBySupplier;
+                offer.CurrentPriceNoNDS = dto.CurrentPriceNoNDS;
+                offer.CurrentPriceNDS = dto.CurrentPriceNDS;
+                offer.SupportingDocumentDate = dto.SupportingDocumentDate;
+                offer.WarehouseLocation = dto.WarehouseLocation;
+                offer.SupplierSiteURL = dto.SupplierSiteURL;
+                offer.ManufacturerCountry = dto.ManufacturerCountry;
+                offer.DeliveryTerms = dto.DeliveryTerms;
+                offer.GarantyPeriod = dto.GarantyPeriod;
+                offer.PaymentTerms = dto.PaymentTerms;
+                _appDbContext.OffersTable.Attach(offer);
+                await _appDbContext.SaveChangesAsync();
+                return offer.Id;
+            }
         }
     }
 }
