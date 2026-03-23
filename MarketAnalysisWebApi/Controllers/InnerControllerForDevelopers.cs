@@ -1,7 +1,7 @@
 ﻿using MarketAnalysisWebApi.DTOs.KnsCongigDTOs;
 using MarketAnalysisWebApi.Providers;
+using MarketAnalysisWebApi.Providers.EmailProvider;
 using MarketAnalysisWebApi.Repos.InnerHelperRepo;
-using MarketAnalysisWebApi.Repos.MailServiceRepos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -13,9 +13,9 @@ namespace MarketAnalysisWebApi.Controllers
     public class InnerControllerForDevelopers : ControllerBase
     {
         private readonly IInnerHelperRepo _innerHelperRepo;
-        private readonly IMailServiceRepo _mailRepo;
+        private readonly IMailServiceProvider _mailRepo;
 
-        public InnerControllerForDevelopers(IInnerHelperRepo innerHelperRepo, IMailServiceRepo mailRepo)
+        public InnerControllerForDevelopers(IInnerHelperRepo innerHelperRepo, IMailServiceProvider mailRepo)
         {
             _innerHelperRepo = innerHelperRepo;
             _mailRepo = mailRepo;
@@ -66,8 +66,7 @@ namespace MarketAnalysisWebApi.Controllers
             var reciever = new EmailReceiver
             {
                 Address = "r3dinc@yandex.ru",
-                Name = "Вадим Начаров",
-                Login = "login123"
+                Name = "Вадим Начаров"
             };
             await _mailRepo.Send(reciever, "Testing", "TestMessage");
             return Ok();

@@ -8,5 +8,8 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
     {
         Task<Guid> CreateEmployeUser(EmployeCreateDTO dto);
         Task<DbBusinessAccount> GetEmployeAccountInfoAsync(Guid userId);
+        Task<bool> PasswordRecoveryAsync(string email);
+        Task<Guid> SendConfirmMessageAsync(Guid userId);
+        Task<bool> CheckConfirmCode(MailConfirmCodeDTO dto);
     }
 }

@@ -138,6 +138,20 @@ namespace MarketAnalysisWebApi.Controllers
             }
         }
 
+        [HttpGet("password/recovery")]
+        public async Task<IActionResult> UserPasswordRecovery(string email)
+        {
+            try
+            {
+                var res = await _userRepo.PasswordRecoveryAsync(email);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost("refresh")]
         public async Task<ActionResult<AuthResponseDTO>> Refresh(RefreshTokenRequestDTO request)
         {
