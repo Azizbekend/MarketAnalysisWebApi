@@ -90,7 +90,9 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
         }}
 
         .container {{
-            margin: 0 auto;
+               margin: 0 auto;
+                max-width: 600px;
+                padding: 20px; 
         }}
 
         .email-wrapper {{
@@ -306,7 +308,7 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
 
             <div class='content'>
                 <div class='greeting'>
-                    Здравствуйте, ${receiver.Name}!
+                    Здравствуйте, {receiver.Name}!
                 </div>
 
                 <div class='message-text'>
@@ -318,8 +320,8 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
                     <div class='password-wrapper'>
                         <span class='password-label'>Ваш новый пароль</span>
                         <div class='password-value'>
-                            <span>${password}</span>
-                            <button class='copy-button' data-clipboardtext='${password}'>
+                            <span>{password}</span>
+                            <button class='copy-button' data-clipboardtext='{password}'>
                                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none'
                                     xmlns='http://www.w3.org/2000/svg'>
                                     <path
@@ -399,7 +401,9 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
         }}
 
         .container {{
-            margin: 0 auto;
+               margin: 0 auto;
+                max-width: 600px;
+                padding: 20px; 
         }}
 
         .email-wrapper {{
@@ -615,7 +619,7 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
 
             <div class='content'>
                 <div class='greeting'>
-                    Здравствуйте, ${receiver.Name}!
+                    Здравствуйте, {receiver.Name}!
                 </div>
 
                 <div class='message-text'>
@@ -627,8 +631,8 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
                     <div class='password-wrapper'>
                         <span class='password-label'>Ваш новый пароль</span>
                         <div class='password-value'>
-                            <span>${password}</span>
-                            <button class='copy-button' data-clipboardtext='${password}'>
+                            <span>{password}</span>
+                            <button class='copy-button' data-clipboardtext='{password}'>
                                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none'
                                     xmlns='http://www.w3.org/2000/svg'>
                                     <path
