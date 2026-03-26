@@ -52,16 +52,25 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             }
             else
             {
-                
-                var requestLink = new DbAccountRequest
+                var check = await _appDbContext.AccountRequests.FirstOrDefaultAsync(x => x.AccountId == dto.AccountId && x.RequestId == dto.RequestId);
+                if (check == null)
                 {
-                    AccountId = dto.AccountId,
-                    RequestId = request.Id,
-                    Status = "Viewed"
-                };
-                await _appDbContext.AccountRequests.AddAsync(requestLink);
-                await _appDbContext.SaveChangesAsync();
-                return requestLink.Id;
+                    var requestLink = new DbAccountRequest
+                    {
+                        AccountId = dto.AccountId,
+                        RequestId = request.Id,
+                        Status = "Viewed"
+                    };
+                    await _appDbContext.AccountRequests.AddAsync(requestLink);
+                    await _appDbContext.SaveChangesAsync();
+
+                    return requestLink.Id;
+                }
+                else
+                {
+                    throw new Exception("Уже тыкался сюдой!");
+                }
+
             }
         }
 
