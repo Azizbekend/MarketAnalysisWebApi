@@ -128,9 +128,16 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 Status = req.Status,
                 IsArchived = req.IsArchived,
                 UserId = req.UserId,
-                ConfigTypeId = req.ConfigTypeId,
-                SupplierRequestStatus = accReq.Status
+                ConfigTypeId = req.ConfigTypeId
             };
+            if(accReq != null )
+            {
+                res.SupplierRequestStatus = accReq.Status;
+            }
+            else
+            {
+                res.SupplierRequestStatus == "New";
+            }
             return res;
         }
         public async Task<DbProjectRequest> GetRequestBySupplierId(Guid requestId)
