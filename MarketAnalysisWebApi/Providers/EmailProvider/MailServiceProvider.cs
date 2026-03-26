@@ -286,7 +286,7 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
                                         <td
                                             style=""font-size:16px; color:#5a6c7e; line-height:1.6; padding-bottom:25px;"">
                                             Вы запросили сброс пароля в системе КликПроект <br/>
-                                            Ваш пароль был успешно изменен. Ниже приведены данные для входа:
+                                            Ваш пароль был успешно изменен. Ваш новый пароль:
                                         </td>
                                     </tr>
                                 </table>
