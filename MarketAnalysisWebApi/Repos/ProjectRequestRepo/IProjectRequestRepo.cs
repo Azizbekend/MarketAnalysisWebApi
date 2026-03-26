@@ -18,5 +18,6 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         Task RemoveFromFavourites(RequestStandartDTO dto);
         Task<ICollection<DbProjectRequest>> GetFavourites(Guid userId);
         Task<ICollection<FavouritesViewModel>> GetRequestWithFavouriteLinks(Guid userId);
+        Task<SupplierSingleRequestResponse> GetRequestWithStatusById(SupplierCheckRequestDTo dto);
     }
 }

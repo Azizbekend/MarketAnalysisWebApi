@@ -14,8 +14,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         Published
     }
     public class DbProjectRequest : DbBase
-    {
-        public string? InnerId { get; set; }
+    {      public string? InnerId { get; set; }
         [Required]
         public string? NameByProjectDocs { get; set; }
         [Required]
@@ -42,9 +41,10 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public Guid ConfigTypeId { get; set; }
         [ForeignKey(nameof(ConfigTypeId))]
         public DbRequestConfigType? RequestConfigType { get; set; }
+  
 
         [JsonIgnore]
-        public ICollection<DbKnsConfig>? KnsConfigs { get; set; }
+        public ICollection<DbKnsConfiguration>? KnsConfigs { get; set; }
         [JsonIgnore]
         public ICollection<DbEquipRequest>? EquipRequest { get; set; }
         [JsonIgnore]

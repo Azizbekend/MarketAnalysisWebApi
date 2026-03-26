@@ -23,6 +23,20 @@ namespace MarketAnalysisWebApi.Controllers
             var res = await _projectRequestRepo.GetRequestById(id);
             return Ok(res);
         }
+        [HttpPost("supplier/single")]
+        public async Task<IActionResult> GetSuppliersReqWithStatus(SupplierCheckRequestDTo dTo)
+        {
+            try
+            {
+                var res = await _projectRequestRepo.GetRequestWithStatusById(dTo);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
         [HttpGet("user/requests/all")]
         public async Task<IActionResult> GetUsersRequests(Guid userId)
         {

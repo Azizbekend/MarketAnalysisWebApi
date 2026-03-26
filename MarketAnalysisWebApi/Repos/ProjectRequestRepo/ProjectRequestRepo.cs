@@ -109,6 +109,30 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             var res = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId);
             return res;
         }
+        public async Task<SupplierSingleRequestResponse> GetRequestWithStatusById(SupplierCheckRequestDTo dto)
+        {
+            var req = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
+            var acc = await _appDbContext.BusinessAccounts.FirstOrDefaultAsync(acc => acc.Id == dto.AccountId);
+            var accReq = await _appDbContext.AccountRequests.FirstOrDefaultAsync(key => key.AccountId == acc.Id && key.RequestId == req.Id);
+            var res = new SupplierSingleRequestResponse
+            {
+                InnerId = req.InnerId,
+                NameByProjectDocs = req.NameByProjectDocs,
+                ObjectName = req.ObjectName,
+                LocationRegion = req.LocationRegion,
+                CustomerName = req.CustomerName,
+                ProjectOrganizationName = req.ProjectOrganizationName,
+                ContactName = req.ContactName,
+                PhoneNumber = req.PhoneNumber,
+                CreatedAt = req.CreatedAt,
+                Status = req.Status,
+                IsArchived = req.IsArchived,
+                UserId = req.UserId,
+                ConfigTypeId = req.ConfigTypeId,
+                SupplierRequestStatus = accReq.Status
+            };
+            return res;
+        }
         public async Task<DbProjectRequest> GetRequestBySupplierId(Guid requestId)
         {
             var res = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId);
