@@ -136,7 +136,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             }
             else
             {
-                res.SupplierRequestStatus == "New";
+                res.SupplierRequestStatus = "New";
             }
             return res;
         }
