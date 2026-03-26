@@ -149,7 +149,7 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
                                             <table width=""100%"" border=""0"" cellpadding=""0"" cellspacing=""0"">
                                                 <tr>
                                                     <td
-                                                        style=""font-family:'SF Mono','Monaco',monospace; font-size:20px; font-weight:500; color:#1e293b; word-break:break-all;"">
+                                                        style=""font-family:'SF Mono','Monaco',monospace; font-size:20px; font-weight:700; text-align:center; color:#1e293b; word-break:break-all;"">
                                                         {password}
                                                     </td>
                                                 </tr>
@@ -305,7 +305,7 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
                                             <table width=""100%"" border=""0"" cellpadding=""0"" cellspacing=""0"">
                                                 <tr>
                                                     <td
-                                                        style=""font-family:'SF Mono','Monaco',monospace; font-size:20px; font-weight:500; color:#1e293b; word-break:break-all;"">
+                                                        style=""font-family:'SF Mono','Monaco',monospace; font-size:20px; font-weight:700; text-align:center; color:#1e293b; word-break:break-all;"">
                                                         {password}
                                                     </td>
                                                 </tr>
