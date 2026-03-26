@@ -313,7 +313,7 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
                 </div>
 
                 <div class='message-text'>
-                    Вы успешно прошли регистрацию в систему <strong>КликПроект</strong>.
+                    Вы успешно прошли регистрацию в системе <strong>КликПроект</strong>.
                     Ниже приведены данные для входа:
                 </div>
 
