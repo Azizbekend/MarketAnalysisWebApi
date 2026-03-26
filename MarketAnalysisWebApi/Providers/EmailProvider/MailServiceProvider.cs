@@ -19,7 +19,8 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
         private const string SenderAddr = "market@gsurso.ru";
 
         private const string ConfirmCodeSubject = "Ваш код подтверждения";
-        private const string PasswordSubject = "КликПроект. Сброс пароля.";
+        private const string PasswordRecoverySubject = "КликПроект. Сброс пароля.";
+        private const string RegisterSubject = "КликПроект. Подтверждение регистрации в системе.";
 
         public MailServiceProvider(IInnerConfigurationProvider config)
         {
@@ -379,7 +380,7 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
 
 </html>";
 
-            await Send(receiver, PasswordSubject, message);
+            await Send(receiver, RegisterSubject, message);
         }
 
         public async Task RecoveryPassword(EmailReceiver receiver, string password)
@@ -690,7 +691,7 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
 
 </html>"; 
 
-            await Send(receiver, PasswordSubject, message);
+            await Send(receiver, PasswordRecoverySubject, message);
         }
 
     }
