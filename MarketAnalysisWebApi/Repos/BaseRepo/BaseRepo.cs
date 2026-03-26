@@ -43,5 +43,27 @@ namespace MarketAnalysisWebApi.Repos.BaseRepo
             await _appDbContext.SaveChangesAsync();
 
         }
+
+        protected async Task<string> GenerateRequestNumber(Guid userId)
+        {
+            var user = await _appDbContext.UsersTable.ToListAsync();
+            var requests = await _appDbContext.ProjectRequestsTable.ToListAsync();
+            int usersIndex = user.FindIndex(x => x.Id == userId);
+            var uscomp = await _appDbContext.SupplierUsersCompaniesTable.FirstOrDefaultAsync(x => x.SupplierUserId == userId);
+            if (uscomp == null)
+            {
+                string number = $"{requests.Count}-{usersIndex}-П";
+                return number;
+            }
+            else
+            {
+                var company = await _appDbContext.CompaniesTable.FirstOrDefaultAsync(x => x.Id == uscomp.CompanyId);
+                var comps = await _appDbContext.CompaniesTable.ToListAsync();
+                int index = comps.FindIndex(x => x.Id == company.Id);
+                string number = $"{requests.Count}-{usersIndex}-{index}";
+                return number;
+            }
+
+        }
     }
 }

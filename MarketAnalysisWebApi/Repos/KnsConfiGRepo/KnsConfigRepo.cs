@@ -2,23 +2,20 @@
 using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations;
 using MarketAnalysisWebApi.DTOs.KnsCongigDTOs;
+using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.Json;
 
 namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
 {
-    public class KnsConfigRepo : IKnsConfigRepo
+    public class KnsConfigRepo : BaseRepo<DbKnsConfiguration>, IBaseRepo<DbKnsConfiguration>,IKnsConfigRepo
     {
-        private readonly AppDbContext _context;
+        public KnsConfigRepo(AppDbContext appDbContext) : base(appDbContext) { }
 
-        public KnsConfigRepo(AppDbContext context)
-        {
-            _context = context;
-        }
 
         public async Task<Guid> CreateKnsConfig(CreateKnsInnerConfigDTO dto)
         {
-            var knsCongif = new DbKnsConfig
+            var knsCongif = new DbKnsConfiguration
             {
                 Perfomance = dto.Perfomance,
                 Units = dto.Units,
@@ -46,8 +43,8 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
                 Place = dto.Place,
                 RequestId = dto.RequestId
             };
-            await _context.KnsConfigurations.AddAsync(knsCongif);
-            await _context.SaveChangesAsync();
+            await _appDbContext.KnsConfigurations.AddAsync(knsCongif);
+            await _appDbContext.SaveChangesAsync();
             return knsCongif.Id;
 
         }
@@ -61,8 +58,8 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
                     RequestId = requestId,
                     EquipmentId = equip
                 };
-                _context.EquipRequestTable.Add(relation);
-                await _context.SaveChangesAsync();
+                _appDbContext.EquipRequestTable.Add(relation);
+                await _appDbContext.SaveChangesAsync();
 
             }
         }
@@ -84,28 +81,28 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
                 Status = RequestStatus.New,
                 InnerId = await GenerateRequestNumber(dto.UserId)
             };
-            await  _context.ProjectRequestsTable.AddAsync(knsRequest);
-            await _context.SaveChangesAsync();
+            await _appDbContext.ProjectRequestsTable.AddAsync(knsRequest);
+            await _appDbContext.SaveChangesAsync();
             return knsRequest.Id;
 
         }
 
         public async Task<ICollection<DbEquipment>> GetCurrentKnsEquipment(Guid request)
         {
-            var prEqList = await _context.EquipRequestTable.Where(x => x.RequestId == request).ToListAsync();
+            var prEqList = await _appDbContext.EquipRequestTable.Where(x => x.RequestId == request).ToListAsync();
             var list = new List<DbEquipment>();
             foreach (var eq in prEqList)
             {
-                var res2 = await _context.EquipmentTable.FirstOrDefaultAsync(x => x.Id == eq.EquipmentId);
+                var res2 = await _appDbContext.EquipmentTable.FirstOrDefaultAsync(x => x.Id == eq.EquipmentId);
                 list.Add(res2);
             }
             return list;
 
         }
 
-        public async Task<DbKnsConfig> GetKnsConfig(Guid requestId)
+        public async Task<DbKnsConfiguration> GetKnsConfig(Guid requestId)
         {
-            var res = await _context.KnsConfigurations.FirstOrDefaultAsync(x => x.RequestId == requestId);
+            var res = await _appDbContext.KnsConfigurations.FirstOrDefaultAsync(x => x.RequestId == requestId);
             if (res == null)
             {
                 throw new Exception("Не корректный Id заявки!");
@@ -119,29 +116,9 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
 
         public async Task<ICollection<DbEquipment>> GetKnsConfigEquipment(Guid typeId)
         {
-            return await _context.EquipmentTable.Where(x => x.ConfigTypeId == typeId).ToListAsync();
+            return await _appDbContext.EquipmentTable.Where(x => x.ConfigTypeId == typeId).ToListAsync();
         }
 
-        private async Task<string> GenerateRequestNumber(Guid userId)
-        {
-            var user = await _context.UsersTable.ToListAsync();
-            var requests = await _context.ProjectRequestsTable.ToListAsync();
-            int usersIndex = user.FindIndex(x => x.Id == userId);
-            var uscomp = await _context.SupplierUsersCompaniesTable.FirstOrDefaultAsync(x => x.SupplierUserId == userId);
-            if (uscomp == null)
-            {
-                string number = $"{requests.Count}-{usersIndex}-П";
-                return number;
-            }
-            else
-            {
-                var company = await _context.CompaniesTable.FirstOrDefaultAsync(x => x.Id == uscomp.CompanyId);
-                var comps = await _context.CompaniesTable.ToListAsync();
-                int index = comps.FindIndex(x => x.Id == company.Id);
-                string number = $"{requests.Count}-{usersIndex}-{index}";
-                return number;
-            }
-            
-        }
+
     }
 }
