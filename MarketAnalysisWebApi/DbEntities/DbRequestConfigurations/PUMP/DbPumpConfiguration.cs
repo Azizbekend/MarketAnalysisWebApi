@@ -1,4 +1,5 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
+using MarketAnalysisWebApi.DbEntities.DbEntities;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP
@@ -21,6 +22,9 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP
         public Guid PumpTypeId { get; set; }
         [ForeignKey(nameof(PumpTypeId))]
         public DbPumpType? Type { get; set; }
+        public Guid RequestId { get; set; }
+        [ForeignKey(nameof(RequestId))]
+        public DbProjectRequest ? Requests { get; set; }
         public LiquidType PumpedLiquidType { get; set; }
         public double PumpEfficiency { get; set; }
         public double LiquidTemperature { get; set; }

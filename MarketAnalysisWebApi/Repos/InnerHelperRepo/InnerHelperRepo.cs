@@ -1,5 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbEntities;
+using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,6 +41,15 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
             var config = new DbRequestConfigType { ConfigTypeName = name };
             _appDbContext.ConfigurationTypesTable.Add(config);
             await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task<Guid> CreatePumpType(string name)
+        {
+            var type = new DbPumpType { TypeName = name};
+            await _appDbContext.PumpTypes.AddAsync(type);
+            await _appDbContext.SaveChangesAsync();
+            return type.Id;
+
         }
 
         public async Task<Guid> CreateRegion(string name)

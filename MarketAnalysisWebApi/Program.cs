@@ -10,6 +10,7 @@ using MarketAnalysisWebApi.Repos.JwtRepo;
 using MarketAnalysisWebApi.Repos.KnsConfiGRepo;
 using MarketAnalysisWebApi.Repos.OffersRepo;
 using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
+using MarketAnalysisWebApi.Repos.PumpConfigRepo;
 using MarketAnalysisWebApi.Repos.UserRepo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
@@ -45,6 +46,7 @@ builder.Services.AddTransient<IProjectRequestRepo, ProjectRequestRepo>();
 builder.Services.AddTransient<IOfferRepo, OfferRepo>();
 builder.Services.AddTransient<IMailServiceProvider, MailServiceProvider>();
 builder.Services.AddTransient<IFileStorageRepo, FileStorageRepo>();
+builder.Services.AddTransient<IPumpConfigRepo, PumpConfigRepo>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",

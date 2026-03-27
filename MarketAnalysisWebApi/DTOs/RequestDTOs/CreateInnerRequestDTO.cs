@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MarketAnalysisWebApi.DTOs.KnsCongigDTOs
+namespace MarketAnalysisWebApi.DTOs.RequestDTOs
 {
-    public class CreateKnsInnerRequestDTO
+    public class CreateInnerRequestDTO
     {
         public string? NameByProjectDocs { get; set; }
         public string? ObjectName { get; set; }

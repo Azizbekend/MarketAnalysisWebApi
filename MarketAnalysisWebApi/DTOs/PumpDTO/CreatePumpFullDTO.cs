@@ -1,12 +1,19 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DTOs.PumpDTO
 {
-    public class CreateInnerPumpConfig
+    public class CreatePumpFullDTO
     {
+        public string? NameByProjectDocs { get; set; }
+        public string? ObjectName { get; set; }
+        public string? LocationRegion { get; set; }
+        public string? CustomerName { get; set; }
+        public string? ProjectOrganizationName { get; set; }
+        public string? ContactName { get; set; }
+        public string? PhoneNumber { get; set; }
+        public Guid UserId { get; set; }
+        public Guid ConfigTypeId { get; set; }
         public Guid PumpTypeId { get; set; }
-        public Guid RequestId { get; set; }
         public LiquidType PumpedLiquidType { get; set; }
         public double PumpEfficiency { get; set; }
         public double LiquidTemperature { get; set; }
@@ -32,5 +39,7 @@ namespace MarketAnalysisWebApi.DTOs.PumpDTO
         public bool FlushValve { get; set; }
         public bool OtherLevelMeters { get; set; }
         public string? OtherRequirements { get; set; }
+        public double HeightOrDepth { get; set; }
+        public InstalationType InstalationType { get; set; }
     }
 }

@@ -92,6 +92,12 @@ namespace MarketAnalysisWebApi.Controllers
             var res = await _innerHelperRepo.GetAllRegions();
             return Ok(res);
         }
+        [HttpGet("pump/type/create")]
+        public async Task<IActionResult> CreatepumpType(string type)
+        {
+            var res = await _innerHelperRepo.CreatePumpType(type);
+            return Ok(res);
+        }
 
         //[HttpGet("sql/join/test")]
         //public async Task<IActionResult> GetJoinTestResuilt(Guid userId)

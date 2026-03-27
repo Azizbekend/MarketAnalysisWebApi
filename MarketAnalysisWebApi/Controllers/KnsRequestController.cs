@@ -1,5 +1,6 @@
 ﻿using MarketAnalysisWebApi.DTOs.KnsConfigDTOs;
 using MarketAnalysisWebApi.DTOs.KnsCongigDTOs;
+using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.Repos.KnsConfiGRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -56,7 +57,7 @@ namespace MarketAnalysisWebApi.Controllers
         {
             try
             {
-                var request = new CreateKnsInnerRequestDTO()
+                var request = new CreateInnerRequestDTO()
                 {
                     NameByProjectDocs = dto.NameByProjectDocs,
                     ObjectName = dto.ObjectName,

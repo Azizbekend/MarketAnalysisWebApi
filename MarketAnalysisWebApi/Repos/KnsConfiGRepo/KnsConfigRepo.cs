@@ -2,6 +2,7 @@
 using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS;
 using MarketAnalysisWebApi.DTOs.KnsCongigDTOs;
+using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.Json;
@@ -64,7 +65,7 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
             }
         }
 
-        public async Task<Guid> CreateKnsRequest(CreateKnsInnerRequestDTO dto)
+        public async Task<Guid> CreateKnsRequest(CreateInnerRequestDTO dto)
         {
 
             var knsRequest = new DbProjectRequest

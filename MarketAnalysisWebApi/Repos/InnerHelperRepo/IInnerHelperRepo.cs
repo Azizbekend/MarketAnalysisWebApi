@@ -15,6 +15,7 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
         Task<ICollection<DbRegion>> GetAllRegions();
         Task<Guid> CreateRegion(string name);
         Task<Guid> AttachRegion(Guid requestId, Guid regionId);
+        Task<Guid> CreatePumpType(string name);
         
     }
 }

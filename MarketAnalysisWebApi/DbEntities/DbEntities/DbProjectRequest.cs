@@ -1,5 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
 using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS;
+using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
@@ -55,5 +56,11 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public ICollection<DbFavoriteRequest>? FavoriteRequests { get; set; }
         [JsonIgnore]
         public ICollection<DbAccountRequest>? AccountRequests { get; set; }
+        [JsonIgnore]
+        public ICollection<DbPumpConfiguration> ? PumpConfigurations { get; set; }
+        [JsonIgnore]
+        public ICollection<DbDryPump> ? DryPumps { get; set; }
+        [JsonIgnore]
+        public ICollection<DbSubmersiblePump> ? SubmersiblePumps { get; set; }
     }
 }
