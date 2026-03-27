@@ -1,5 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
-using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations;
+using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS;
+using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP;
 using MarketAnalysisWebApi.DbEntities.FileStorages;
 using Microsoft.EntityFrameworkCore;
 

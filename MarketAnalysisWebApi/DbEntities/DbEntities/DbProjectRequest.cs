@@ -1,5 +1,5 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
-using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations;
+using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
