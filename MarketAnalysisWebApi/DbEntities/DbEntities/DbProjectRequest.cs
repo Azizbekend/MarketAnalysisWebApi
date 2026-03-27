@@ -22,9 +22,6 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         [Required]
         public string? ObjectName { get; set; }
         [Required]
-        [MaxLength(50)]
-        public string? LocationRegion { get; set; }
-        [Required]
         public string? CustomerName { get; set; }
         [Required]
         public string? ProjectOrganizationName { get; set; }

@@ -72,7 +72,6 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
             {
                 NameByProjectDocs = dto.NameByProjectDocs,
                 ObjectName = dto.ObjectName,
-                LocationRegion = dto.LocationRegion,
                 CustomerName = dto.CustomerName,
                 ProjectOrganizationName = dto.ProjectOrganizationName,
                 ContactName = dto.ContactName,
