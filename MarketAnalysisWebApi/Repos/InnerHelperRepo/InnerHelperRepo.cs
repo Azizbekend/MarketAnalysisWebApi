@@ -53,6 +53,12 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
             return newRegion.Id;
         }
 
+        public async Task<ICollection<DbRegion>> GetAllRegions()
+        {
+            var res = await _appDbContext.RegionsTable.ToListAsync();
+            return res;
+        }
+
         public async Task InnerCreateBusinessAcc(Guid userId)
         {
             var BA = new DbBusinessAccount { UserId = userId };

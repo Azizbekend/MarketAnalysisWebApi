@@ -263,12 +263,6 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             PhoneNumber = r.PhoneNumber,
             CreatedAt = r.CreatedAt,
             Status = r.Status,
-            UserId = r.UserId,
-            User = r.User != null ? new DbUser
-            {
-                Id = r.User.Id,
-                FullName = r.User.FullName
-            }:null, 
             RegionId = r.RegionId,
             Region = r.Region != null ? new DbRegion
             {
