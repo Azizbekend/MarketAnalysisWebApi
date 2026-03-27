@@ -1,6 +1,7 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
 using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS;
 using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP;
+using MarketAnalysisWebApi.DbEntities.FileStorages;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
@@ -36,6 +37,9 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         [ForeignKey(nameof(RegionId))]
         public DbRegion ? Region { get; set; }
         public bool IsArchived { get; set; } = false;
+        public Guid FileId { get; set; }
+        [ForeignKey(nameof(FileId))]
+        public DbRequestFileModel ? File { get; set; }
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]
         public DbUser? User { get; set; }

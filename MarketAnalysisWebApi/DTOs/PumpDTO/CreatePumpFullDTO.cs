@@ -16,6 +16,10 @@ namespace MarketAnalysisWebApi.DTOs.PumpDTO
         public Guid PumpTypeId { get; set; }
         public LiquidType PumpedLiquidType { get; set; }
         public double PumpEfficiency { get; set; }
+        public LiquidsIntakeType IntakeType { get; set; }
+
+        public int WorkPumpsCount { get; set; }
+        public int ReservePumpsCount { get; set; }
         public double LiquidTemperature { get; set; }
         public double MineralParticlesSize { get; set; }
         public double MineralParticlesConcentration { get; set; }

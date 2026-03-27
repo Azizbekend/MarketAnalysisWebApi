@@ -119,5 +119,29 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
             await file.CopyToAsync(memoryStream, cancellationToken);
             return memoryStream.ToArray();
         }
+
+        public async Task<Guid> SaveRequestFileAsync(RequestSchemeFileDTO dto, CancellationToken token = default)
+        {
+            ArgumentNullException.ThrowIfNull(dto.File);
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
+            ArgumentNullException.ThrowIfNull(request);
+            var fileModel = new DbRequestFileModel
+            {
+                FileName = dto.File.FileName,
+                ContentType = dto.File.ContentType,
+                FileSize = dto.File.Length,
+                FileData = await ReadFileDataAsync(dto.File, token)
+            };
+            await _appDbContext.RequestFiles.AddAsync(fileModel, token);
+            request.FileId = fileModel.Id;
+            _appDbContext.ProjectRequestsTable.Attach(request);
+            await _appDbContext.SaveChangesAsync(token);
+            return fileModel.Id;
+        }
+
+        public async Task<DbRequestFileModel> GetRequestFileAsync(Guid requestSchemeFileId, CancellationToken token = default)
+        {
+            return await _appDbContext.RequestFiles.AsNoTracking().FirstOrDefaultAsync(x => x.Id == requestSchemeFileId, token);
+        }
     }
 }

@@ -41,6 +41,9 @@ namespace MarketAnalysisWebApi.Controllers
             var requestId = await _pumpConfigRepo.CreatePumpRequestAsync(pumpRequest);
             var pumpConfig = new CreateInnerPumpConfig
             {
+                IntakeType = dto.IntakeType,
+                ReservePumpsCount = dto.ReservePumpsCount,
+                WorkPumpsCount = dto.WorkPumpsCount,
                 RequestId = requestId,
                 PumpTypeId = dto.PumpTypeId,
                 PumpedLiquidType = dto.PumpedLiquidType,

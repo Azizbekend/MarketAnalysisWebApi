@@ -25,8 +25,12 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP
         public Guid RequestId { get; set; }
         [ForeignKey(nameof(RequestId))]
         public DbProjectRequest ? Requests { get; set; }
-        public LiquidType PumpedLiquidType { get; set; }
         public double PumpEfficiency { get; set; }
+        public LiquidType PumpedLiquidType { get; set; }
+        public LiquidsIntakeType IntakeType { get; set; }
+
+        public int WorkPumpsCount { get; set; }
+        public int ReservePumpsCount { get; set; }
         public double LiquidTemperature { get; set; }
         public double MineralParticlesSize { get; set; }
         public double MineralParticlesConcentration { get; set; }
