@@ -11,5 +11,6 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
         Task<bool> PasswordRecoveryAsync(string email);
         Task<Guid> SendConfirmMessageAsync(Guid userId);
         Task<bool> CheckConfirmCode(MailConfirmCodeDTO dto);
+        Task<bool> CheckEmailExistance(string email);
     }
 }

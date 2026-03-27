@@ -79,6 +79,12 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+        [HttpGet("email/existance/check")]
+        public async Task<IActionResult> EmailCheck(string email)
+        {
+            var res = await _userRepo.CheckEmailExistance(email);
+            return Ok(res);
+        }
 
         [HttpPost("employe/register")]
         public async Task<IActionResult> EmployeRegistration(EmployeCreateDTO dto)

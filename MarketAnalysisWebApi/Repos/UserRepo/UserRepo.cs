@@ -21,7 +21,7 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
 
         public async Task<Guid> CreateEmployeUser(EmployeCreateDTO dto)
         {           
-            if (await _appDbContext.UsersTable.AnyAsync(x => x.Email == dto.Email)) { throw new Exception("Company not found!"); }
+            if (await _appDbContext.UsersTable.AnyAsync(x => x.Email == dto.Email)) { throw new Exception($"Пользователь с данным данным адресом ({dto.Email}) уже существует"); }
             else
             {
                 var role = await _appDbContext.UsersRolesTable.FirstOrDefaultAsync(x => x.RoleName == dto.RoleName);
@@ -127,5 +127,13 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
             }
         }
 
+        public async Task<bool> CheckEmailExistance(string email)
+        {
+            if (await _appDbContext.UsersTable.AnyAsync(x => x.Email == email))
+            {
+                return true;
+            }
+            else { return false; }
+        }
     }
 }

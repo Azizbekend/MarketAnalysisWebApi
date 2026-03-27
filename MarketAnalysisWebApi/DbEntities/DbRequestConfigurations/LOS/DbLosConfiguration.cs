@@ -1,6 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
 
-namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations
+namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.LOS
 {
     public class DbLosConfiguration : DbBase
     {

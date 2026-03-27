@@ -1,6 +1,7 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations
+namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP
 {
     public enum LiquidType
     {
@@ -17,6 +18,9 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations
     }
     public class DbPumpConfiguration : DbBase
     {
+        public Guid PumpTypeId { get; set; }
+        [ForeignKey(nameof(PumpTypeId))]
+        public DbPumpType? Type { get; set; }
         public LiquidType PumpedLiquidType { get; set; }
         public double PumpEfficiency { get; set; }
         public double LiquidTemperature { get; set; }
@@ -25,6 +29,13 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations
         public bool BigParticleExistance { get; set; }
         public string? SpecificWastes { get; set; } // если есть специфические отходы, прописать через запятую
         public double LiquidDensity  { get; set; }
+        public double RequiredPressure { get; set; }
+        public double RequiredOutPressure { get; set; }
+        public double PressureLoses { get; set; }
+        public double NetworkLength { get; set; }
+        public NetworkConditions PipesConditions { get; set; }
+        public double PumpDiameter { get; set; }
+        public string? GeodesicalMarks { get; set; }
         public bool ExplosionProtection { get; set; }
         public string? ControlType { get; set; }
         public string? PowerCurrentType { get; set; }
@@ -35,6 +46,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations
         public bool FlushValve { get; set; }
         public bool OtherLevelMeters { get; set; }
         public string? OtherRequirements { get; set; }
+
 
     }
 }

@@ -1,5 +1,5 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
-using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations;
+using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS;
 using MarketAnalysisWebApi.DTOs.KnsCongigDTOs;
 
 namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo

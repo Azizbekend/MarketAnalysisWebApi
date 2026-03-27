@@ -3,7 +3,7 @@ using MarketAnalysisWebApi.DbEntities.DbEntities;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations
+namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS
 {
     public enum PerfomanceMeasureUnit
     {
