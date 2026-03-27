@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbSupplierUserCompany : DbBase
+    public class DbSupplierUserCompany : DbBaseEntity
     {
         public Guid CompanyId { get; set; }
         [ForeignKey(nameof(CompanyId))]

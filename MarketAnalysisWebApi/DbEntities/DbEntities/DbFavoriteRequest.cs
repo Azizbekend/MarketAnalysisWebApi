@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbFavoriteRequest : DbBase
+    public class DbFavoriteRequest : DbBaseEntity
     {
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]

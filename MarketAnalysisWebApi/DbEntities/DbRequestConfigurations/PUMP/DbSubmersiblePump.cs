@@ -18,7 +18,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP
         Old
     }
 
-    public class DbSubmersiblePump : DbBase
+    public class DbSubmersiblePump : DbBaseEntity
     {
         public Guid PumpTypeId { get; set; }
         [ForeignKey(nameof(PumpTypeId))]

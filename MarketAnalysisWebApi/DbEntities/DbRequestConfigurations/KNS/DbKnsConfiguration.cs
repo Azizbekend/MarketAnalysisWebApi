@@ -40,7 +40,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS
     }
 
 
-    public class DbKnsConfiguration : DbBase
+    public class DbKnsConfiguration : DbBaseEntity
     {
         public double Perfomance { get; set; }
 

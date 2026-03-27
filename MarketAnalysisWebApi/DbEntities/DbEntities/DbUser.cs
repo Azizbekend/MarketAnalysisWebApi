@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbUser : DbBase
+    public class DbUser : DbBaseEntity
     {
         [MaxLength(255)]
         public string? FullName { get; set; }

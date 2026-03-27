@@ -2,7 +2,7 @@
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbCompanyType : DbBase
+    public class DbCompanyType : DbBaseEntity
     {
         public string? TypeName { get; set; }
 

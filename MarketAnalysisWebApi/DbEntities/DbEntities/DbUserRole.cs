@@ -2,7 +2,7 @@
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbUserRole : DbBase
+    public class DbUserRole : DbBaseEntity
     {
         public string? RoleName { get; set; }
 

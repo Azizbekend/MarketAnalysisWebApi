@@ -2,7 +2,7 @@
 
 namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.LOS
 {
-    public class DbLosConfiguration : DbBase
+    public class DbLosConfiguration : DbBaseEntity
     {
         public double TotalCathmentArea { get; set; }
         public double WaterproofSurfaceArea { get; set; }

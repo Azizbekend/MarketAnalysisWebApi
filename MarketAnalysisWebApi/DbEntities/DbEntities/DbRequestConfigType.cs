@@ -2,7 +2,7 @@
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbRequestConfigType : DbBase
+    public class DbRequestConfigType : DbBaseEntity
     {
         public string? ConfigTypeName { get; set; }
 

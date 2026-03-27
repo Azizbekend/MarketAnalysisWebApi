@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbRefreshToken : DbBase
+    public class DbRefreshToken : DbBaseEntity
     {
         [Required]
         public Guid UserId { get; set; }

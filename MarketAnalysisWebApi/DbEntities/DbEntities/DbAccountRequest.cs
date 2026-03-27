@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbAccountRequest : DbBase
+    public class DbAccountRequest : DbBaseEntity
     {
 
         public Guid AccountId { get; set; }

@@ -3,7 +3,7 @@ using MarketAnalysisWebApi.DbEntities.DbEntities;
 
 namespace MarketAnalysisWebApi.DbEntities.FileStorages
 {
-    public class DbImageFileModel : DbBase
+    public class DbImageFileModel : DbBaseEntity
     {
         public string? FileName { get; set; }
         public string? ContentType { get; set; }

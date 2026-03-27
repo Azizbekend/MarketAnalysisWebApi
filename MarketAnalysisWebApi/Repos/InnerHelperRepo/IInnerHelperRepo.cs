@@ -12,6 +12,8 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
         Task InnerCreateBusinessAcc(Guid userId);
         Task<Guid> RequestStatusChangeAsync(RequestStasusChangeDTo dto);
         Task<Guid> RequestArchive(Guid requestId);
+        Task<Guid> CreateRegion(string name);
+        Task<Guid> AttachRegion(Guid requestId, Guid regionId);
         
     }
 }

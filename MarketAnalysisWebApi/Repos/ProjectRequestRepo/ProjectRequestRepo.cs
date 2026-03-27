@@ -215,5 +215,34 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 throw new Exception("not found!");
             }
         }
+
+        public async Task<ICollection<GetBaseRequestDTO>> GetRequestsWithRegions()
+        {
+            var result = await _appDbContext.ProjectRequestsTable
+    .GroupJoin(
+        _appDbContext.RegionsTable,
+        request => request.RegionId,
+        region => region.Id,
+        (request, regions) => new { request, regions })
+    .SelectMany(
+        x => x.regions.DefaultIfEmpty(),
+        (x, region) => new GetBaseRequestDTO
+        {
+            InnerId = x.request.InnerId,
+            NameByProjectDocs = x.request.NameByProjectDocs,
+            ObjectName = x.request.ObjectName,
+            LocationRegion = x.request.LocationRegion,
+            CustomerName = x.request.CustomerName,
+            ProjectOrganizationName = x.request.ProjectOrganizationName,
+            ContactName = x.request.ContactName,
+            PhoneNumber = x.request.PhoneNumber,
+            CreatedAt = x.request.CreatedAt,
+            Status = x.request.Status,
+            RegionId = x.request.RegionId,
+            Region = region != null ? region : null
+        }).ToListAsync();
+
+            return result;
+        }
     }
 }

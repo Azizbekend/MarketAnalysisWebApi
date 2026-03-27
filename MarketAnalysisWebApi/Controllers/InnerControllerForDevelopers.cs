@@ -72,6 +72,20 @@ namespace MarketAnalysisWebApi.Controllers
             return Ok();
         }
 
+        [HttpGet("request/region/create")]
+        public async Task<IActionResult> CreateRegion(string name)
+        {
+            var res = await _innerHelperRepo.CreateRegion(name);
+            return Ok(res);
+        }
+
+        [HttpGet("request/region/attach")]
+        public async Task<IActionResult> AttachRegion(Guid requestId, Guid regionId)
+        {
+            var res = await _innerHelperRepo.AttachRegion(requestId, regionId);
+            return Ok(res);
+        }
+
         //[HttpGet("sql/join/test")]
         //public async Task<IActionResult> GetJoinTestResuilt(Guid userId)
         //{

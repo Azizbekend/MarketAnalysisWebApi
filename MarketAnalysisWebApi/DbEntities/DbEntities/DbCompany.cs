@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbCompany : DbBase
+    public class DbCompany : DbBaseEntity
     {
         [Required]
         [MaxLength(255)]

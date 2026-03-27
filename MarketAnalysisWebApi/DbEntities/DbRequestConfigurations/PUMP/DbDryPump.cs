@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP
 {
-    public class DbDryPump : DbBase
+    public class DbDryPump : DbBaseEntity
     {
         public Guid PumpTypeId { get; set; }
         [ForeignKey(nameof(PumpTypeId))]

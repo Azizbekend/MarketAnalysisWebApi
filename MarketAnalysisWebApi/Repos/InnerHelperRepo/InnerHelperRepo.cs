@@ -15,6 +15,15 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
             _appDbContext = appDbContext;
         }
 
+        public async Task<Guid> AttachRegion(Guid requestId, Guid regionId)
+        {
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == requestId);
+            request?.RegionId = regionId;
+            _appDbContext.ProjectRequestsTable.Attach(request);
+            await _appDbContext.SaveChangesAsync();
+            return requestId;
+        }
+
         public async Task CreateKnsEquipment(string name)
         {
             var equipment = new DbEquipment
@@ -31,6 +40,17 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
             var config = new DbRequestConfigType { ConfigTypeName = name };
             _appDbContext.ConfigurationTypesTable.Add(config);
             await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task<Guid> CreateRegion(string name)
+        {
+            var newRegion = new DbRegion
+            {
+                RegionName = name
+            };
+            await _appDbContext.RegionsTable.AddAsync(newRegion);
+            await _appDbContext.SaveChangesAsync();
+            return newRegion.Id;
         }
 
         public async Task InnerCreateBusinessAcc(Guid userId)

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbEquipRequest : DbBase
+    public class DbEquipRequest : DbBaseEntity
     {
         public Guid RequestId { get; set; }
         [ForeignKey(nameof(RequestId))]

@@ -23,6 +23,12 @@ namespace MarketAnalysisWebApi.Controllers
             var res = await _projectRequestRepo.GetRequestById(id);
             return Ok(res);
         }
+        [HttpGet("all/regions")]
+        public async Task<IActionResult> GetRequestWithRegins()
+        {
+            var res = await _projectRequestRepo.GetRequestsWithRegions();
+            return Ok(res);
+        }
         [HttpPost("supplier/single")]
         public async Task<IActionResult> GetSuppliersReqWithStatus(SupplierCheckRequestDTo dTo)
         {

@@ -31,5 +31,10 @@ namespace MarketAnalysisWebApi.DbEntities
         public DbSet<DbPumpConfiguration> PumpConfigurations { get; set; }
         public DbSet<DbBusinessAccount> BusinessAccounts { get; set; }
         public DbSet<DbAccountRequest> AccountRequests { get; set; }
+        public DbSet<DbPumpConfiguration> PumpsTable { get; set; }
+        public DbSet<DbPumpType> PumpTypes { get; set; }
+        public DbSet<DbDryPump> DryPumps { get; set; }
+        public DbSet<DbSubmersiblePump> SubmersiblePumps { get; set; }
+        public DbSet<DbRegion> RegionsTable { get; set; }
     }
 }

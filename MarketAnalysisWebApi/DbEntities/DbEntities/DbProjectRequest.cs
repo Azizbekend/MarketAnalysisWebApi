@@ -13,8 +13,9 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         Rejected,
         Published
     }
-    public class DbProjectRequest : DbBase
-    {      public string? InnerId { get; set; }
+    public class DbProjectRequest : DbBaseEntity
+    {      
+        public string? InnerId { get; set; }
         [Required]
         public string? NameByProjectDocs { get; set; }
         [Required]
@@ -33,6 +34,9 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public string? PhoneNumber { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now.ToUniversalTime().AddHours(3);
         public RequestStatus Status { get; set; } = RequestStatus.New;
+        public Guid ? RegionId { get; set; }
+        [ForeignKey(nameof(RegionId))]
+        public DbRegion ? Region { get; set; }
         public bool IsArchived { get; set; } = false;
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]

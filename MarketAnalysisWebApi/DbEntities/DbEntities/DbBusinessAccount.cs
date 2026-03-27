@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbBusinessAccount : DbBase
+    public class DbBusinessAccount : DbBaseEntity
     {
         public double Coins { get; set; } = 10;
         [ForeignKey("UsersTable")]

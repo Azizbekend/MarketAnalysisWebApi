@@ -16,7 +16,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP
         Periodic,
         Uneven
     }
-    public class DbPumpConfiguration : DbBase
+    public class DbPumpConfiguration : DbBaseEntity
     {
         public Guid PumpTypeId { get; set; }
         [ForeignKey(nameof(PumpTypeId))]

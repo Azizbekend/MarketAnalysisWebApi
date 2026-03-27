@@ -3,6 +3,7 @@ using System;
 using MarketAnalysisWebApi.DbEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MarketAnalysisWebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260327061650_pumpConfigFix")]
+    partial class pumpConfigFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -312,9 +315,6 @@ namespace MarketAnalysisWebApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("RegionId")
-                        .HasColumnType("uuid");
-
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
@@ -324,8 +324,6 @@ namespace MarketAnalysisWebApi.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ConfigTypeId");
-
-                    b.HasIndex("RegionId");
 
                     b.HasIndex("UserId");
 
@@ -367,20 +365,6 @@ namespace MarketAnalysisWebApi.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("RefreshTokens");
-                });
-
-            modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbRegion", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("RegionName")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RegionsTable");
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbRequestConfigType", b =>
@@ -970,17 +954,11 @@ namespace MarketAnalysisWebApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbRegion", "Region")
-                        .WithMany("PRequests")
-                        .HasForeignKey("RegionId");
-
                     b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbUser", "User")
                         .WithMany("UsersRequests")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Region");
 
                     b.Navigation("RequestConfigType");
 
@@ -1103,11 +1081,6 @@ namespace MarketAnalysisWebApi.Migrations
                     b.Navigation("FavoriteRequests");
 
                     b.Navigation("KnsConfigs");
-                });
-
-            modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbRegion", b =>
-                {
-                    b.Navigation("PRequests");
                 });
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbEntities.DbRequestConfigType", b =>

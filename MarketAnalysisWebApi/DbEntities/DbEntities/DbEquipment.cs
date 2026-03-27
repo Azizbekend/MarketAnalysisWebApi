@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
 {
-    public class DbEquipment : DbBase
+    public class DbEquipment : DbBaseEntity
     {
         public string? Name { get; set; }
         public Guid ConfigTypeId { get; set; }
