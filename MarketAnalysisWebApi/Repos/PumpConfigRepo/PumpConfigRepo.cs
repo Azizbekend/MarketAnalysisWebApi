@@ -5,6 +5,7 @@ using MarketAnalysisWebApi.DTOs.KnsCongigDTOs;
 using MarketAnalysisWebApi.DTOs.PumpDTO;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.Repos.BaseRepo;
+using Microsoft.EntityFrameworkCore;
 
 namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
 {
@@ -101,6 +102,10 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
             return pumpRequest.Id;
         }
 
-
+        public async Task<ICollection<DbPumpType>> GetTypes()
+        {
+            var list = await _appDbContext.PumpTypes.ToListAsync();
+            return list;
+        }
     }
 }

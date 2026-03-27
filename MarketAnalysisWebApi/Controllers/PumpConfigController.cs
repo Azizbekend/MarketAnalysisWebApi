@@ -16,7 +16,12 @@ namespace MarketAnalysisWebApi.Controllers
         {
             _pumpConfigRepo = pumpConfigRepo;
         }
-
+        [HttpGet("pump/types/all")]
+        public async Task<IActionResult> GetTypes()
+        {
+            var res = await _pumpConfigRepo.GetTypes();
+            return Ok(res);
+        }
 
         [HttpPost("create")]
         public async Task<IActionResult> CreatePumpRequest(CreatePumpFullDTO dto)
