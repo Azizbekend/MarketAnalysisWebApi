@@ -20,5 +20,6 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         Task<ICollection<FavouritesViewModel>> GetRequestWithFavouriteLinks(Guid userId);
         Task<SupplierSingleRequestResponse> GetRequestWithStatusById(SupplierCheckRequestDTo dto);
         Task<ICollection<GetBaseRequestDTO>> GetRequestsWithRegions();
+        Task<GetBaseRequestDTO> GetRequestWithRegion(Guid requestId);
     }
 }

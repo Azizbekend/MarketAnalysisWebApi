@@ -219,28 +219,64 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         public async Task<ICollection<GetBaseRequestDTO>> GetRequestsWithRegions()
         {
             var result = await _appDbContext.ProjectRequestsTable
-    .GroupJoin(
-        _appDbContext.RegionsTable,
-        request => request.RegionId,
-        region => region.Id,
-        (request, regions) => new { request, regions })
-    .SelectMany(
-        x => x.regions.DefaultIfEmpty(),
-        (x, region) => new GetBaseRequestDTO
+                .GroupJoin(
+                    _appDbContext.RegionsTable,
+                    request => request.RegionId,
+                    region => region.Id,
+                    (request, regions) => new { request, regions })
+                .SelectMany(
+                    x => x.regions.DefaultIfEmpty(),
+                    (x, region) => new GetBaseRequestDTO
+                    {
+                        InnerId = x.request.InnerId,
+                        NameByProjectDocs = x.request.NameByProjectDocs,
+                        ObjectName = x.request.ObjectName,
+                        LocationRegion = x.request.LocationRegion,
+                        CustomerName = x.request.CustomerName,
+                        ProjectOrganizationName = x.request.ProjectOrganizationName,
+                        ContactName = x.request.ContactName,
+                        PhoneNumber = x.request.PhoneNumber,
+                        CreatedAt = x.request.CreatedAt,
+                        Status = x.request.Status,
+                        RegionId = x.request.RegionId,
+                        Region = region != null ? region : null
+                    }).ToListAsync();
+
+            return result;
+        }
+
+        public async Task<GetBaseRequestDTO> GetRequestWithRegion(Guid requestId)
         {
-            InnerId = x.request.InnerId,
-            NameByProjectDocs = x.request.NameByProjectDocs,
-            ObjectName = x.request.ObjectName,
-            LocationRegion = x.request.LocationRegion,
-            CustomerName = x.request.CustomerName,
-            ProjectOrganizationName = x.request.ProjectOrganizationName,
-            ContactName = x.request.ContactName,
-            PhoneNumber = x.request.PhoneNumber,
-            CreatedAt = x.request.CreatedAt,
-            Status = x.request.Status,
-            RegionId = x.request.RegionId,
-            Region = region != null ? region : null
-        }).ToListAsync();
+            var result = await _appDbContext.ProjectRequestsTable
+        .Include(r => r.Region)
+
+        .Where(r => r.Id == requestId)
+        .Select(r => new GetBaseRequestDTO
+        {
+            InnerId = r.InnerId,
+            NameByProjectDocs = r.NameByProjectDocs,
+            ObjectName = r.ObjectName,
+            LocationRegion = r.LocationRegion,
+            CustomerName = r.CustomerName,
+            ProjectOrganizationName = r.ProjectOrganizationName,
+            ContactName = r.ContactName,
+            PhoneNumber = r.PhoneNumber,
+            CreatedAt = r.CreatedAt,
+            Status = r.Status,
+            UserId = r.UserId,
+            User = r.User != null ? new DbUser
+            {
+                Id = r.User.Id,
+                FullName = r.User.FullName
+            }:null, 
+            RegionId = r.RegionId,
+            Region = r.Region != null ? new DbRegion
+            {
+                Id = r.Region.Id,
+                RegionName = r.Region.RegionName
+            } : null
+        })
+        .FirstOrDefaultAsync();
 
             return result;
         }
