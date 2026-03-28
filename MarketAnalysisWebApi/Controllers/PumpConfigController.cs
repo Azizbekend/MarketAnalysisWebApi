@@ -102,7 +102,7 @@ namespace MarketAnalysisWebApi.Controllers
                 };
                 var res = await _pumpConfigRepo.CreateSubPump(subPump);
             }
-            return Ok(pumpConfigId);
+            return Ok(requestId);
         }
     }
 }
