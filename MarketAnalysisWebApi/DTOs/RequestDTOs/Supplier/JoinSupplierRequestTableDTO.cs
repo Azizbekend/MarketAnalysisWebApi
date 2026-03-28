@@ -17,6 +17,7 @@ namespace MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier
         public string? PhoneNumber { get; set; }
         public DateTime CreatedAt { get; set; } 
         public RequestStatus Status { get; set; }
+        public int BusinessOffersCount { get; set; }
         public Guid? RegionId { get; set; }
         public DbRegion? Region { get; set; }
         public bool IsArchived { get; set; } = false;

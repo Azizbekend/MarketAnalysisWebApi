@@ -115,6 +115,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 .Include(r => r.RequestConfigType)
                 .Include(r => r.KnsConfigs)
                 .Include(r => r.PumpConfigurations)
+                .Include(r => r.AccountRequests)
                 .Where(r => !r.IsArchived)
                 .ToListAsync();
             var result = requests.Select(request => new JoinSupplierRequestTableDTO
@@ -129,6 +130,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 PhoneNumber = request.PhoneNumber,
                 CreatedAt = request.CreatedAt,
                 Status = request.Status,
+                BusinessOffersCount = request.AccountRequests?.Count ?? 0,
                 RegionId = request.RegionId,
                 Region = request.Region,
                 IsArchived = request.IsArchived,
@@ -136,7 +138,8 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 RequestConfigType = request.RequestConfigType,
                 KnsConfigDTO = request.KnsConfigs?.Select(k => new JoinKnsConfigDTO
                 {
-                    Efficiency = k.Perfomance
+                    Efficiency = k.Perfomance,
+                    Untis = k.Units
                 }).FirstOrDefault(),
                 PumpConfigDTO = request.PumpConfigurations?.Select(p => new JoinPumpConfigDTO
                 {
