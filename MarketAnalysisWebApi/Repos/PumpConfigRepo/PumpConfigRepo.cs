@@ -19,6 +19,7 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
         {
             var dryPump = new DbDryPump
             {
+                RequestId = dto.RequestId,
                 PumpTypeId = dto.PumpTypeId,
                 InstalationType = dto.InstalationType,
                 SuctionHeight = dto.SuctionHeight
@@ -32,6 +33,7 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
         {
             var subPump = new DbSubmersiblePump
             {
+                RequestId= dto.RequestId,
                 PumpTypeId = dto.PumpTypeId,
                 InstalationType = dto.InstalationType,
                 PotentialDepth = dto.PotentialDepth
