@@ -37,7 +37,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         [ForeignKey(nameof(RegionId))]
         public DbRegion ? Region { get; set; }
         public bool IsArchived { get; set; } = false;
-        public Guid FileId { get; set; }
+        public Guid ? FileId { get; set; }
         [ForeignKey(nameof(FileId))]
         public DbRequestFileModel ? File { get; set; }
         public Guid UserId { get; set; }
