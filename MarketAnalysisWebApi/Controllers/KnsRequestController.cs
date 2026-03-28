@@ -66,7 +66,8 @@ namespace MarketAnalysisWebApi.Controllers
                     ContactName = dto.ContactName,
                     PhoneNumber = dto.PhoneNumber,
                     UserId = dto.UserId,
-                    ConfigTypeId = dto.ConfigTypeId
+                    ConfigTypeId = dto.ConfigTypeId,
+                    FileId = dto.RequestFileId
                     
                 };
                 var resId = await _knsConfigRepo.CreateKnsRequest(request);

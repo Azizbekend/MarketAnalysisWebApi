@@ -1,5 +1,7 @@
-﻿using MarketAnalysisWebApi.DTOs.RequestDTOs;
+﻿using MarketAnalysisWebApi.DTOs.FileStorageDTOS;
+using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.DTOs.SupplierDTOs;
+using MarketAnalysisWebApi.Repos.FileStorageRepo;
 using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +13,12 @@ namespace MarketAnalysisWebApi.Controllers
     public class RequestController : ControllerBase
     {
         private readonly IProjectRequestRepo _projectRequestRepo;
+        private readonly IFileStorageRepo _fileStorageRepo;
 
-        public RequestController(IProjectRequestRepo projectRequestRepo)
+        public RequestController(IProjectRequestRepo projectRequestRepo, IFileStorageRepo fileStorageRepo)
         {
             _projectRequestRepo = projectRequestRepo;
+            _fileStorageRepo = fileStorageRepo;
         }
 
         [HttpGet("single")]
@@ -157,6 +161,33 @@ namespace MarketAnalysisWebApi.Controllers
                 return Ok(res);
             }
             catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost("schemeFile/download")]
+        public async Task<IActionResult> UploadRequestSchemeFile(Guid fileId, CancellationToken token)
+        {
+            try
+            {
+                var res = await _fileStorageRepo.GetRequestFileAsync(fileId, token);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("schemeFile/upload")]
+        public async Task<IActionResult> UploadRequestSchemeFile(RequestSchemeFileDTO dto, CancellationToken token)
+        {
+            try
+            {
+                var res = await _fileStorageRepo.SaveRequestFileAsync(dto, token);
+                return Ok(res);
+            }
+            catch(Exception ex)
             {
                 return BadRequest(ex.Message);
             }

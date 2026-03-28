@@ -3,6 +3,7 @@ using System;
 using MarketAnalysisWebApi.DbEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MarketAnalysisWebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260328110538_fix")]
+    partial class fix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -561,13 +564,13 @@ namespace MarketAnalysisWebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("DbProjectRequestId")
+                        .HasColumnType("uuid");
+
                     b.Property<int>("InstalationType")
                         .HasColumnType("integer");
 
                     b.Property<Guid>("PumpTypeId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("RequestId")
                         .HasColumnType("uuid");
 
                     b.Property<double>("SuctionHeight")
@@ -575,9 +578,9 @@ namespace MarketAnalysisWebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PumpTypeId");
+                    b.HasIndex("DbProjectRequestId");
 
-                    b.HasIndex("RequestId");
+                    b.HasIndex("PumpTypeId");
 
                     b.ToTable("DryPumps");
                 });
@@ -707,6 +710,9 @@ namespace MarketAnalysisWebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("DbProjectRequestId")
+                        .HasColumnType("uuid");
+
                     b.Property<int>("InstalationType")
                         .HasColumnType("integer");
 
@@ -716,14 +722,11 @@ namespace MarketAnalysisWebApi.Migrations
                     b.Property<Guid>("PumpTypeId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("RequestId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("PumpTypeId");
+                    b.HasIndex("DbProjectRequestId");
 
-                    b.HasIndex("RequestId");
+                    b.HasIndex("PumpTypeId");
 
                     b.ToTable("SubmersiblePumps");
                 });
@@ -1094,17 +1097,15 @@ namespace MarketAnalysisWebApi.Migrations
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP.DbDryPump", b =>
                 {
+                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbProjectRequest", null)
+                        .WithMany("DryPumps")
+                        .HasForeignKey("DbProjectRequestId");
+
                     b.HasOne("MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP.DbPumpType", "Type")
                         .WithMany("DryPumps")
                         .HasForeignKey("PumpTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbProjectRequest", "Request")
-                        .WithMany("DryPumps")
-                        .HasForeignKey("RequestId");
-
-                    b.Navigation("Request");
 
                     b.Navigation("Type");
                 });
@@ -1130,17 +1131,15 @@ namespace MarketAnalysisWebApi.Migrations
 
             modelBuilder.Entity("MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP.DbSubmersiblePump", b =>
                 {
+                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbProjectRequest", null)
+                        .WithMany("SubmersiblePumps")
+                        .HasForeignKey("DbProjectRequestId");
+
                     b.HasOne("MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP.DbPumpType", "Type")
                         .WithMany("SubmersiblePumps")
                         .HasForeignKey("PumpTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("MarketAnalysisWebApi.DbEntities.DbEntities.DbProjectRequest", "Request")
-                        .WithMany("SubmersiblePumps")
-                        .HasForeignKey("RequestId");
-
-                    b.Navigation("Request");
 
                     b.Navigation("Type");
                 });

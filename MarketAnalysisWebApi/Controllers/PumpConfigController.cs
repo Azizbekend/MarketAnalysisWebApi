@@ -1,4 +1,5 @@
-﻿using MarketAnalysisWebApi.DTOs.PumpDTO;
+﻿using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.PUMP;
+using MarketAnalysisWebApi.DTOs.PumpDTO;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.Repos.PumpConfigRepo;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +23,12 @@ namespace MarketAnalysisWebApi.Controllers
             var res = await _pumpConfigRepo.GetTypes();
             return Ok(res);
         }
+        [HttpGet("single")]
+        public async Task<ActionResult<DbPumpConfiguration>> GetSinglePump(Guid requestId)
+        {
+            var res = await _pumpConfigRepo.GetPumpConfiguration(requestId);
+            return Ok(res);
+        }
 
         [HttpPost("create")]
         public async Task<IActionResult> CreatePumpRequest(CreatePumpFullDTO dto)
@@ -30,7 +37,7 @@ namespace MarketAnalysisWebApi.Controllers
             {
                 NameByProjectDocs = dto.NameByProjectDocs,
                 ObjectName = dto.ObjectName,
-
+                FileId = dto.RequestFileId,
                 CustomerName = dto.CustomerName,
                 ProjectOrganizationName = dto.ProjectOrganizationName,
                 ConfigTypeId = dto.ConfigTypeId,

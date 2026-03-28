@@ -4,6 +4,7 @@ namespace MarketAnalysisWebApi.DTOs.PumpDTO
 {
     public class CreatePumpFullDTO
     {
+        public Guid RequestFileId { get; set; }
         public string? NameByProjectDocs { get; set; }
         public string? ObjectName { get; set; }
         public string? LocationRegion { get; set; }

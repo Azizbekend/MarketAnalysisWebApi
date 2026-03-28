@@ -19,7 +19,6 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
         {
             var dryPump = new DbDryPump
             {
-                RequestId = dto.RequestId,
                 PumpTypeId = dto.PumpTypeId,
                 InstalationType = dto.InstalationType,
                 SuctionHeight = dto.SuctionHeight
@@ -33,14 +32,13 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
         {
             var subPump = new DbSubmersiblePump
             {
-                RequestId = dto.RequestId,
                 PumpTypeId = dto.PumpTypeId,
                 InstalationType = dto.InstalationType,
                 PotentialDepth = dto.PotentialDepth
             };
             await _appDbContext.SubmersiblePumps.AddAsync(subPump);
             await _appDbContext.SaveChangesAsync();
-            return subPump.RequestId;
+            return subPump.Id;
         }
 
         public async Task<Guid> CreatePumpConfig(CreateInnerPumpConfig dto)
@@ -105,6 +103,63 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
         {
             var list = await _appDbContext.PumpTypes.ToListAsync();
             return list;
+        }
+
+        public async Task<JoinPumpConfigDTO> GetPumpConfiguration(Guid requestId)
+        {
+            var res = await _appDbContext.PumpConfigurations
+                .Include(t => t.Type)
+                    .ThenInclude(d => d.DryPumps)
+                .Include(t => t.Type)
+                    .ThenInclude(s => s.SubmersiblePumps)
+                    .Select( c => new JoinPumpConfigDTO
+                    {
+                        PumpEfficiency = c.PumpEfficiency,
+                        PumpedLiquidType = c.PumpedLiquidType,
+                        IntakeType = c.IntakeType,
+                        TypeName = c.Type != null ? c.Type.TypeName : null,
+                        DryPump = c.Type != null && c.Type.DryPumps != null && c.Type.DryPumps.Any()
+                        ? new JoinDryPumpDTO
+                        {
+                            SuctionHeight = c.Type.DryPumps.First().SuctionHeight,
+                            InstalationType = c.Type.DryPumps.First().InstalationType
+                        } : null,
+                        SubPump = c.Type != null && c.Type.SubmersiblePumps != null && c.Type.SubmersiblePumps.Any()
+                        ? new JoinSubPumpDTO
+                        {
+                            PotentialDepth = c.Type.SubmersiblePumps.First().PotentialDepth,
+                            InstalationType = c.Type.SubmersiblePumps.First().InstalationType
+                        } : null,
+                        RequestId = c.RequestId,
+                        WorkPumpsCount = c.WorkPumpsCount,
+                        ReservePumpsCount = c.ReservePumpsCount,
+                        LiquidTemperature = c.LiquidTemperature,
+                        MineralParticlesSize = c.MineralParticlesSize,
+                        MineralParticlesConcentration = c.MineralParticlesConcentration,
+                        BigParticleExistance = c.BigParticleExistance,
+                        SpecificWastes = c.SpecificWastes,
+                        LiquidDensity = c.LiquidDensity,
+                        RequiredPressure = c.RequiredPressure,
+                        RequiredOutPressure = c.RequiredOutPressure,
+                        PressureLoses = c.PressureLoses,
+                        NetworkLength = c.NetworkLength,
+                        PipesConditions = c.PipesConditions,
+                        PumpDiameter = c.PumpDiameter,
+                        GeodesicalMarks = c.GeodesicalMarks,
+                        ExplosionProtection = c.ExplosionProtection,
+                        ControlType = c.ControlType,
+                        PowerCurrentType = c.PowerCurrentType,
+                        WorkPower = c.WorkPower,
+                        FrequencyConverter = c.FrequencyConverter,
+                        PowerCableLength = c.PowerCableLength,
+                        LiftingTransportEquipment = c.LiftingTransportEquipment,
+                        FlushValve = c.FlushValve,
+                        OtherLevelMeters = c.OtherLevelMeters,
+                        OtherRequirements = c.OtherRequirements
+                    })
+                .Where(x => x.RequestId == requestId)
+                .FirstOrDefaultAsync();
+            return res;
         }
     }
 }

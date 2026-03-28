@@ -12,6 +12,7 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
         Task<Guid> CreateDryPump(CreateInnerDryPump dto);
         Task<Guid> CreateSubPump(CreateInnerSubPump dto);
         Task<ICollection<DbPumpType>> GetTypes();
+        Task<JoinPumpConfigDTO>GetPumpConfiguration(Guid requestId);
        
     }
 }
