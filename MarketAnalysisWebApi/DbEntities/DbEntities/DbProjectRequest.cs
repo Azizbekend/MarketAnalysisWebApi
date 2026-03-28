@@ -63,5 +63,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public ICollection<DbDryPump> ? DryPumps { get; set; }
         [JsonIgnore]
         public ICollection<DbSubmersiblePump> ? SubmersiblePumps { get; set; }
+        [JsonIgnore]
+        public ICollection<DbBusinessOffer> ? Offers { get; set; }
     }
 }

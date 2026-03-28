@@ -60,7 +60,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                     {
                         AccountId = dto.AccountId,
                         RequestId = request.Id,
-                        Status = "Viewed"
+                        Status = "Просмотрено"
                     };
                     await _appDbContext.AccountRequests.AddAsync(requestLink);
                     await _appDbContext.SaveChangesAsync();
@@ -116,6 +116,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 .Include(r => r.KnsConfigs)
                 .Include(r => r.PumpConfigurations)
                 .Include(r => r.AccountRequests)
+                .Include(r => r.Offers)
                 .Where(r => !r.IsArchived)
                 .ToListAsync();
             var result = requests.Select(request => new JoinSupplierRequestTableDTO
@@ -130,7 +131,8 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 PhoneNumber = request.PhoneNumber,
                 CreatedAt = request.CreatedAt,
                 Status = request.Status,
-                BusinessOffersCount = request.AccountRequests?.Count ?? 0,
+                ViewPayStatus = request.AccountRequests?.Select((vp) => vp.Status).FirstOrDefault(),
+                BusinessOffersCount = request.Offers?.Count ?? 0,
                 RegionId = request.RegionId,
                 Region = request.Region,
                 IsArchived = request.IsArchived,
