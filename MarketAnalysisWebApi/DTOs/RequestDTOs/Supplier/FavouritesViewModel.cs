@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MarketAnalysisWebApi.DTOs.RequestDTOs
+namespace MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier
 {
     public class FavouritesViewModel
     {

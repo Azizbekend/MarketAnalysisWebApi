@@ -1,6 +1,7 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
+using MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier;
 using MarketAnalysisWebApi.DTOs.SupplierDTOs;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
@@ -107,10 +108,44 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 
         }
 
-        public async Task<ICollection<DbProjectRequest>> GetPublishedRequests()
+        public async Task<ICollection<JoinSupplierRequestTableDTO>> GetPublishedRequests()
         {
-            var res = await _appDbContext.ProjectRequestsTable.Where(x => !x.IsArchived && x.Status == RequestStatus.Published).ToListAsync();
-            return res;
+            var requests = await _appDbContext.ProjectRequestsTable
+                .Include(r => r.Region)
+                .Include(r => r.RequestConfigType)
+                .Include(r => r.KnsConfigs)
+                .Include(r => r.PumpConfigurations)
+                .Where(r => !r.IsArchived)
+                .ToListAsync();
+            var result = requests.Select(request => new JoinSupplierRequestTableDTO
+            {
+                RequestId = request.Id,
+                InnerId = request.InnerId,
+                NameByProjectDocs = request.NameByProjectDocs,
+                ObjectName = request.ObjectName,
+                CustomerName = request.CustomerName,
+                ProjectOrganizationName = request.ProjectOrganizationName,
+                ContactName = request.ContactName,
+                PhoneNumber = request.PhoneNumber,
+                CreatedAt = request.CreatedAt,
+                Status = request.Status,
+                RegionId = request.RegionId,
+                Region = request.Region,
+                IsArchived = request.IsArchived,
+                ConfigTypeId = request.ConfigTypeId,
+                RequestConfigType = request.RequestConfigType,
+                KnsConfigDTO = request.KnsConfigs?.Select(k => new JoinKnsConfigDTO
+                {
+                    Efficiency = k.Perfomance
+                }).FirstOrDefault(),
+                PumpConfigDTO = request.PumpConfigurations?.Select(p => new JoinPumpConfigDTO
+                {
+                    Efficiency = p.PumpEfficiency,
+
+                }).FirstOrDefault()
+            }).ToList();
+
+            return result;
         }
 
         public async Task<DbProjectRequest> GetRequestById(Guid requestId)

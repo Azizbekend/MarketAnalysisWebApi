@@ -1,5 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
+using MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier;
 using MarketAnalysisWebApi.DTOs.SupplierDTOs;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 
@@ -11,7 +12,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         Task CreateClickForCoins(SupplierCheckRequestDTo dto);
         Task<ICollection<DbProjectRequest>> GetUsersRequests(Guid userId);
         Task <Guid> CheckRequestBySupplier(SupplierCheckRequestDTo dto);
-        Task<ICollection<DbProjectRequest>> GetPublishedRequests();
+        Task<ICollection<JoinSupplierRequestTableDTO>> GetPublishedRequests();
         Task<Guid> PublishRequest(RequestStandartDTO dto);
         Task<Guid> ArchiveRequest(RequestStandartDTO dto);
         Task<Guid> AddToFavourites(RequestStandartDTO dto);
