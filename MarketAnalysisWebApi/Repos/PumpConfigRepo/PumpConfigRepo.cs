@@ -121,14 +121,14 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
                         DryPump = c.Type != null && c.Type.DryPumps != null && c.Type.DryPumps.Any()
                         ? new JoinDryPumpDTO
                         {
-                            SuctionHeight = c.Type.DryPumps.First().SuctionHeight,
-                            InstalationType = c.Type.DryPumps.First().InstalationType
+                            SuctionHeight = c.Type.DryPumps.First(x => x.RequestId == requestId).SuctionHeight,
+                            InstalationType = c.Type.DryPumps.First(x => x.RequestId == requestId).InstalationType
                         } : null,
                         SubPump = c.Type != null && c.Type.SubmersiblePumps != null && c.Type.SubmersiblePumps.Any()
                         ? new JoinSubPumpDTO
                         {
-                            PotentialDepth = c.Type.SubmersiblePumps.First().PotentialDepth,
-                            InstalationType = c.Type.SubmersiblePumps.First().InstalationType
+                            PotentialDepth = c.Type.SubmersiblePumps.First(x => x.RequestId == requestId).PotentialDepth,
+                            InstalationType = c.Type.SubmersiblePumps.First(x => x.RequestId == requestId).InstalationType
                         } : null,
                         RequestId = c.RequestId,
                         WorkPumpsCount = c.WorkPumpsCount,

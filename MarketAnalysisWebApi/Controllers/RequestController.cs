@@ -165,7 +165,7 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost("schemeFile/download")]
+        [HttpGet("schemeFile/download")]
         public async Task<IActionResult> UploadRequestSchemeFile(Guid fileId, CancellationToken token)
         {
             try
