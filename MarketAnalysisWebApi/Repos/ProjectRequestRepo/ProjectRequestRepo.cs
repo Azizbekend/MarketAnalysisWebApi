@@ -187,6 +187,15 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                     SchemeFileId = req.FileId,
                     LocationRegion = reg.RegionName
                 };
+                var favorite = await _appDbContext.FavoritesTable.FirstOrDefaultAsync(favor => favor.UserId == acc.UserId && favor.RequestId == dto.RequestId);
+                if (favorite == null)
+                {
+                    res.IsFavorite = false;
+                }
+                else
+                {
+                    res.IsFavorite = true;
+                }
                 if (accReq != null)
                 {
                     res.SupplierRequestStatus = accReq.Status;
@@ -382,7 +391,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         {
             var req = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
             var reg = await _appDbContext.RegionsTable.FirstOrDefaultAsync(x => x.Id == req.RegionId);
-            var acc = await _appDbContext.BusinessAccounts.FirstOrDefaultAsync(acc => acc.Id == dto.AccountId);
+            var acc = await _appDbContext.BusinessAccounts.FirstOrDefaultAsync(acc => acc.Id == dto.AccountId);        
             if (req == null)
             {
                 throw new Exception("Current requestID does not exists!");
@@ -408,6 +417,15 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                     SchemeFileId = req.FileId,
                     LocationRegion = reg.RegionName
                 };
+                var favorite = await _appDbContext.FavoritesTable.FirstOrDefaultAsync(favor => favor.UserId == acc.UserId && favor.RequestId == dto.RequestId);
+                if (favorite == null)
+                {
+                    res.IsFavorite = false;
+                }
+                else
+                {
+                    res.IsFavorite = true;
+                }
                 if (accReq != null)
                 {
                     res.SupplierRequestStatus = accReq.Status;

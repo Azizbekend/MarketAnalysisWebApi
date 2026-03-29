@@ -16,7 +16,8 @@ namespace MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier
         public string? PhoneNumber { get; set; }
         public DateTime CreatedAt { get; set; } 
         public RequestStatus Status { get; set; } 
-        public bool IsArchived { get; set; } 
+        public bool IsArchived { get; set; }
+        public bool IsFavorite { get; set; }
         public Guid UserId { get; set; }
         public Guid ConfigTypeId { get; set; }
         public Guid ? SchemeFileId { get; set; }

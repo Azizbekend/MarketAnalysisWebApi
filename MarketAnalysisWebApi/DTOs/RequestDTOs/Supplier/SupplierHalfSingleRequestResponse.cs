@@ -9,6 +9,7 @@ namespace MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier
         public DateTime CreatedAt { get; set; }
         public RequestStatus Status { get; set; }
         public bool IsArchived { get; set; }
+        public bool IsFavorite { get; set; }
         public Guid ConfigTypeId { get; set; }
         public Guid? SchemeFileId { get; set; }
         public string? SupplierRequestStatus { get; set; }
