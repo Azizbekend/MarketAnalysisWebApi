@@ -176,7 +176,9 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 Status = req.Status,
                 IsArchived = req.IsArchived,
                 UserId = req.UserId,
-                ConfigTypeId = req.ConfigTypeId
+                ConfigTypeId = req.ConfigTypeId,
+                SchemeFileId = req.FileId,
+                LocationRegion = req.Region.RegionName
             };
             if(accReq != null )
             {
