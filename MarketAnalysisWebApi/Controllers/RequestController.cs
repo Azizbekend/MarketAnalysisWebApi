@@ -1,6 +1,6 @@
 ﻿using MarketAnalysisWebApi.DTOs.FileStorageDTOS;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
-using MarketAnalysisWebApi.DTOs.SupplierDTOs;
+using MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier;
 using MarketAnalysisWebApi.Repos.FileStorageRepo;
 using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
 using Microsoft.AspNetCore.Http;
@@ -39,6 +39,19 @@ namespace MarketAnalysisWebApi.Controllers
             try
             {
                 var res = await _projectRequestRepo.GetRequestWithStatusById(dTo);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost("supplier/single/halfrequest")]
+        public async Task<IActionResult> GetHalfSingle(SupplierCheckRequestDTo dTo)
+        {
+            try
+            {
+                var res = await _projectRequestRepo.GetRequestHalfRequestForSupplier(dTo);
                 return Ok(res);
             }
             catch (Exception ex)

@@ -1,7 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier;
-using MarketAnalysisWebApi.DTOs.SupplierDTOs;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 
 namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
@@ -22,6 +21,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         Task<ICollection<DbProjectRequest>> GetFavourites(Guid userId);
         Task<ICollection<FavouritesViewModel>> GetRequestWithFavouriteLinks(Guid userId);
         Task<SupplierSingleRequestResponse> GetRequestWithStatusById(SupplierCheckRequestDTo dto);
+        Task<SupplierHalfSingleRequestResponse> GetRequestHalfRequestForSupplier(SupplierCheckRequestDTo dto);
         Task<ICollection<GetBaseRequestDTO>> GetRequestsWithRegions();
         Task<GetBaseRequestDTO> GetRequestWithRegion(Guid requestId);
     }

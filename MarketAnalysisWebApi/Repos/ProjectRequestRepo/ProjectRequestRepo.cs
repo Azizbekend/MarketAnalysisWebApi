@@ -2,7 +2,6 @@
 using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier;
-using MarketAnalysisWebApi.DTOs.SupplierDTOs;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata.Ecma335;
@@ -377,6 +376,48 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             var res = request.AccountRequests.Where(x => x.AccountId == dto.AccountId).Select(x => x.Status).FirstOrDefault();
             if(res != "Payed") return false;
             else return true;
+        }
+
+        public async Task<SupplierHalfSingleRequestResponse> GetRequestHalfRequestForSupplier(SupplierCheckRequestDTo dto)
+        {
+            var req = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
+            var reg = await _appDbContext.RegionsTable.FirstOrDefaultAsync(x => x.Id == req.RegionId);
+            var acc = await _appDbContext.BusinessAccounts.FirstOrDefaultAsync(acc => acc.Id == dto.AccountId);
+            if (req == null)
+            {
+                throw new Exception("Current requestID does not exists!");
+            }
+            if (acc == null)
+            {
+                throw new Exception("Current AccountID does not exists!");
+            }
+            if (reg == null)
+            {
+                throw new Exception("Current RegionID does not exists!");
+            }
+            else
+            {
+                var accReq = await _appDbContext.AccountRequests.FirstOrDefaultAsync(key => key.AccountId == acc.Id && key.RequestId == req.Id);
+                var res = new SupplierHalfSingleRequestResponse
+                {
+                    InnerId = req.InnerId,
+                    CreatedAt = req.CreatedAt,
+                    Status = req.Status,
+                    IsArchived = req.IsArchived,
+                    ConfigTypeId = req.ConfigTypeId,
+                    SchemeFileId = req.FileId,
+                    LocationRegion = reg.RegionName
+                };
+                if (accReq != null)
+                {
+                    res.SupplierRequestStatus = accReq.Status;
+                }
+                else
+                {
+                    res.SupplierRequestStatus = "New";
+                }
+                return res;
+            }
         }
     }
 }

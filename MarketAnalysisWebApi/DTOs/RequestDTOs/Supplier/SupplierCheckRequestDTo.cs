@@ -1,4 +1,4 @@
-﻿namespace MarketAnalysisWebApi.DTOs.SupplierDTOs
+﻿namespace MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier
 {
     public class SupplierCheckRequestDTo
     {
