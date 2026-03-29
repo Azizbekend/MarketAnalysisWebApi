@@ -5,6 +5,7 @@ using MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier;
 using MarketAnalysisWebApi.DTOs.SupplierDTOs;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 {
@@ -364,6 +365,18 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             }).ToList();
 
             return result;
+        }
+
+        public async Task<bool> CheckPayStatus(SupplierCheckRequestDTo dto)
+        {
+            var request = await _appDbContext.ProjectRequestsTable
+                 .Include(r => r.AccountRequests)
+                 .Include(r => r.Offers)
+                 .Where(x => x.Id == dto.RequestId)
+                 .FirstOrDefaultAsync();
+            var res = request.AccountRequests.Where(x => x.AccountId == dto.AccountId).Select(x => x.Status).FirstOrDefault();
+            if(res != "Payed") return false;
+            else return true;
         }
     }
 }

@@ -73,6 +73,12 @@ namespace MarketAnalysisWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost("request/payStatus/check")]
+        public async Task<IActionResult> CheckPayStatus(SupplierCheckRequestDTo dTo)
+        {
+            var res = await _projectRequestRepo.CheckPayStatus(dTo);
+            return Ok(res);
+        }
 
         [HttpPost("supplier/view/request")]
         public async Task<IActionResult> CheckRequest(SupplierCheckRequestDTo dto)
