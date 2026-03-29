@@ -375,7 +375,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             return result;
         }
 
-        public async Task<bool> CheckPayStatus(SupplierCheckRequestDTo dto)
+        public async Task<string> CheckPayStatus(SupplierCheckRequestDTo dto)
         {
             var request = await _appDbContext.ProjectRequestsTable
                  .Include(r => r.AccountRequests)
@@ -383,8 +383,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                  .Where(x => x.Id == dto.RequestId)
                  .FirstOrDefaultAsync();
             var res = request.AccountRequests.Where(x => x.AccountId == dto.AccountId).Select(x => x.Status).FirstOrDefault();
-            if(res != "Payed") return false;
-            else return true;
+            return res;
         }
 
         public async Task<SupplierHalfSingleRequestResponse> GetRequestHalfRequestForSupplier(SupplierCheckRequestDTo dto)

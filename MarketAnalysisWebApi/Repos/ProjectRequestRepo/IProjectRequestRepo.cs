@@ -11,7 +11,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         Task CreateClickForCoins(SupplierCheckRequestDTo dto);
         Task<ICollection<DbProjectRequest>> GetUsersRequests(Guid userId);
         Task <Guid> CheckRequestBySupplier(SupplierCheckRequestDTo dto);
-        Task<bool> CheckPayStatus(SupplierCheckRequestDTo dto);
+        Task<string> CheckPayStatus(SupplierCheckRequestDTo dto);
         Task<ICollection<JoinSupplierRequestTableDTO>> GetPublishedRequests();
         Task<ICollection<JoinSupplierRequestTableDTO>> GetUsersPublishRequests(Guid userId);
         Task<Guid> PublishRequest(RequestStandartDTO dto);

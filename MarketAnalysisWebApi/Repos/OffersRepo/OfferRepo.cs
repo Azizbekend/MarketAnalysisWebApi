@@ -17,8 +17,9 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
         public async Task<Guid> CreateBusinesOffer(OfferCreateDTO dto)
         {
             var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
-            ArgumentException.ThrowIfNullOrEmpty(nameof(dto));
-
+            ArgumentException.ThrowIfNullOrEmpty(nameof(request));
+            var accReq = await _appDbContext.AccountRequests.FirstOrDefaultAsync(x => x.AccountId == dto.BussinessAccId && x.RequestId == request.Id);
+            ArgumentException.ThrowIfNullOrEmpty(nameof(accReq));
             var BO = new DbBusinessOffer
             {
                 OffersNumber = dto.OfferNumber,
@@ -36,6 +37,8 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
                 BussinessAccId = dto.BussinessAccId,
                 RequestId = dto.RequestId
             };
+            accReq.Status = "КП";
+            _appDbContext.AccountRequests.Attach(accReq);
             await _appDbContext.OffersTable.AddAsync(BO);
             await _appDbContext.SaveChangesAsync();
             return BO.Id;
