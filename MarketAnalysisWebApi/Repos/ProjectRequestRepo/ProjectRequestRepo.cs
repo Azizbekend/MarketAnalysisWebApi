@@ -310,5 +310,50 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 
             return result;
         }
+
+        public async Task<ICollection<JoinSupplierRequestTableDTO>> GetUsersPublishRequests(Guid userId)
+        {
+            var requests = await _appDbContext.ProjectRequestsTable
+                .Include(r => r.Region)
+                .Include(r => r.RequestConfigType)
+                .Include(r => r.KnsConfigs)
+                .Include(r => r.PumpConfigurations)
+                .Include(r => r.AccountRequests)
+                .Include(r => r.Offers)
+                .Where(r => r.UserId == userId)
+                .ToListAsync();
+            var result = requests.Select(request => new JoinSupplierRequestTableDTO
+            {
+                RequestId = request.Id,
+                InnerId = request.InnerId,
+                NameByProjectDocs = request.NameByProjectDocs,
+                ObjectName = request.ObjectName,
+                CustomerName = request.CustomerName,
+                ProjectOrganizationName = request.ProjectOrganizationName,
+                ContactName = request.ContactName,
+                PhoneNumber = request.PhoneNumber,
+                CreatedAt = request.CreatedAt,
+                Status = request.Status,
+                ViewPayStatus = request.AccountRequests?.Select((vp) => vp.Status).FirstOrDefault(),
+                BusinessOffersCount = request.Offers?.Count ?? 0,
+                RegionId = request.RegionId,
+                Region = request.Region,
+                IsArchived = request.IsArchived,
+                ConfigTypeId = request.ConfigTypeId,
+                RequestConfigType = request.RequestConfigType,
+                KnsConfigDTO = request.KnsConfigs?.Select(k => new JoinKnsConfigDTO
+                {
+                    Efficiency = k.Perfomance,
+                    Untis = k.Units
+                }).FirstOrDefault(),
+                PumpConfigDTO = request.PumpConfigurations?.Select(p => new JoinPumpConfigDTO
+                {
+                    Efficiency = p.PumpEfficiency,
+
+                }).FirstOrDefault()
+            }).ToList();
+
+            return result;
+        }
     }
 }

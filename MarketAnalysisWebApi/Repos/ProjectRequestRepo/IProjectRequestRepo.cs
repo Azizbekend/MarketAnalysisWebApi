@@ -13,6 +13,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         Task<ICollection<DbProjectRequest>> GetUsersRequests(Guid userId);
         Task <Guid> CheckRequestBySupplier(SupplierCheckRequestDTo dto);
         Task<ICollection<JoinSupplierRequestTableDTO>> GetPublishedRequests();
+        Task<ICollection<JoinSupplierRequestTableDTO>> GetUsersPublishRequests(Guid userId);
         Task<Guid> PublishRequest(RequestStandartDTO dto);
         Task<Guid> ArchiveRequest(RequestStandartDTO dto);
         Task<Guid> AddToFavourites(RequestStandartDTO dto);

@@ -50,9 +50,15 @@ namespace MarketAnalysisWebApi.Controllers
         [HttpGet("user/requests/all")]
         public async Task<IActionResult> GetUsersRequests(Guid userId)
         {
-            //Console.WriteLine($" VOT TUT ==========================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> { userId}");
-            var res = await _projectRequestRepo.GetUsersRequests(userId);
-            return Ok(res);
+            try
+            {
+                var res = await _projectRequestRepo.GetUsersPublishRequests(userId);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(userId);
+            }
         }
         [HttpGet("actual/published/all")]
         public async Task<IActionResult> GetActualRequests()
