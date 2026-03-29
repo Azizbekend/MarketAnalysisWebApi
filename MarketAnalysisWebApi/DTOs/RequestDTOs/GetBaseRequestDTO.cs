@@ -20,6 +20,7 @@ namespace MarketAnalysisWebApi.DTOs.RequestDTOs
         public bool IsArchived { get; set; } 
         public Guid UserId { get; set; }
         public DbUser? User { get; set; }
+        public Guid ? SchemeFileId { get; set; }
 
         public Guid ConfigTypeId { get; set; }
         public DbRequestConfigType? RequestConfigType { get; set; }

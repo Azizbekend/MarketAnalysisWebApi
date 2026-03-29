@@ -60,7 +60,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                     {
                         AccountId = dto.AccountId,
                         RequestId = request.Id,
-                        Status = "Просмотрено"
+                        Status = "Viewed"
                     };
                     await _appDbContext.AccountRequests.AddAsync(requestLink);
                     await _appDbContext.SaveChangesAsync();
@@ -323,7 +323,8 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             {
                 Id = r.Region.Id,
                 RegionName = r.Region.RegionName
-            } : null
+            } : null,
+            SchemeFileId = r.FileId
         })
         .FirstOrDefaultAsync();
 
