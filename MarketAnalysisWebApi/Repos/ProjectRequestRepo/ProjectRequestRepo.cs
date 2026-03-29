@@ -161,34 +161,42 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         public async Task<SupplierSingleRequestResponse> GetRequestWithStatusById(SupplierCheckRequestDTo dto)
         {
             var req = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
+            var reg = await _appDbContext.RegionsTable.FirstOrDefaultAsync(x => x.Id == req.RegionId);
             var acc = await _appDbContext.BusinessAccounts.FirstOrDefaultAsync(acc => acc.Id == dto.AccountId);
-            var accReq = await _appDbContext.AccountRequests.FirstOrDefaultAsync(key => key.AccountId == acc.Id && key.RequestId == req.Id);
-            var res = new SupplierSingleRequestResponse
+            if(req == null || acc == null || reg == null)
             {
-                InnerId = req.InnerId,
-                NameByProjectDocs = req.NameByProjectDocs,
-                ObjectName = req.ObjectName,
-                CustomerName = req.CustomerName,
-                ProjectOrganizationName = req.ProjectOrganizationName,
-                ContactName = req.ContactName,
-                PhoneNumber = req.PhoneNumber,
-                CreatedAt = req.CreatedAt,
-                Status = req.Status,
-                IsArchived = req.IsArchived,
-                UserId = req.UserId,
-                ConfigTypeId = req.ConfigTypeId,
-                SchemeFileId = req.FileId,
-                LocationRegion = req.Region.RegionName
-            };
-            if(accReq != null )
-            {
-                res.SupplierRequestStatus = accReq.Status;
+                throw new Exception("Current requestID or AccountID or RegionID does not exists!");
             }
             else
             {
-                res.SupplierRequestStatus = "New";
+                var accReq = await _appDbContext.AccountRequests.FirstOrDefaultAsync(key => key.AccountId == acc.Id && key.RequestId == req.Id);
+                var res = new SupplierSingleRequestResponse
+                {
+                    InnerId = req.InnerId,
+                    NameByProjectDocs = req.NameByProjectDocs,
+                    ObjectName = req.ObjectName,
+                    CustomerName = req.CustomerName,
+                    ProjectOrganizationName = req.ProjectOrganizationName,
+                    ContactName = req.ContactName,
+                    PhoneNumber = req.PhoneNumber,
+                    CreatedAt = req.CreatedAt,
+                    Status = req.Status,
+                    IsArchived = req.IsArchived,
+                    UserId = req.UserId,
+                    ConfigTypeId = req.ConfigTypeId,
+                    SchemeFileId = req.FileId,
+                    LocationRegion = reg.RegionName
+                };
+                if (accReq != null)
+                {
+                    res.SupplierRequestStatus = accReq.Status;
+                }
+                else
+                {
+                    res.SupplierRequestStatus = "New";
+                }
+                return res;
             }
-            return res;
         }
         public async Task<DbProjectRequest> GetRequestBySupplierId(Guid requestId)
         {
