@@ -3,7 +3,6 @@
     public class OfferCreateDTO
     {
         public string? OfferNumber { get; set; }
-        public string? NameByProject { get; set; } 
         public string? NameBySupplier { get; set; } 
         public double CurrentPriceNDS { get; set; }
         public double CurrentPriceNoNDS { get; set; }

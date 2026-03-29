@@ -16,10 +16,13 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
 
         public async Task<Guid> CreateBusinesOffer(OfferCreateDTO dto)
         {
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
+            ArgumentException.ThrowIfNullOrEmpty(nameof(dto));
+
             var BO = new DbBusinessOffer
             {
                 OffersNumber = dto.OfferNumber,
-                NameByProject = dto.NameByProject,
+                NameByProject = request.NameByProjectDocs,
                 NameBySupplier = dto.NameBySupplier,
                 CurrentPriceNDS = dto.CurrentPriceNDS,
                 CurrentPriceNoNDS = dto.CurrentPriceNoNDS,
