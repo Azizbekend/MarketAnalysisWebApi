@@ -315,7 +315,6 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         {
             var result = await _appDbContext.ProjectRequestsTable
         .Include(r => r.Region)
-
         .Where(r => r.Id == requestId)
         .Select(r => new GetBaseRequestDTO
         {
@@ -325,6 +324,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             ObjectStage = r.ObjectStage,
             ProjectDocsChapter = r.ProjectDocsChapter,
             PublicationEndDate = r.PublicationEndDate,
+            ConfigTypeId = r.ConfigTypeId,
             CustomerName = r.CustomerName,
             ProjectOrganizationName = r.ProjectOrganizationName,
             ContactName = r.ContactName,

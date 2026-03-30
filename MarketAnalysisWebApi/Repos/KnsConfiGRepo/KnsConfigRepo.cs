@@ -74,6 +74,7 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
                 ObjectStage = dto.ObjectStage,
                 ProjectDocsChapter = dto.ProjectDocsChapter,
                 PublicationEndDate = dto.PublicationEndDate,
+                RegionId = dto.RegionId,
                 ObjectName = dto.ObjectName,
                 CustomerName = dto.CustomerName,
                 ProjectOrganizationName = dto.ProjectOrganizationName,

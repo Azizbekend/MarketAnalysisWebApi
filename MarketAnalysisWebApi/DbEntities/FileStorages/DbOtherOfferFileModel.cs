@@ -1,12 +1,14 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
+using MarketAnalysisWebApi.DbEntities.DbEntities;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.FileStorages
 {
-    public class DbOtherOfferFiles : DbBaseEntity
+    public class DbOtherOfferFileModel : DbBaseEntity
     {
-        public Guid RequestId { get; set; }
-        [ForeignKey(nameof(RequestId))]
+        public Guid OfferId { get; set; }
+        [ForeignKey(nameof(OfferId))]
+        public DbBusinessOffer Offer { get; set; }
 
         public int MyProperty { get; set; }
         public string? FileName { get; set; }

@@ -1,4 +1,5 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
+using MarketAnalysisWebApi.DbEntities.FileStorages;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
@@ -10,6 +11,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         public Guid UserId { get; set; }
         public DbUser? User { get; set; }
 
-        public ICollection <DbAccountRequest>? AccountRequests { get; set; } 
+        public ICollection <DbAccountRequest>? AccountRequests { get; set; }
+        public ICollection<DbOtherOfferFileModel>? OtherFiles { get; set; }
     }
 }

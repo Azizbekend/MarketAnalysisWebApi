@@ -143,5 +143,31 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
         {
             return await _appDbContext.RequestFiles.AsNoTracking().FirstOrDefaultAsync(x => x.Id == requestSchemeFileId, token);
         }
+
+        public  async Task<Guid> OtherOfferFileSvaeAsync(OtherOfferFileCreateDTO dto, CancellationToken token = default)
+        {
+            ArgumentNullException.ThrowIfNull(dto.OfferFile);
+            var offer = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.OfferId);
+            if (offer == null)  
+                throw new Exception("Offer Not Found");
+
+            ArgumentNullException.ThrowIfNull(offer);
+            var fileModel = new DbOtherOfferFileModel
+            {
+                OfferId = dto.OfferId,
+                FileName = dto.OfferFile.FileName,
+                ContentType = dto.OfferFile.ContentType,
+                FileSize = dto.OfferFile.Length,
+                FileData = await ReadFileDataAsync(dto.OfferFile, token)
+            };
+            await _appDbContext.OtherOferFiles.AddAsync(fileModel);
+            await _appDbContext.SaveChangesAsync();
+            return fileModel.Id;
+        }
+
+        public Task<DbOtherOfferFileModel> GetOtherOfferFile(Guid fileId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

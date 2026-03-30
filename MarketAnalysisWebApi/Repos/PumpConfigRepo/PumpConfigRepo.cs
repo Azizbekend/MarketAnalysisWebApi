@@ -95,6 +95,7 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
                 ContactName = dto.ContactName,
                 PhoneNumber = dto.PhoneNumber,
                 ConfigTypeId = dto.ConfigTypeId,
+                RegionId = dto.RegionId,
                 UserId = dto.UserId,
                 Status = RequestStatus.New,
                 InnerId = await GenerateRequestNumber(dto.UserId)
