@@ -4,6 +4,7 @@ using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.Repos.PumpConfigRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Ocsp;
 
 namespace MarketAnalysisWebApi.Controllers
 {
@@ -37,6 +38,9 @@ namespace MarketAnalysisWebApi.Controllers
             {
                 NameByProjectDocs = dto.NameByProjectDocs,
                 ObjectName = dto.ObjectName,
+                ObjectStage = dto.ObjectStage,
+                ProjectDocsChapter = dto.ProjectDocsChapter,
+                PublicationEndDate = dto.PublicationEndDate,
                 FileId = dto.RequestFileId,
                 CustomerName = dto.CustomerName,
                 ProjectOrganizationName = dto.ProjectOrganizationName,
