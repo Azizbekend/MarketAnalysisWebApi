@@ -67,13 +67,12 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
 
         public async Task<Guid> CreateKnsRequest(CreateInnerRequestDTO dto)
         {
-
             var knsRequest = new DbProjectRequest
             {
                 NameByProjectDocs = dto.NameByProjectDocs,
                 ObjectStage = dto.ObjectStage,
                 ProjectDocsChapter = dto.ProjectDocsChapter,
-                PublicationEndDate = dto.PublicationEndDate,
+                PublicationEndDate = dto.PublicationEndDate.ToUniversalTime(),
                 RegionId = dto.RegionId,
                 ObjectName = dto.ObjectName,
                 CustomerName = dto.CustomerName,

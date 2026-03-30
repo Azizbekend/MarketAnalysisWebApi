@@ -71,7 +71,7 @@ namespace MarketAnalysisWebApi.Controllers
                     PhoneNumber = dto.PhoneNumber,
                     UserId = dto.UserId,
                     ConfigTypeId = dto.ConfigTypeId,
-                    FileId = dto.RequestFileId,
+                    FileId = dto.RequestFileId ,
                     RegionId = dto.RegionId
                     
                 };

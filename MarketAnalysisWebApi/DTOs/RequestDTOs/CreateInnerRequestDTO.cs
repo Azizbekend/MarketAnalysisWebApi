@@ -18,7 +18,7 @@ namespace MarketAnalysisWebApi.DTOs.RequestDTOs
         public Guid RegionId { get; set; }
         public Guid UserId { get; set; }
         public Guid ConfigTypeId { get; set; }
-        public Guid FileId { get; set; }
+        public Guid ? FileId { get; set; }
 
     }
 }
