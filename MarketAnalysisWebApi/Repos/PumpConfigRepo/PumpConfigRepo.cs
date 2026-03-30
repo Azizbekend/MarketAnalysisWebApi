@@ -88,7 +88,7 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
                 NameByProjectDocs = dto.NameByProjectDocs,
                 ObjectStage = dto.ObjectStage,
                 ProjectDocsChapter = dto.ProjectDocsChapter,
-                PublicationEndDate = dto.PublicationEndDate,
+                PublicationEndDate = dto.PublicationEndDate.ToUniversalTime(),
                 ObjectName = dto.ObjectName,
                 CustomerName = dto.CustomerName,
                 ProjectOrganizationName = dto.ProjectOrganizationName,
@@ -101,7 +101,7 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
                 InnerId = await GenerateRequestNumber(dto.UserId)
             };
             await _appDbContext.ProjectRequestsTable.AddAsync(pumpRequest);
-            await _appDbContext.SaveChangesAsync();
+             await _appDbContext.SaveChangesAsync();
             return pumpRequest.Id;
         }
 
