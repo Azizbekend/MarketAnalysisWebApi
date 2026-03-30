@@ -35,7 +35,10 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         [MaxLength(25)]
         public string? PhoneNumber { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now.ToUniversalTime().AddHours(3);
-        public DateTime PublicationEndDate { get; set; }
+        public DateTime PublicationEndDate 
+        { 
+            get; set => value.ToUniversalTime().AddHours(3); 
+        }
         public RequestStatus Status { get; set; } = RequestStatus.New;
         public Guid ? RegionId { get; set; }
         [ForeignKey(nameof(RegionId))]

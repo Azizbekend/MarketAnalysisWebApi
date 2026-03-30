@@ -86,6 +86,9 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
             var pumpRequest = new DbProjectRequest
             {
                 NameByProjectDocs = dto.NameByProjectDocs,
+                ObjectStage = dto.ObjectStage,
+                ProjectDocsChapter = dto.ProjectDocsChapter,
+                PublicationEndDate = dto.PublicationEndDate,
                 ObjectName = dto.ObjectName,
                 CustomerName = dto.CustomerName,
                 ProjectOrganizationName = dto.ProjectOrganizationName,
