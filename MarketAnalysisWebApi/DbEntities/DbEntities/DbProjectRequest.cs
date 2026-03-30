@@ -23,6 +23,9 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         [Required]
         public string? ObjectName { get; set; }
         [Required]
+        public string ? ObjectStage { get; set; }
+        public string ? ProjectDocsChapter { get; set; }
+        [Required]
         public string? CustomerName { get; set; }
         [Required]
         public string? ProjectOrganizationName { get; set; }
@@ -32,6 +35,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         [MaxLength(25)]
         public string? PhoneNumber { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now.ToUniversalTime().AddHours(3);
+        public DateTime PublicationEndDate { get; set; }
         public RequestStatus Status { get; set; } = RequestStatus.New;
         public Guid ? RegionId { get; set; }
         [ForeignKey(nameof(RegionId))]

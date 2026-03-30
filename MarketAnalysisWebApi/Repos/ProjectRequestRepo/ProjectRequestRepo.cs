@@ -4,6 +4,7 @@ using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Ocsp;
 using System.Reflection.Metadata.Ecma335;
 
 namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
@@ -175,6 +176,9 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                     InnerId = req.InnerId,
                     NameByProjectDocs = req.NameByProjectDocs,
                     ObjectName = req.ObjectName,
+                    ObjectStage = req.ObjectStage,
+                    ProjectDocsChapter = req.ProjectDocsChapter,
+                    PublicationEndDate = req.PublicationEndDate,
                     CustomerName = req.CustomerName,
                     ProjectOrganizationName = req.ProjectOrganizationName,
                     ContactName = req.ContactName,
@@ -224,6 +228,9 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                             Id = req.Id,
                             InnerId = req.InnerId,
                             ObjectName = req.ObjectName,
+                            ObjectStage = req.ObjectStage,
+                            ProjectDocsChapter = req.ProjectDocsChapter,
+                            PublicationEndDate = req.PublicationEndDate,
                             CustomerName = req.CustomerName,
                             CreatedAt = req.CreatedAt,
                             Status = req.Status,
@@ -288,6 +295,9 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                         InnerId = x.request.InnerId,
                         NameByProjectDocs = x.request.NameByProjectDocs,
                         ObjectName = x.request.ObjectName,
+                        ObjectStage = x.request.ObjectStage,
+                        ProjectDocsChapter = x.request.ProjectDocsChapter,
+                        PublicationEndDate = x.request.PublicationEndDate,
                         CustomerName = x.request.CustomerName,
                         ProjectOrganizationName = x.request.ProjectOrganizationName,
                         ContactName = x.request.ContactName,
@@ -312,6 +322,9 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             InnerId = r.InnerId,
             NameByProjectDocs = r.NameByProjectDocs,
             ObjectName = r.ObjectName,
+            ObjectStage = r.ObjectStage,
+            ProjectDocsChapter = r.ProjectDocsChapter,
+            PublicationEndDate = r.PublicationEndDate,
             CustomerName = r.CustomerName,
             ProjectOrganizationName = r.ProjectOrganizationName,
             ContactName = r.ContactName,
@@ -348,6 +361,9 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 InnerId = request.InnerId,
                 NameByProjectDocs = request.NameByProjectDocs,
                 ObjectName = request.ObjectName,
+                ObjectStage = request.ObjectStage,
+                ProjectDocsChapter = request.ProjectDocsChapter,
+                PublicationEndDate = request.PublicationEndDate,
                 CustomerName = request.CustomerName,
                 ProjectOrganizationName = request.ProjectOrganizationName,
                 ContactName = request.ContactName,
@@ -410,6 +426,9 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 var res = new SupplierHalfSingleRequestResponse
                 {
                     InnerId = req.InnerId,
+                    ObjectStage = req.ObjectStage,
+                    ProjectDocsChapter = req.ProjectDocsChapter,
+                    PublicationEndDate = req.PublicationEndDate,
                     CreatedAt = req.CreatedAt,
                     Status = req.Status,
                     IsArchived = req.IsArchived,

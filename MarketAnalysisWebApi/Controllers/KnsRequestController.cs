@@ -4,6 +4,7 @@ using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.Repos.KnsConfiGRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Ocsp;
 using System.Security.Cryptography.X509Certificates;
 
 namespace MarketAnalysisWebApi.Controllers
@@ -60,6 +61,9 @@ namespace MarketAnalysisWebApi.Controllers
                 var request = new CreateInnerRequestDTO()
                 {
                     NameByProjectDocs = dto.NameByProjectDocs,
+                    ObjectStage = dto.ObjectStage,
+                    ProjectDocsChapter = dto.ProjectDocsChapter,
+                    PublicationEndDate = dto.PublicationEndDate,
                     ObjectName = dto.ObjectName,
                     CustomerName = dto.CustomerName,
                     ProjectOrganizationName = dto.ProjectOrganizationName,

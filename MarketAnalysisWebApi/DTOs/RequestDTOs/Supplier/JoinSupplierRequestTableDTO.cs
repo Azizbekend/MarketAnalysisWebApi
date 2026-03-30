@@ -11,6 +11,9 @@ namespace MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier
         public string? InnerId { get; set; }
         public string? NameByProjectDocs { get; set; }
         public string? ObjectName { get; set; }
+        public string? ObjectStage { get; set; }
+        public string? ProjectDocsChapter { get; set; }
+        public DateTime PublicationEndDate { get; set; }
         public string? CustomerName { get; set; }
         public string? ProjectOrganizationName { get; set; }
         public string? ContactName { get; set; }
