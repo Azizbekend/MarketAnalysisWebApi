@@ -1,8 +1,9 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
+using MarketAnalysisWebApi.DbEntities.DbEntities;
 using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MarketAnalysisWebApi.DbEntities.DbEntities
+namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS
 {
     public class DbEquipRequest : DbBaseEntity
     {

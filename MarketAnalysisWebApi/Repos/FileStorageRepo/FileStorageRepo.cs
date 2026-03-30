@@ -161,7 +161,7 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
             return fileModel.Id;
         }
 
-        public Task<ICollection<DbOtherOfferFileModel>> GetOtherOfferFile(Guid offerId)
+        public Task<ICollection<DbOtherOfferFileModel>> GetOtherOfferFiles(Guid offerId)
         {
             throw new NotImplementedException();
         }

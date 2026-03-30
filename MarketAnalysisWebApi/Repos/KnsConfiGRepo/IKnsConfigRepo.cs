@@ -1,5 +1,4 @@
-﻿using MarketAnalysisWebApi.DbEntities.DbEntities;
-using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS;
+﻿using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS;
 using MarketAnalysisWebApi.DTOs.KnsCongigDTOs;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
 

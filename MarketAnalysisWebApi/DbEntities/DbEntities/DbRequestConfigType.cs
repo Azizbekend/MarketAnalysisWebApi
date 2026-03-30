@@ -1,4 +1,5 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
+using MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS;
 using System.Text.Json.Serialization;
 
 namespace MarketAnalysisWebApi.DbEntities.DbEntities
