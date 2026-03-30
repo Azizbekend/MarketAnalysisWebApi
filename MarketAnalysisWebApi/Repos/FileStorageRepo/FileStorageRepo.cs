@@ -120,7 +120,7 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
             return memoryStream.ToArray();
         }
 
-        public async Task<Guid> SaveRequestFileAsync(RequestSchemeFileDTO dto, CancellationToken token = default)
+        public async Task<Guid?> SaveRequestFileAsync(RequestSchemeFileDTO dto, CancellationToken token = default)
         {
             ArgumentNullException.ThrowIfNull(dto.File);
             var fileModel = new DbRequestFileModel
