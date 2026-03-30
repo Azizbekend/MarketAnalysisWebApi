@@ -17,6 +17,6 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
         Task<DbRequestFileModel> GetRequestFileAsync(Guid requestSchemeFileId, CancellationToken token = default);
 
         Task<Guid> OtherOfferFileSvaeAsync(OtherOfferFileCreateDTO dto, CancellationToken token = default);
-        Task<DbOtherOfferFileModel> GetOtherOfferFile(Guid fileId);
+        Task<ICollection<DbOtherOfferFileModel>> GetOtherOfferFile(Guid offerId);
     }
 }

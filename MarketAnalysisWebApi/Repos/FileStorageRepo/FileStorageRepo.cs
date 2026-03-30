@@ -123,8 +123,6 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
         public async Task<Guid> SaveRequestFileAsync(RequestSchemeFileDTO dto, CancellationToken token = default)
         {
             ArgumentNullException.ThrowIfNull(dto.File);
-            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
-            ArgumentNullException.ThrowIfNull(request);
             var fileModel = new DbRequestFileModel
             {
                 FileName = dto.File.FileName,
@@ -133,8 +131,6 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
                 FileData = await ReadFileDataAsync(dto.File, token)
             };
             await _appDbContext.RequestFiles.AddAsync(fileModel, token);
-            request.FileId = fileModel.Id;
-            _appDbContext.ProjectRequestsTable.Attach(request);
             await _appDbContext.SaveChangesAsync(token);
             return fileModel.Id;
         }
@@ -165,7 +161,7 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
             return fileModel.Id;
         }
 
-        public Task<DbOtherOfferFileModel> GetOtherOfferFile(Guid fileId)
+        public Task<ICollection<DbOtherOfferFileModel>> GetOtherOfferFile(Guid offerId)
         {
             throw new NotImplementedException();
         }
