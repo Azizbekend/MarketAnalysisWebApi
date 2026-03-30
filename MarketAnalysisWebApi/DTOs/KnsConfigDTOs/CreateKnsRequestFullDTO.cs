@@ -4,7 +4,7 @@ namespace MarketAnalysisWebApi.DTOs.KnsConfigDTOs
 {
     public class CreateKnsRequestFullDTO
     {
-        public Guid ? RequestFileId { get; set; }
+        public Guid ? RequestFileId { get; set; } = Guid.Empty;
         public Guid RegionId { get; set; }
         public string? NameByProjectDocs { get; set; }
         public string? ObjectName { get; set; }
