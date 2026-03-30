@@ -43,6 +43,7 @@ namespace MarketAnalysisWebApi.Controllers
                 ConfigTypeId = dto.ConfigTypeId,
                 ContactName = dto.ContactName,
                 PhoneNumber = dto.PhoneNumber,
+                RegionId = dto.RegionId,
                 UserId = dto.UserId                
             };
             var requestId = await _pumpConfigRepo.CreatePumpRequestAsync(pumpRequest);

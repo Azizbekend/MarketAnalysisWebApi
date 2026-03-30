@@ -54,13 +54,20 @@ namespace MarketAnalysisWebApi.Repos.InnerHelperRepo
 
         public async Task<Guid> CreateRegion(string name)
         {
-            var newRegion = new DbRegion
+            if(await _appDbContext.RegionsTable.AnyAsync(x => x.RegionName == name))
             {
-                RegionName = name
-            };
-            await _appDbContext.RegionsTable.AddAsync(newRegion);
-            await _appDbContext.SaveChangesAsync();
-            return newRegion.Id;
+                throw new Exception("Already exists!");
+            }
+            else
+            {
+                var newRegion = new DbRegion
+                {
+                    RegionName = name
+                };
+                await _appDbContext.RegionsTable.AddAsync(newRegion);
+                await _appDbContext.SaveChangesAsync();
+                return newRegion.Id;
+            }
         }
 
         public async Task<ICollection<DbRegion>> GetAllRegions()

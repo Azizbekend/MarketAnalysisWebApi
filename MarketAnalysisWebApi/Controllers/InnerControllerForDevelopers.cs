@@ -75,8 +75,15 @@ namespace MarketAnalysisWebApi.Controllers
         [HttpGet("request/region/create")]
         public async Task<IActionResult> CreateRegion(string name)
         {
-            var res = await _innerHelperRepo.CreateRegion(name);
-            return Ok(res);
+            try
+            {
+                var res = await _innerHelperRepo.CreateRegion(name);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("request/region/attach")]

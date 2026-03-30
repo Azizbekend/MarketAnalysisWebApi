@@ -7,7 +7,6 @@ namespace MarketAnalysisWebApi.DTOs.PumpDTO
         public Guid RequestFileId { get; set; }
         public string? NameByProjectDocs { get; set; }
         public string? ObjectName { get; set; }
-        public string? LocationRegion { get; set; }
         public string? CustomerName { get; set; }
         public string? ProjectOrganizationName { get; set; }
         public string? ContactName { get; set; }
@@ -18,7 +17,7 @@ namespace MarketAnalysisWebApi.DTOs.PumpDTO
         public LiquidType PumpedLiquidType { get; set; }
         public double PumpEfficiency { get; set; }
         public LiquidsIntakeType IntakeType { get; set; }
-
+        public Guid RegionId { get; set; }
         public int WorkPumpsCount { get; set; }
         public int ReservePumpsCount { get; set; }
         public double LiquidTemperature { get; set; }
