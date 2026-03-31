@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <Folder Include="DTOs\BaseDTOs\" />
+    <Folder Include="NotificationServer\" />
   </ItemGroup>
 
 </Project>

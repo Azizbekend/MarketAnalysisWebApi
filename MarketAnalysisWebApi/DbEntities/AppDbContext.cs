@@ -39,14 +39,11 @@ namespace MarketAnalysisWebApi.DbEntities
         public DbSet<DbSubmersiblePump> SubmersiblePumps { get; set; }
         public DbSet<DbRequestFileModel> RequestFiles { get; set; }
         public DbSet<DbRegion> RegionsTable { get; set; }
-        public DbSet<DbUserNotification> UserNotificationsTable { get; set; }
-        public DbSet<DbNotification> NotificationTable { get; set; }
+        //public DbSet<DbUserNotification> UserNotificationsTable { get; set; }
+        //public DbSet<DbNotification> NotificationTable { get; set; }
 
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<DbProjectRequest>().HasNoDiscriminator();
-        }
+
     }
 }
