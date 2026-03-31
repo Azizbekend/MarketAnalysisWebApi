@@ -232,6 +232,7 @@ namespace MarketAnalysisWebApi.Controllers
             });
         }
 
+
         private void SetRefreshTokenCookie(string refreshToken, DateTime expiresAt)
         {
             var cookieOptions = new CookieOptions
