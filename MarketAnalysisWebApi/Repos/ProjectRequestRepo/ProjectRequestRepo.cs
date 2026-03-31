@@ -382,6 +382,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 RequestConfigType = request.RequestConfigType,
                 KnsConfigDTO = request.KnsConfigs?.Select(k => new JoinKnsConfigDTO
                 {
+                    InstalationPlace = k.InstalationPlace,
                     Efficiency = k.Perfomance,
                     Untis = k.Units
                 }).FirstOrDefault(),

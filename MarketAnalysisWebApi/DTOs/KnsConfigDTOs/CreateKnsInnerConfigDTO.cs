@@ -10,6 +10,7 @@ namespace MarketAnalysisWebApi.DTOs.KnsCongigDTOs
         public double RequiredPumpPressure { get; set; }
         public int ActivePumpsCount { get; set; }
         public int ReservePumpsCount { get; set; }
+        public string InstalationPlace { get; set; }
         public int PumpsToWarehouseCount { get; set; }
         public PumpEnvironment PType { get; set; }
         public int EnvironmentTemperature { get; set; }

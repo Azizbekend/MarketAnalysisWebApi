@@ -85,6 +85,7 @@ namespace MarketAnalysisWebApi.Controllers
                     ReservePumpsCount = dto.ReservePumpsCount,
                     PumpsToWarehouseCount = dto.PumpsToWarehouseCount,
                     PType = dto.PType,
+                    InstalationPlace = dto.InstalationPlace,
                     EnvironmentTemperature = dto.EnvironmentTemperature,
                     ExplosionProtection = dto.ExplosionProtection,
                     SupplyPipelineDepth = dto.SupplyPipelineDepth,

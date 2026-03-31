@@ -25,6 +25,7 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
                 ReservePumpsCount = dto.ReservePumpsCount,
                 PumpsToWarehouseCount = dto.PumpsToWarehouseCount,
                 startupMethod = dto.startupMethod,
+                InstalationPlace = dto.InstalationPlace,
                 PType = dto.PType,
                 EnvironmentTemperature = dto.EnvironmentTemperature,
                 ExplosionProtection = dto.ExplosionProtection,

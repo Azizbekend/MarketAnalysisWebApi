@@ -49,6 +49,7 @@ namespace MarketAnalysisWebApi.DbEntities.DbRequestConfigurations.KNS
         public double RequiredPumpPressure { get; set; }
         public int ActivePumpsCount { get; set; }
         public int ReservePumpsCount { get; set; }
+        public string ? InstalationPlace { get; set; }
         public int PumpsToWarehouseCount { get; set; }
         [Range(0, 2, ErrorMessage = "Значение может быть только от 0 до 2")]
         public PumpsStartupMethod startupMethod { get; set; }

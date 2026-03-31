@@ -9,6 +9,7 @@ namespace MarketAnalysisWebApi.DTOs.KnsConfigDTOs
         public string? NameByProjectDocs { get; set; }
         public string? ObjectName { get; set; }
         public string? ObjectStage { get; set; }
+        public string  InstalationPlace { get; set; }
         public string? ProjectDocsChapter { get; set; }
         public DateTime PublicationEndDate { get; set; }
         public string? LocationRegion { get; set; }
