@@ -16,7 +16,12 @@ namespace MarketAnalysisWebApi.DbEntities.DbEntities
         Published
     }
     public class DbProjectRequest : DbBaseEntity
-    { private DateTime _publicationEndDate;
+    {
+        public DbProjectRequest()
+        {
+            
+        }
+        private DateTime _publicationEndDate;
         public string? InnerId { get; set; }
         [Required]
         public string? NameByProjectDocs { get; set; }

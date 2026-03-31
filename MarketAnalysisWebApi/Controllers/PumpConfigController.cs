@@ -58,6 +58,7 @@ namespace MarketAnalysisWebApi.Controllers
                 WorkPumpsCount = dto.WorkPumpsCount,
                 RequestId = requestId,
                 PumpTypeId = dto.PumpTypeId,
+                InstalationPlace = dto.InstalationPlace,
                 PumpedLiquidType = dto.PumpedLiquidType,
                 PumpEfficiency = dto.PumpEfficiency,
                 LiquidTemperature = dto.LiquidTemperature,

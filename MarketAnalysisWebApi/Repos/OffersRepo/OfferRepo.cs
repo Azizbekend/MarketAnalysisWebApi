@@ -19,6 +19,7 @@ namespace MarketAnalysisWebApi.Repos.OffersRepo
             var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
             ArgumentException.ThrowIfNullOrEmpty(nameof(request));
             var accReq = await _appDbContext.AccountRequests.FirstOrDefaultAsync(x => x.AccountId == dto.BussinessAccId && x.RequestId == request.Id);
+            if (accReq.Status != "Payed") throw new Exception("Не оплачено");
             ArgumentException.ThrowIfNullOrEmpty(nameof(accReq));
             var BO = new DbBusinessOffer
             {

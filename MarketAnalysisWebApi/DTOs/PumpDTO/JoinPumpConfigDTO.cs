@@ -13,6 +13,7 @@ namespace MarketAnalysisWebApi.DTOs.PumpDTO
         public LiquidsIntakeType IntakeType { get; set; }
         public JoinDryPumpDTO ? DryPump { get; set; }
         public JoinSubPumpDTO ? SubPump { get; set; }
+        public string ? InstalationPlace { get; set; }
         public int WorkPumpsCount { get; set; }
         public int ReservePumpsCount { get; set; }
         public double LiquidTemperature { get; set; }

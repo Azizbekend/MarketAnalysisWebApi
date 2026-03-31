@@ -23,6 +23,7 @@ namespace MarketAnalysisWebApi.DTOs.PumpDTO
         public Guid RegionId { get; set; }
         public int WorkPumpsCount { get; set; }
         public int ReservePumpsCount { get; set; }
+        public string ? InstalationPlace { get; set; }
         public double LiquidTemperature { get; set; }
         public double MineralParticlesSize { get; set; }
         public double MineralParticlesConcentration { get; set; }

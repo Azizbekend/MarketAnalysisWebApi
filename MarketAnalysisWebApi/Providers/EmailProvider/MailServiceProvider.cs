@@ -32,7 +32,6 @@ namespace MarketAnalysisWebApi.Providers.EmailProvider
             using var emailMessage = new MimeMessage();
             var connData = _config.GetEmailServerConnData();
             var authData = _config.GetEmailAuthData();
-
             emailMessage.From.Add(new MailboxAddress(SenderName, SenderAddr));
             emailMessage.To.Add(new MailboxAddress(receiver.Name, receiver.Address));
             emailMessage.Subject = subject;

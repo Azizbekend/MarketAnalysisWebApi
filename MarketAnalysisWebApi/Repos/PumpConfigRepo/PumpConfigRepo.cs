@@ -52,6 +52,7 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
                 PumpedLiquidType = dto.PumpedLiquidType,
                 PumpEfficiency = dto.PumpEfficiency,
                 PumpDiameter = dto.PumpDiameter,
+                InstalationPlace = dto.InstalationPlace,
                 LiquidTemperature = dto.LiquidTemperature,
                 MineralParticlesSize = dto.MineralParticlesSize,
                 MineralParticlesConcentration = dto.MineralParticlesConcentration,
@@ -123,6 +124,7 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
                         PumpEfficiency = c.PumpEfficiency,
                         PumpedLiquidType = c.PumpedLiquidType,
                         IntakeType = c.IntakeType,
+                        InstalationPlace = c.InstalationPlace,
                         TypeName = c.Type != null ? c.Type.TypeName : null,
                         DryPump = c.Type != null && c.Type.DryPumps != null && c.Type.DryPumps.Any()
                         ? new JoinDryPumpDTO
