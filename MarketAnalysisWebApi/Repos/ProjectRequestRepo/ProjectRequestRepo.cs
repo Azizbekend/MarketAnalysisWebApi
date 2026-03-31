@@ -388,6 +388,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 PumpConfigDTO = request.PumpConfigurations?.Select(p => new JoinPumpConfigDTO
                 {
                     Efficiency = p.PumpEfficiency,
+                    InstalationPlace = p.InstalationPlace
 
                 }).FirstOrDefault()
             }).ToList();
