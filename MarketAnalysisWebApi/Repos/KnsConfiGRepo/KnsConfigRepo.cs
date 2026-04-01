@@ -81,6 +81,7 @@ namespace MarketAnalysisWebApi.Repos.KnsConfiGRepo
                 ContactName = dto.ContactName,
                 PhoneNumber = dto.PhoneNumber,
                 ConfigTypeId = dto.ConfigTypeId,
+                FileId = dto.FileId,
                 UserId = dto.UserId,
                 Status = RequestStatus.New,
                 InnerId = await GenerateRequestNumber(dto.UserId)

@@ -102,6 +102,7 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
                 RegionId = dto.RegionId,
                 UserId = dto.UserId,
                 Status = RequestStatus.New,
+                FileId = dto.FileId,
                 InnerId = await GenerateRequestNumber(dto.UserId)
             };
             await _appDbContext.ProjectRequestsTable.AddAsync(pumpRequest);
