@@ -98,49 +98,41 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 
         public async Task<ICollection<JoinSupplierRequestTableDTO>> GetFavourites(Guid userId)
         {
-            var requests = await _appDbContext.ProjectRequestsTable
-                .Include(r => r.Region)
-                .Include(r => r.RequestConfigType)
-                .Include(r => r.KnsConfigs)
-                .Include(r => r.PumpConfigurations)
-                .Include(r => r.AccountRequests)
-                .Include(r => r.Offers)
-                .Where(r => !r.IsArchived && r.UserId == userId)
-                .ToListAsync();
-            var result = requests.Select(request => new JoinSupplierRequestTableDTO
-            {
-                RequestId = request.Id,
-                InnerId = request.InnerId,
-                NameByProjectDocs = request.NameByProjectDocs,
-                ObjectName = request.ObjectName,
-                ObjectStage = request.ObjectStage,
-                ProjectDocsChapter = request.ProjectDocsChapter,
-                PublicationEndDate = request.PublicationEndDate,
-                CustomerName = request.CustomerName,
-                ProjectOrganizationName = request.ProjectOrganizationName,
-                ContactName = request.ContactName,
-                PhoneNumber = request.PhoneNumber,
-                CreatedAt = request.CreatedAt,
-                Status = request.Status,
-                ViewPayStatus = request.AccountRequests?.Select((vp) => vp.Status).FirstOrDefault(),
-                BusinessOffersCount = request.Offers?.Count ?? 0,
-                RegionId = request.RegionId,
-                Region = request.Region,
-                IsArchived = request.IsArchived,
-                ConfigTypeId = request.ConfigTypeId,
-                RequestConfigType = request.RequestConfigType,
-                KnsConfigDTO = request.KnsConfigs?.Select(k => new JoinKnsConfigDTO
-                {
-                    Efficiency = k.Perfomance,
-                    Untis = k.Units
-                }).FirstOrDefault(),
-                PumpConfigDTO = request.PumpConfigurations?.Select(p => new JoinPumpConfigDTO
-                {
-                    Efficiency = p.PumpEfficiency,
-
-                }).FirstOrDefault()
-            }).ToList();
-            return result;
+            return await _appDbContext.FavoritesTable
+                 .Where(fr => fr.UserId == userId)
+                 .Include(fr => fr.request)
+                     .ThenInclude(r => r.Region)
+                 .Include(fr => fr.request)
+                     .ThenInclude(r => r.RequestConfigType)
+                 .Include(fr => fr.request)
+                     .ThenInclude(r => r.Offers) // Для подсчета BusinessOffersCount
+                 .Select(fr => new JoinSupplierRequestTableDTO
+                         {
+                             RequestId = fr.request.Id,
+                             InnerId = fr.request.InnerId,
+                             NameByProjectDocs = fr.request.NameByProjectDocs,
+                             ObjectName = fr.request.ObjectName,
+                             ObjectStage = fr.request.ObjectStage,
+                             ProjectDocsChapter = fr.request.ProjectDocsChapter,
+                             PublicationEndDate = fr.request.PublicationEndDate,
+                             CustomerName = fr.request.CustomerName,
+                             ProjectOrganizationName = fr.request.ProjectOrganizationName,
+                             ContactName = fr.request.ContactName,
+                             PhoneNumber = fr.request.PhoneNumber,
+                             CreatedAt = fr.request.CreatedAt,
+                             Status = fr.request.Status,
+                             ViewPayStatus = null, // Заполните по необходимости
+                             BusinessOffersCount = fr.request.Offers != null ? fr.request.Offers.Count : 0,
+                             RegionId = fr.request.RegionId,
+                             Region = fr.request.Region,
+                             IsArchived = fr.request.IsArchived,
+                             ConfigTypeId = fr.request.ConfigTypeId,
+                             RequestConfigType = fr.request.RequestConfigType,
+                             KnsConfigDTO = null, // Заполните при наличии KnsConfigs
+                             LosConfigDTO = null, // Заполните при наличии LosConfig
+                             PumpConfigDTO = null // Заполните при наличии PumpConfigurations
+                         })
+                 .ToListAsync();
 
         }
 
