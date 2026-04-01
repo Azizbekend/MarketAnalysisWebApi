@@ -96,16 +96,51 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             }
         }
 
-        public async Task<ICollection<DbProjectRequest>> GetFavourites(Guid userId)
+        public async Task<ICollection<JoinSupplierRequestTableDTO>> GetFavourites(Guid userId)
         {
-            var list = new List<DbProjectRequest>();
-            var link = await _appDbContext.FavoritesTable.Where(x => x.UserId == userId).ToListAsync();
-            foreach(var favourite in link)
+            var requests = await _appDbContext.ProjectRequestsTable
+                .Include(r => r.Region)
+                .Include(r => r.RequestConfigType)
+                .Include(r => r.KnsConfigs)
+                .Include(r => r.PumpConfigurations)
+                .Include(r => r.AccountRequests)
+                .Include(r => r.Offers)
+                .Where(r => !r.IsArchived && r.UserId == userId)
+                .ToListAsync();
+            var result = requests.Select(request => new JoinSupplierRequestTableDTO
             {
-                var buff = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == favourite.RequestId);
-                list.Add(buff);
-            }
-            return list;
+                RequestId = request.Id,
+                InnerId = request.InnerId,
+                NameByProjectDocs = request.NameByProjectDocs,
+                ObjectName = request.ObjectName,
+                ObjectStage = request.ObjectStage,
+                ProjectDocsChapter = request.ProjectDocsChapter,
+                PublicationEndDate = request.PublicationEndDate,
+                CustomerName = request.CustomerName,
+                ProjectOrganizationName = request.ProjectOrganizationName,
+                ContactName = request.ContactName,
+                PhoneNumber = request.PhoneNumber,
+                CreatedAt = request.CreatedAt,
+                Status = request.Status,
+                ViewPayStatus = request.AccountRequests?.Select((vp) => vp.Status).FirstOrDefault(),
+                BusinessOffersCount = request.Offers?.Count ?? 0,
+                RegionId = request.RegionId,
+                Region = request.Region,
+                IsArchived = request.IsArchived,
+                ConfigTypeId = request.ConfigTypeId,
+                RequestConfigType = request.RequestConfigType,
+                KnsConfigDTO = request.KnsConfigs?.Select(k => new JoinKnsConfigDTO
+                {
+                    Efficiency = k.Perfomance,
+                    Untis = k.Units
+                }).FirstOrDefault(),
+                PumpConfigDTO = request.PumpConfigurations?.Select(p => new JoinPumpConfigDTO
+                {
+                    Efficiency = p.PumpEfficiency,
+
+                }).FirstOrDefault()
+            }).ToList();
+            return result;
 
         }
 
