@@ -2,6 +2,7 @@
 using MarketAnalysisWebApi.Providers;
 using MarketAnalysisWebApi.Providers.EmailProvider;
 using MarketAnalysisWebApi.Repos.InnerHelperRepo;
+using MarketAnalysisWebApi.Repos.UserRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -14,11 +15,13 @@ namespace MarketAnalysisWebApi.Controllers
     {
         private readonly IInnerHelperRepo _innerHelperRepo;
         private readonly IMailServiceProvider _mailRepo;
+        private readonly IUserRepo _userRepo;
 
-        public InnerControllerForDevelopers(IInnerHelperRepo innerHelperRepo, IMailServiceProvider mailRepo)
+        public InnerControllerForDevelopers(IInnerHelperRepo innerHelperRepo, IMailServiceProvider mailRepo, IUserRepo userRepo)
         {
             _innerHelperRepo = innerHelperRepo;
             _mailRepo = mailRepo;
+            this._userRepo = userRepo;
         }
 
         [HttpPost("request/config/add")]
@@ -105,7 +108,12 @@ namespace MarketAnalysisWebApi.Controllers
             var res = await _innerHelperRepo.CreatePumpType(type);
             return Ok(res);
         }
-
+        [HttpDelete("user/delete/cascade")]
+        public async Task<IActionResult> DeleteCascade(Guid userId)
+        {
+            await _userRepo.DeleteCascade(userId);  
+            return Ok();
+        }
         //[HttpGet("sql/join/test")]
         //public async Task<IActionResult> GetJoinTestResuilt(Guid userId)
         //{

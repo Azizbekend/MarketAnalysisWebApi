@@ -135,7 +135,12 @@ namespace MarketAnalysisWebApi.Repos.UserRepo
             }
             else { return false; }
         }
+        public async Task DeleteCascade(Guid userId)
+        {
+            var entity = await _appDbContext.Set<DbUser>().FindAsync(userId);
+            _appDbContext.Set<DbUser>().Remove(entity);
+            await _appDbContext.SaveChangesAsync();
+        }
 
-       
     }
 }
