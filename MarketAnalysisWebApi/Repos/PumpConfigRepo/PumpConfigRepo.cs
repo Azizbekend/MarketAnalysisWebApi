@@ -49,6 +49,7 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
             {
                 RequestId = dto.RequestId,
                 PumpTypeId = dto.PumpTypeId,
+                IntakeType = dto.IntakeType,
                 PumpedLiquidType = dto.PumpedLiquidType,
                 PumpEfficiency = dto.PumpEfficiency,
                 PumpDiameter = dto.PumpDiameter,
