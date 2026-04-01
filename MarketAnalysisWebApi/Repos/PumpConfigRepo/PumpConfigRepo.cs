@@ -52,6 +52,8 @@ namespace MarketAnalysisWebApi.Repos.PumpConfigRepo
                 PumpedLiquidType = dto.PumpedLiquidType,
                 PumpEfficiency = dto.PumpEfficiency,
                 PumpDiameter = dto.PumpDiameter,
+                WorkPumpsCount = dto.WorkPumpsCount,
+                ReservePumpsCount = dto.ReservePumpsCount,
                 InstalationPlace = dto.InstalationPlace,
                 LiquidTemperature = dto.LiquidTemperature,
                 MineralParticlesSize = dto.MineralParticlesSize,
