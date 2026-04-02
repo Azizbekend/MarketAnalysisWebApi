@@ -347,7 +347,12 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                                 InstalationPlace = pump.InstalationPlace
                             } : null
                         };
-            return await query.ToListAsync();
+            var result = await query.ToListAsync();
+            var distinctResult = result
+                .GroupBy(r => r.RequestId)
+                .Select(g => g.First())
+                .ToList();
+            return distinctResult;
         }
 
         public async Task<ICollection<DbProjectRequest>> GetUsersRequests(Guid userId)
