@@ -60,7 +60,7 @@ namespace MarketAnalysisWebApi.Controllers
         {
             try
             {
-                var res = await _requestRepo.GetAllAsync();
+                var res = await _requestRepo.GetPublishedRequests();
                 return Ok(res);
             }
             catch(Exception ex)
