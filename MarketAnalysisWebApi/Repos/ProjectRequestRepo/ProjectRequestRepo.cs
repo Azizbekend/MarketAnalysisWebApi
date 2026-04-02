@@ -199,6 +199,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 
             return result;
         }
+        
 
         public async Task<DbProjectRequest> GetRequestById(Guid requestId)
         {
@@ -287,6 +288,70 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                             FavoriteId = fav != null ? fav.Id : (Guid?)null
                         };
 
+            return await query.ToListAsync();
+        }
+        public async Task<ICollection<JoinSupplierRequestTableDTO>> GetFavoriteProjectRequestsByUserIdAsync(Guid userId)
+        {
+            var query = from request in _appDbContext.ProjectRequestsTable
+                        join region in _appDbContext.RegionsTable
+                            on request.RegionId equals region.Id into regionGroup
+                        from region in regionGroup.DefaultIfEmpty()
+                        join configType in _appDbContext.ConfigurationTypesTable
+                            on request.ConfigTypeId equals configType.Id into configTypeGroup
+                        from configType in configTypeGroup.DefaultIfEmpty()
+                        join favorite in _appDbContext.FavoritesTable
+                            on new { request.Id, UserId = userId } equals new { Id = favorite.RequestId, favorite.UserId } into favoriteGroup
+                        from favorite in favoriteGroup.DefaultIfEmpty()
+                        join accountRequest in _appDbContext.AccountRequests
+                            on request.Id equals accountRequest.RequestId into accountGroup
+                        from accountRequest in accountGroup.DefaultIfEmpty()
+                        join kns in _appDbContext.KnsConfigurations
+                            on request.Id equals kns.RequestId into knsGroup
+                        from kns in knsGroup.DefaultIfEmpty()
+                        join pump in _appDbContext.PumpConfigurations
+                            on request.Id equals pump.RequestId into pumpGroup
+                        from pump in pumpGroup.DefaultIfEmpty()
+                        select new JoinSupplierRequestTableDTO
+                        {
+                            RequestId = request.Id,
+                            InnerId = request.InnerId,
+                            NameByProjectDocs = request.NameByProjectDocs,
+                            ObjectName = request.ObjectName,
+                            ObjectStage = request.ObjectStage,
+                            ProjectDocsChapter = request.ProjectDocsChapter,
+                            PublicationEndDate = request.PublicationEndDate,
+                            CustomerName = request.CustomerName,
+                            ProjectOrganizationName = request.ProjectOrganizationName,
+                            ContactName = request.ContactName,
+                            PhoneNumber = request.PhoneNumber,
+                            CreatedAt = request.CreatedAt,
+                            Status = request.Status,
+                            ViewPayStatus = accountRequest != null ? accountRequest.Status : null, // Берем статус из AccountRequest
+                            BusinessOffersCount = _appDbContext.OffersTable.Count(o => o.RequestId == request.Id),
+                            RegionId = request.RegionId,
+                            Region = region,
+                            IsArchived = request.IsArchived,
+                            ConfigTypeId = request.ConfigTypeId,
+                            IsFavorite = favorite != null ? new DbFavoriteRequest
+                            {
+                                Id = favorite.Id,
+                                UserId = favorite.UserId,
+                                RequestId = favorite.RequestId
+                            } : null,
+                            RequestConfigType = configType,
+                            KnsConfigDTO = kns != null ? new JoinKnsConfigDTO
+                            {
+                                Efficiency = kns.Perfomance,
+                                Untis = kns.Units,
+                                InstalationPlace = kns.InstalationPlace
+                            } : null,
+                            LosConfigDTO = null,
+                            PumpConfigDTO = pump != null ? new JoinPumpConfigDTO
+                            {
+                                Efficiency = pump.PumpEfficiency,
+                                InstalationPlace = pump.InstalationPlace
+                            } : null
+                        };
             return await query.ToListAsync();
         }
 
@@ -530,5 +595,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 
             return result;
         }
+
+
     }
 }

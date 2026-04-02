@@ -129,7 +129,7 @@ namespace MarketAnalysisWebApi.Controllers
         [HttpGet("user/favourites/table/base")]
         public async Task<IActionResult> GetListWithFavourites(Guid id)
         {
-            var res = await _projectRequestRepo.GetRequestWithFavouriteLinks(id);
+            var res = await _projectRequestRepo.GetFavoriteProjectRequestsByUserIdAsync(id);
             return Ok(res);
         }
         //public async Task<IActionResult> GetUsersFavouritesRequests(Guid userId)
