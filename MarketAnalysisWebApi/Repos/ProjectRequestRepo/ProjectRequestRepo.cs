@@ -133,6 +133,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                              RegionId = fr.request.RegionId,
                              Region = fr.request.Region,
                              IsArchived = fr.request.IsArchived,
+                             IsFavorite = true,
                              ConfigTypeId = fr.request.ConfigTypeId,
                              RequestConfigType = fr.request.RequestConfigType,
                              KnsConfigDTO = fr.request.KnsConfigs?.Select(k => new JoinKnsConfigDTO
