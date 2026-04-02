@@ -137,12 +137,12 @@ namespace MarketAnalysisWebApi.Controllers
         //    var res = await _projectRequestRepo.GetFavourites(userId);
         //    return Ok(res);
         //}
-        [HttpGet("user/favourites")]
-        public async Task<IActionResult> GetUsersFavouritesRequests(Guid userId)
-        {
-            var res = await _projectRequestRepo.GetFavourites(userId);
-            return Ok(res); 
-        }
+        //[HttpGet("user/favourites")]
+        //public async Task<IActionResult> GetUsersFavouritesRequests(Guid userId)
+        //{
+        //    var res = await _projectRequestRepo.GetFavourites(userId);
+        //    return Ok(res); 
+        //}
         [HttpPost("favourites/add")]
         public async Task<IActionResult> AddToFavourites(RequestStandartDTO dto)
         {
