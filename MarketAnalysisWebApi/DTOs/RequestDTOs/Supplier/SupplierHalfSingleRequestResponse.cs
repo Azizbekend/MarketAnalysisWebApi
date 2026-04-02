@@ -8,7 +8,8 @@ namespace MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier
         public string? ObjectStage { get; set; }
         public string? ProjectDocsChapter { get; set; }
         public DateTime PublicationEndDate { get; set; }
-        public string? LocationRegion { get; set; }
+        public DbRegion ? Region { get; set; }
+        public string ? LocationRegion { get; set; }
         public DateTime CreatedAt { get; set; }
         public RequestStatus Status { get; set; }
         public bool IsArchived { get; set; }

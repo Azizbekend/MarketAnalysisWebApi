@@ -20,6 +20,12 @@ namespace MarketAnalysisWebApi.Controllers
             _projectRequestRepo = projectRequestRepo;
             _fileStorageRepo = fileStorageRepo;
         }
+        [HttpGet("sherry/half")]
+        public async Task<IActionResult> GEtSherreyRRequest(Guid id)
+        {
+            var res = await _projectRequestRepo.GetSherryRequest(id);
+            return Ok(res);
+        }
 
         [HttpGet("single")]
         public async Task<IActionResult> GetRequets(Guid id)

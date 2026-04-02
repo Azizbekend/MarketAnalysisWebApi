@@ -4,6 +4,7 @@ using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.Ocsp;
 using Org.BouncyCastle.Ocsp;
 using System.Collections.Frozen;
 using System.Reflection.Metadata.Ecma335;
@@ -502,6 +503,32 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                 }
                 return res;
             }
+        }
+
+        public async Task<SupplierHalfSingleRequestResponse> GetSherryRequest(Guid id)
+        {
+            var result = await _appDbContext.ProjectRequestsTable
+       .Include(r => r.Region)
+       .Where(r => r.Id == id)
+       .Select(r => new SupplierHalfSingleRequestResponse
+       {
+           InnerId = r.InnerId,
+           ObjectStage = r.ObjectStage,
+           ProjectDocsChapter = r.ProjectDocsChapter,
+           PublicationEndDate = r.PublicationEndDate,
+           ConfigTypeId = r.ConfigTypeId,
+           CreatedAt = r.CreatedAt,
+           Status = r.Status,
+           Region = r.Region != null ? new DbRegion
+           {
+               Id = r.Region.Id,
+               RegionName = r.Region.RegionName
+           } : null,
+           SchemeFileId = r.FileId
+       })
+       .FirstOrDefaultAsync();
+
+            return result;
         }
     }
 }
