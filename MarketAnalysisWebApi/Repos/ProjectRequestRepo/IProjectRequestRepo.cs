@@ -25,5 +25,8 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
         Task<ICollection<GetBaseRequestDTO>> GetRequestsWithRegions();
         Task<GetBaseRequestDTO> GetRequestWithRegion(Guid requestId);
         Task<SupplierHalfSingleRequestResponse> GetSherryRequest(Guid id);
+        Task<ICollection<JoinSupplierRequestTableDTO>> GetFavoriteProjectRequestsByUserIdAsync(Guid userId);
+
+
     }
 }
