@@ -332,12 +332,7 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                             Region = region,
                             IsArchived = request.IsArchived,
                             ConfigTypeId = request.ConfigTypeId,
-                            IsFavorite = favorite != null ? new DbFavoriteRequest
-                            {
-                                Id = favorite.Id,
-                                UserId = favorite.UserId,
-                                RequestId = favorite.RequestId
-                            } : null,
+                            IsFavorite = favorite != null ? true : false,
                             RequestConfigType = configType,
                             KnsConfigDTO = kns != null ? new JoinKnsConfigDTO
                             {

@@ -26,7 +26,7 @@ namespace MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier
         public DbRegion? Region { get; set; }
         public bool IsArchived { get; set; } = false;
         public Guid ConfigTypeId { get; set; }
-        public DbFavoriteRequest ? IsFavorite { get; set; }
+        public bool IsFavorite { get; set; }
         public DbRequestConfigType? RequestConfigType { get; set; }
         public JoinKnsConfigDTO ? KnsConfigDTO { get; set; }
         public JoinLosConfigDTO ? LosConfigDTO { get; set; }
