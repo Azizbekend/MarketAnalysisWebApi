@@ -5,6 +5,7 @@ using MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier;
 using MarketAnalysisWebApi.Repos.BaseRepo;
 using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Ocsp;
+using System.Collections.Frozen;
 using System.Reflection.Metadata.Ecma335;
 
 namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
@@ -98,15 +99,20 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
 
         public async Task<ICollection<JoinSupplierRequestTableDTO>> GetFavourites(Guid userId)
         {
-            return await _appDbContext.FavoritesTable
-                 .Where(fr => fr.UserId == userId)
-                 .Include(fr => fr.request)
-                     .ThenInclude(r => r.Region)
-                 .Include(fr => fr.request)
-                     .ThenInclude(r => r.RequestConfigType)
-                 .Include(fr => fr.request)
-                     .ThenInclude(r => r.Offers) // Для подсчета BusinessOffersCount
-                 .Select(fr => new JoinSupplierRequestTableDTO
+            var requests = await _appDbContext.FavoritesTable
+        .Where(fr => fr.UserId == userId)
+        .Include(fr => fr.request)
+            .ThenInclude(r => r.Region)
+        .Include(fr => fr.request)
+            .ThenInclude(r => r.RequestConfigType)
+        .Include(fr => fr.request)
+            .ThenInclude(r => r.Offers)
+        .Include(fr => fr.request)
+            .ThenInclude(r => r.KnsConfigs)
+        .Include(fr => fr.request)
+            .ThenInclude(r => r.PumpConfigurations)
+        .ToListAsync();
+                 return requests.Select(fr => new JoinSupplierRequestTableDTO
                          {
                              RequestId = fr.request.Id,
                              InnerId = fr.request.InnerId,
@@ -128,11 +134,20 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
                              IsArchived = fr.request.IsArchived,
                              ConfigTypeId = fr.request.ConfigTypeId,
                              RequestConfigType = fr.request.RequestConfigType,
-                             KnsConfigDTO = null, // Заполните при наличии KnsConfigs
+                             KnsConfigDTO = fr.request.KnsConfigs?.Select(k => new JoinKnsConfigDTO
+                             {
+                                 Efficiency = k.Perfomance,
+                                 InstalationPlace = k.InstalationPlace,
+                                 Untis = k.Units
+                             }).FirstOrDefault(), // Заполните при наличии KnsConfigs
                              LosConfigDTO = null, // Заполните при наличии LosConfig
-                             PumpConfigDTO = null // Заполните при наличии PumpConfigurations
+                             PumpConfigDTO = fr.request.PumpConfigurations?.Select(p => new JoinPumpConfigDTO
+                             {
+                                 Efficiency = p.PumpEfficiency,
+                                 InstalationPlace = p.InstalationPlace
+                             }).FirstOrDefault() // Заполните при наличии PumpConfigurations
                          })
-                 .ToListAsync();
+                  .ToList();
 
         }
 
