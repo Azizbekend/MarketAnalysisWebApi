@@ -1,5 +1,7 @@
-﻿using MarketAnalysisWebApi.DTOs.RequestDTOs;
+﻿using MarketAnalysisWebApi.DTOs.FileStorageDTOS;
+using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.Repos.CompanyRepo;
+using MarketAnalysisWebApi.Repos.FileStorageRepo;
 using MarketAnalysisWebApi.Repos.InnerHelperRepo;
 using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
 using MarketAnalysisWebApi.Repos.UserRepo;
@@ -17,13 +19,15 @@ namespace MarketAnalysisWebApi.Controllers
         private readonly ICompanyRepo _companyRepo;
         private readonly IInnerHelperRepo _innerHelperRepo;
         private readonly IProjectRequestRepo _requestRepo;
+        private readonly IFileStorageRepo _fileStorageRepo;
 
-        public AdminController(IUserRepo userRepo, ICompanyRepo companyRepo, IInnerHelperRepo innerHelperRepo, IProjectRequestRepo requestRepo)
+        public AdminController(IUserRepo userRepo, ICompanyRepo companyRepo, IInnerHelperRepo innerHelperRepo, IProjectRequestRepo requestRepo, IFileStorageRepo fileStorageRepo)
         {
             _userRepo = userRepo;
             _companyRepo = companyRepo;
             _innerHelperRepo = innerHelperRepo;
             _requestRepo = requestRepo;
+            _fileStorageRepo = fileStorageRepo;
         }
 
         [HttpGet("users/all")]
@@ -95,6 +99,20 @@ namespace MarketAnalysisWebApi.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpPut("request/schemeFile/replace")]
+        public async Task<IActionResult> ReplaceSchemeFile(RequestFileSchemeUpdateDTO dto)
+        {
+            var res = await _fileStorageRepo.ReplaceRequestFileAsync(dto);
+            return Ok(res);
+        }
+
+        [HttpDelete("requset/chemeFile/delete")]
+        public async Task<IActionResult> DeleteSchemeFile(Guid id)
+        { 
+            await _fileStorageRepo.DeleteRequestFileAsync(id);
+            return Ok("Succesfull deleted!");
         }
         
     }

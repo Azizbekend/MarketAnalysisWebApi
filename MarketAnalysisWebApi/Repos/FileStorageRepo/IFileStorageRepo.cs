@@ -14,9 +14,11 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
         Task<Guid> SaveEquipmentPassportFileAsync(EquipmentPassportFileCreateDTO dto, CancellationToken token = default);
         Task<DbEquipmentPassportFile> GetEquipmentPassportFileAsync(Guid passportFileId, CancellationToken token = default);
         Task<Guid?> SaveRequestFileAsync(RequestSchemeFileDTO dto, CancellationToken token = default);
+        Task<Guid?> ReplaceRequestFileAsync(RequestFileSchemeUpdateDTO dto, CancellationToken token = default);
+        Task DeleteRequestFileAsync(Guid requestFileId, CancellationToken token = default);
         Task<DbRequestFileModel> GetRequestFileAsync(Guid requestSchemeFileId, CancellationToken token = default);
 
-        Task<Guid> OtherOfferFileSvaeAsync(OtherOfferFileCreateDTO dto, CancellationToken token = default);
+        Task<Guid> OtherOfferFileSaveAsync(OtherOfferFileCreateDTO dto, CancellationToken token = default);
         Task<ICollection<DbOtherOfferFileModel>> GetOtherOfferFiles(Guid offerId);
     }
 }

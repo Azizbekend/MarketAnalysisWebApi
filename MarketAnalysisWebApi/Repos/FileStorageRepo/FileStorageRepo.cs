@@ -1,5 +1,6 @@
 ﻿using MarketAnalysisWebApi.DbEntities;
 using MarketAnalysisWebApi.DbEntities.FileStorages;
+using MarketAnalysisWebApi.DTOs.BaseDTOs;
 using MarketAnalysisWebApi.DTOs.FileStorageDTOS;
 using Microsoft.EntityFrameworkCore;
 
@@ -140,7 +141,7 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
             return await _appDbContext.RequestFiles.AsNoTracking().FirstOrDefaultAsync(x => x.Id == requestSchemeFileId, token);
         }
 
-        public  async Task<Guid> OtherOfferFileSvaeAsync(OtherOfferFileCreateDTO dto, CancellationToken token = default)
+        public  async Task<Guid> OtherOfferFileSaveAsync(OtherOfferFileCreateDTO dto, CancellationToken token = default)
         {
             ArgumentNullException.ThrowIfNull(dto.OfferFile);
             var offer = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == dto.OfferId);
@@ -165,5 +166,39 @@ namespace MarketAnalysisWebApi.Repos.FileStorageRepo
         {
             throw new NotImplementedException();
         }
+
+        public async Task<Guid?> ReplaceRequestFileAsync(RequestFileSchemeUpdateDTO dto, CancellationToken token = default)
+        {
+            var query = from file in _appDbContext.RequestFiles
+                        join DbProjectRequest in _appDbContext.ProjectRequestsTable on file.Id equals DbProjectRequest.FileId
+                        where file.Id == dto.RequestFileId // ваш Guid из RequestFileModel
+                        select DbProjectRequest.Id;
+            var projectRequestId = await query.FirstOrDefaultAsync();
+            var requestFile = await _appDbContext.RequestFiles.FirstOrDefaultAsync(x => x.Id == dto.RequestFileId);
+            _appDbContext.RequestFiles.Remove(requestFile);
+            var fileModel = new DbRequestFileModel
+            {
+                FileName = dto.RequestFile.FileName,
+                ContentType = dto.RequestFile.ContentType,
+                FileSize = dto.RequestFile.Length,
+                FileData = await ReadFileDataAsync(dto.RequestFile, token)
+            };
+            await _appDbContext.RequestFiles.AddAsync(fileModel);
+            var request = await _appDbContext.ProjectRequestsTable.FirstOrDefaultAsync(x => x.Id == projectRequestId);
+            request.FileId = fileModel.Id;
+            _appDbContext.ProjectRequestsTable.Attach(request);
+            await _appDbContext.SaveChangesAsync(token);
+            return dto.RequestFileId;
+        }
+
+        public async Task DeleteRequestFileAsync(Guid requestFileId, CancellationToken token = default)
+        {
+            var file = await _appDbContext.RequestFiles.FirstOrDefaultAsync(x => x.Id ==  requestFileId);
+            _appDbContext.RequestFiles.Remove(file);    
+            await _appDbContext.SaveChangesAsync();
+        }
+
+ 
+
     }
 }
