@@ -108,12 +108,17 @@ namespace MarketAnalysisWebApi.Controllers
             return Ok(res);
         }
 
-        [HttpDelete("requset/chemeFile/delete")]
+        [HttpDelete("requset/schemeFile")]
         public async Task<IActionResult> DeleteSchemeFile(Guid id)
         { 
             await _fileStorageRepo.DeleteRequestFileAsync(id);
             return Ok("Succesfull deleted!");
         }
-        
+        [HttpDelete("request/cascade")]
+        public async Task<IActionResult> DeleteRequest(Guid id)
+        {
+            await _requestRepo.DeleteCascade(id);
+            return Ok();
+        }
     }
 }

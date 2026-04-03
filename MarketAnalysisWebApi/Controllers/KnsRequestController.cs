@@ -1,6 +1,7 @@
 ﻿using MarketAnalysisWebApi.DTOs.KnsConfigDTOs;
 using MarketAnalysisWebApi.DTOs.KnsCongigDTOs;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
+using MarketAnalysisWebApi.NotificationServices;
 using MarketAnalysisWebApi.Repos.KnsConfiGRepo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +15,14 @@ namespace MarketAnalysisWebApi.Controllers
     public class KnsRequestController : ControllerBase
     {
         private readonly IKnsConfigRepo _knsConfigRepo;
+        private readonly INotificationService _notificationService;
 
-        public KnsRequestController(IKnsConfigRepo knsConfigRepo)
+        public KnsRequestController(IKnsConfigRepo knsConfigRepo, INotificationService notificationService)
         {
             _knsConfigRepo = knsConfigRepo;
+            _notificationService = notificationService;
         }
+
         [HttpGet("knsConfig/equipments")]
         public async Task<IActionResult> GetKnsEquipment()
         {
@@ -106,6 +110,7 @@ namespace MarketAnalysisWebApi.Controllers
                 };
                 await _knsConfigRepo.CreateKnsConfig(config);
                 await _knsConfigRepo.CreateKnsEquipment(resId, dto.EquipmentGuidList);
+                await _notificationService.NotifySuppliersAboutNewRequestAsync(resId);
                 return Ok(resId);
             }
             catch (Exception ex)

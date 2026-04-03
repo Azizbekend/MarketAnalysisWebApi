@@ -1,6 +1,7 @@
 ﻿using MarketAnalysisWebApi.DTOs.FileStorageDTOS;
 using MarketAnalysisWebApi.DTOs.RequestDTOs;
 using MarketAnalysisWebApi.DTOs.RequestDTOs.Supplier;
+using MarketAnalysisWebApi.NotificationServices;
 using MarketAnalysisWebApi.Repos.FileStorageRepo;
 using MarketAnalysisWebApi.Repos.ProjectRequestRepo;
 using Microsoft.AspNetCore.Http;
@@ -14,12 +15,17 @@ namespace MarketAnalysisWebApi.Controllers
     {
         private readonly IProjectRequestRepo _projectRequestRepo;
         private readonly IFileStorageRepo _fileStorageRepo;
+        //private readonly INotificationService _notificationService;
 
-        public RequestController(IProjectRequestRepo projectRequestRepo, IFileStorageRepo fileStorageRepo)
+        public RequestController(IProjectRequestRepo projectRequestRepo, 
+            IFileStorageRepo fileStorageRepo, 
+            INotificationService notificationService)
         {
             _projectRequestRepo = projectRequestRepo;
             _fileStorageRepo = fileStorageRepo;
+            //_notificationService = notificationService;
         }
+
         [HttpGet("sherry/half")]
         public async Task<IActionResult> GEtSherreyRRequest(Guid id)
         {

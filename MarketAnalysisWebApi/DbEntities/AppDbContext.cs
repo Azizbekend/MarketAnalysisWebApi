@@ -40,7 +40,7 @@ namespace MarketAnalysisWebApi.DbEntities
         public DbSet<DbRequestFileModel> RequestFiles { get; set; }
         public DbSet<DbRegion> RegionsTable { get; set; }
         //public DbSet<DbUserNotification> UserNotificationsTable { get; set; }
-        //public DbSet<DbNotification> NotificationTable { get; set; }
+        public DbSet<DbNotification> NotificationsTable { get; set; }
 
 
 

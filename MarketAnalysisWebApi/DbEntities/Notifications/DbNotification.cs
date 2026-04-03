@@ -1,31 +1,36 @@
 ﻿using MarketAnalysisWebApi.DbEntities.Base;
+using MarketAnalysisWebApi.DbEntities.DbEntities;
 using Org.BouncyCastle.Asn1.Ocsp;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MarketAnalysisWebApi.DbEntities.Notifications
 {
     public class DbNotification : DbBaseEntity
     {
-        public string Title { get; set; }   // Заголовок: "Новая заявка #123"
+        [Required]
+        public Guid UserId { get; set; }
 
-        public string Message { get; set; } // Текст: "Клиент создал новую заявку..."
+        [ForeignKey(nameof(UserId))]
+        public DbUser? User { get; set; }
 
-        public string Type { get; set; }    // Тип: "info", "success", "warning", "error"
+        [Required]
+        [MaxLength(255)]
+        public string Title { get; set; }
 
-        public DateTime CreatedAt { get; set; } // Когда создано
+        [Required]
+        public string Message { get; set; }
 
-        /// <summary>
-        /// ID связанной заявки (если уведомление о заявке)
-        /// </summary>
-        public int? RequestId { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Type { get; set; }
 
-        /// <summary>
-        /// Сама заявка (для связи)
-        /// </summary>
-        public Request Request { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now.ToUniversalTime().AddHours(3);
 
-        /// <summary>
-        /// Глобальное ли уведомление? (видят все или только некоторые)
-        /// </summary>
-        public bool IsGlobal { get; set; }
+        public bool IsRead { get; set; } = false;
+
+        public DateTime? ReadAt { get; set; }
+
+        public string? DataJson { get; set; } // JSON сериализованные дополнительные данные
     }
 }

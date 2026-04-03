@@ -1,6 +1,7 @@
 using MailKit;
 using MarketAnalysisWebApi.Controllers;
 using MarketAnalysisWebApi.DbEntities;
+using MarketAnalysisWebApi.NotificationServices;
 using MarketAnalysisWebApi.Providers.Configuration;
 using MarketAnalysisWebApi.Providers.EmailProvider;
 using MarketAnalysisWebApi.Repos.CompanyRepo;
@@ -47,6 +48,8 @@ builder.Services.AddTransient<IOfferRepo, OfferRepo>();
 builder.Services.AddTransient<IMailServiceProvider, MailServiceProvider>();
 builder.Services.AddTransient<IFileStorageRepo, FileStorageRepo>();
 builder.Services.AddTransient<IPumpConfigRepo, PumpConfigRepo>();
+builder.Services.AddTransient<INotificationService, NotificationService>();
+builder.Services.AddSignalR();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",

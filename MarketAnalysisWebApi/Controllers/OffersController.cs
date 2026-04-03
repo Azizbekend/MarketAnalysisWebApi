@@ -1,6 +1,7 @@
 ﻿using MarketAnalysisWebApi.DbEntities.FileStorages;
 using MarketAnalysisWebApi.DTOs.FileStorageDTOS;
 using MarketAnalysisWebApi.DTOs.OffersDTO;
+using MarketAnalysisWebApi.NotificationServices;
 using MarketAnalysisWebApi.Repos.FileStorageRepo;
 using MarketAnalysisWebApi.Repos.OffersRepo;
 using Microsoft.AspNetCore.Http;
@@ -14,11 +15,13 @@ namespace MarketAnalysisWebApi.Controllers
     {
         private readonly IOfferRepo _offerRepo;
         private readonly IFileStorageRepo _fileStorageRepo;
+        private readonly INotificationService _notificationService;
 
-        public OffersController(IOfferRepo offerRepo, IFileStorageRepo fileStorageRepo)
+        public OffersController(IOfferRepo offerRepo, IFileStorageRepo fileStorageRepo, INotificationService notificationService)
         {
             _offerRepo = offerRepo;
             _fileStorageRepo = fileStorageRepo;
+            _notificationService = notificationService;
         }
 
         [HttpPost("create")]
@@ -27,6 +30,7 @@ namespace MarketAnalysisWebApi.Controllers
             try
             {
                 var res = await _offerRepo.CreateBusinesOffer(dto);
+                await _notificationService.NotifyCustomerAboutNewOfferAsync(res);
                 return Ok(res);
             }
             catch (Exception ex)
