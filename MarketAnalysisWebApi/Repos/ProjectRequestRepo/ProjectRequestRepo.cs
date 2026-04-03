@@ -597,6 +597,11 @@ namespace MarketAnalysisWebApi.Repos.ProjectRequestRepo
             return result;
         }
 
-
+        public async Task DeleteCascade(Guid id)
+        {
+            var entity = await _appDbContext.Set<DbProjectRequest>().FindAsync(id);
+            _appDbContext.Set<DbProjectRequest>().Remove(entity);
+            await _appDbContext.SaveChangesAsync();
+        }
     }
 }
